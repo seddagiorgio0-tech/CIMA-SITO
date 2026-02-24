@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact me</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 600px;
+            margin: 60px auto;
+            padding: 0 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 140px;
+        }
+        button {
+            margin-top: 30px;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background: black;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Contact me</h1>
+
+    <p>If you would like information about the artworks or wish to propose a collaboration, you can write to me here.</p>
+
+    <form action="https://formspree.io/f/xreaoowq" method="POST">
+  <label>
+    Your name:
+    <input type="text" name="name" required>
+  </label>
+
+  <label>
+    Your email:
+    <input type="email" name="email" required>
+  </label>
+
+  <label>
+    message:
+    <textarea name="message" required></textarea>
+  </label>
+
+  <input type="hidden" name="_redirect" value="grazie-en.html">
+
+  <button type="submit">Send</button>
+</form>
+
+
+</body>
+</html>
+
