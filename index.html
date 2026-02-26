@@ -13,16 +13,16 @@
       text-align: center;
     }
 
-    /* NAVIGAZIONE */
+    /* NAVIGAZIONE CENTRATA E ABBASSATA */
     nav {
       display: flex;
-      justify-content: flex-end;
-      padding: 20px;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 0 10px 0;   /* PRIMA 15px — ORA MOLTO PIÙ BASSO */
       font-size: 14px;
     }
 
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: black;
     }
@@ -34,27 +34,27 @@
 
     /* LOGHI */
     .logo-container {
-      margin-top: 5px;      /* RIDOTTO AL MINIMO */
-      margin-bottom: 0;     /* ATTACCATO ALL'IMMAGINE */
+      margin-top: 5px;
+      margin-bottom: 0;
     }
 
     .logo-a {
       display: block;
-      margin: 5px auto 0 auto;   /* QUASI ZERO */
+      margin: 5px auto 0 auto;
       max-width: 220px;
       height: auto;
     }
 
     .logo-cima {
       display: block;
-      margin: 0 auto;            /* ATTACCATO */
+      margin: 0 auto;
       max-width: 260px;
       height: auto;
     }
 
     hr {
       width: 200px;
-      margin: 5px auto;          /* MINIMO POSSIBILE */
+      margin: 5px auto;
       border: none;
       border-top: 1px solid black;
     }
@@ -70,26 +70,26 @@
       display: block;
       width: 100%;
       height: auto;
-      margin-top: 0;             /* ATTACCATA AI LOGHI */
-      margin-bottom: 15px;       /* RESPIRO MINIMO PRIMA DEI PULSANTI */
+      margin-top: 0;
+      margin-bottom: 15px;
     }
 
     /* PULSANTI */
     .buttons {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: nowrap;
       margin-top: 0;
     }
 
     .buttons a {
       border: 1px solid black;
-      padding: 8px 16px;
+      padding: 6px 14px;
       text-decoration: none;
       color: black;
       font-size: 14px;
-      min-width: 150px;
+      min-width: 145px;
       text-align: center;
     }
 
