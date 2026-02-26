@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Exhibition Under Preparation – CIMA</title>
+  <title>Exhibition Under Preparation – CIMA Project</title>
 
   <style>
     body {
@@ -13,15 +13,16 @@
       text-align: center;
     }
 
+    /* NAVIGATION */
     nav {
       display: flex;
-      justify-content: flex-end;
-      padding: 20px;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 0 10px 0;
       font-size: 14px;
     }
 
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: black;
     }
@@ -31,26 +32,60 @@
       text-decoration: underline;
     }
 
-    .container {
-      margin-top: 120px;
+    /* LOGOS */
+    .logo-container {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+      height: auto;
+    }
+
+    .logo-cima {
+      display: block;
+      margin: 0 auto;
+      max-width: 260px;
+      height: auto;
+    }
+
+    hr {
+      width: 200px;
+      margin: 5px auto;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    /* CENTRAL BLOCK */
+    .central-block {
+      width: 720px;
+      max-width: 100%;
+      margin: 0 auto;
+      margin-top: 40px;
+      text-align: center;
+      line-height: 1.6;
     }
 
     h1 {
       font-size: 22px;
+      margin-bottom: 15px;
       font-weight: normal;
-      margin-bottom: 10px;
     }
 
     p {
       font-size: 14px;
       color: #444;
-      margin-bottom: 40px;
     }
 
+    /* FOOTER */
     .footer {
-      margin-top: 80px;
+      margin-top: 60px;
       font-size: 12px;
       color: #555;
+      text-align: center;
     }
   </style>
 </head>
@@ -59,14 +94,22 @@
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="galleria-intermedia.html">Galleries</a>
+    <a href="galleria-intermedia.html" class="active">Virtual Exhibitions</a>
     <a href="opere.html">Works</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="biography.html">Biography</a>
-    <a href="contatti.html" class="active">Contacts</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="contatti.html">Contacts</a>
   </nav>
 
-  <div class="container">
+  <div class="logo-container">
+    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
+    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
+    <hr>
+  </div>
+
+  <div class="central-block">
     <h1>Exhibition Under Preparation</h1>
     <p>This space is being prepared. It will be available soon.</p>
   </div>
