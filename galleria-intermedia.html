@@ -13,7 +13,7 @@
       text-align: center;
     }
 
-    /* NAVIGATION CENTERED AND LOWERED */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
@@ -59,29 +59,43 @@
       border-top: 1px solid black;
     }
 
-    /* CENTRAL CONTENT */
+    /* CENTRAL BLOCK */
     .central-block {
       width: 720px;
       max-width: 100%;
       margin: 0 auto;
       margin-top: 20px;
       text-align: center;
+      line-height: 1.6;
     }
 
     h1 {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .gallery-button {
-      display: block;
+    /* BUTTONS */
+    .buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
       border: 1px solid black;
-      padding: 10px 20px;
-      margin: 15px auto;
-      width: 260px;
-      text-decoration: none;
+      background: white;
       color: black;
+      text-decoration: none;
       font-size: 15px;
+      width: 260px;
+      margin: 0 auto;
+    }
+
+    .button:hover {
+      background: #f0f0f0;
     }
 
     /* FOOTER */
@@ -89,6 +103,7 @@
       margin-top: 40px;
       font-size: 12px;
       color: #555;
+      text-align: center;
     }
   </style>
 </head>
@@ -116,11 +131,11 @@
 
     <h1>Virtual Exhibitions</h1>
 
-   <a href="greenland.html" class="button">Greenland</a>
-<a href="in-allestimento.html" class="button">Iceland</a>
-<a href="in-allestimento.html" class="button">Africa</a>
-
- Exhibition</a>
+    <div class="buttons-container">
+      <a href="greenland.html" class="button">Greenland</a>
+      <a href="in-allestimento.html" class="button">Iceland</a>
+      <a href="in-allestimento.html" class="button">Africa</a>
+    </div>
 
   </div>
 
