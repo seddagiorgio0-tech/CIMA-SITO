@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CIMA Project</title>
+  <title>CIMA Project – Crossing Into My Art</title>
 
   <style>
     body {
@@ -13,15 +13,16 @@
       text-align: center;
     }
 
+    /* NAVIGAZIONE CENTRATA E ABBASSATA */
     nav {
       display: flex;
-      justify-content: flex-end;
-      padding: 20px;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 0 10px 0;   /* identico alla home */
       font-size: 14px;
     }
 
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: black;
     }
@@ -31,31 +32,58 @@
       text-decoration: underline;
     }
 
-    .container {
-      margin-top: 80px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
+    /* LOGHI */
+    .logo-container {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+      height: auto;
+    }
+
+    .logo-cima {
+      display: block;
+      margin: 0 auto;
+      max-width: 260px;
+      height: auto;
+    }
+
+    hr {
+      width: 200px;
+      margin: 5px auto;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    /* CONTENUTO CENTRALE */
+    .central-block {
+      width: 720px;
+      max-width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
       text-align: left;
+      line-height: 1.6;
     }
 
     h1 {
-      text-align: center;
       font-size: 22px;
-      font-weight: normal;
-      margin-bottom: 30px;
+      margin-bottom: 15px;
+      text-align: center;
     }
 
     p {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.6;
-      margin-bottom: 20px;
+      font-size: 15px;
+      margin-bottom: 18px;
+      color: #333;
     }
 
+    /* FOOTER */
     .footer {
-      margin-top: 80px;
+      margin-top: 40px;
       font-size: 12px;
       color: #555;
       text-align: center;
@@ -67,36 +95,41 @@
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="galleria-intermedia.html">Galleries</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html">Works</a>
     <a href="progetto.html" class="active">CIMA Project</a>
     <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
     <a href="contatti.html">Contacts</a>
   </nav>
 
-  <div class="container">
+  <div class="logo-container">
+    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
+    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
+    <hr>
+  </div>
+
+  <div class="central-block">
+
     <h1>CIMA Project</h1>
 
-    <p><strong>CIMA – Crossing Into My Art – is a threshold.<br>
-    A passage not necessarily toward me.</strong></p>
+    <p>
+      CIMA – Crossing Into My Art è un progetto che nasce dal viaggio, dall’incontro e dalla trasformazione.
+      Ogni esperienza vissuta in comunità lontane diventa materia artistica, documento, racconto e occasione
+      di scambio culturale.
+    </p>
 
-    <p>I travel, and the world passes through me — people, things, waits, noises, silences.
-    I let myself be touched by what I encounter; sometimes I choose — a gesture, a face, a light, an ordinary thing.
-    Every experience becomes living matter, part of my path.</p>
+    <p>
+      Il progetto unisce fotografia, disegno, testi, conferenze e mostre, creando un ponte tra luoghi,
+      persone e linguaggi. Ogni tappa è un attraversamento: geografico, umano e creativo.
+    </p>
 
-    <p>From what crosses me, traces are born — images, words, sounds.
-    Sometimes Works emerge, without the presumption of being recognized as such.
-    They are not trophies, nor memories fixed in place.
-    They are living forms, carrying the movement of what was lived.</p>
+    <p>
+      CIMA è un invito a entrare nel mio mondo mentre si trasforma, a seguire le tracce lasciate dai viaggi,
+      dalle relazioni e dalle storie che incontro lungo il cammino.
+    </p>
 
-    <p>Then comes the Story — exhibitions, texts, encounters.
-    Not to explain myself, but to open a space where you, too, may enter.</p>
-
-    <p>CIMA is not a constructed image.
-    It is my nature taking shape while the world shapes me.
-    For you, it is an open place — where you may pause, walk, let yourself be touched by something you might recognize, or that may surprise you.</p>
-
-    <p><strong>If you wish — Crossing Into My Art.</strong></p>
   </div>
 
   <div class="footer">
