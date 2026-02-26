@@ -56,11 +56,25 @@
       border-top: 1px solid black;
     }
 
+    /* Contenitore centrale immagine + pulsanti */
+    .central-block {
+      width: 720px;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    .panoramica {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin: 30px auto 30px auto;
+    }
+
     .buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
-      margin-top: 30px;
+      margin-top: 0;
       flex-wrap: wrap;
     }
 
@@ -86,10 +100,12 @@
 
   <nav>
     <a href="index.html" class="active">Home</a>
-    <a href="galleria-intermedia.html">Galleries</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html">Works</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
     <a href="contatti.html">Contacts</a>
   </nav>
 
@@ -99,11 +115,16 @@
     <hr>
   </div>
 
-  <div class="buttons">
-    <a href="galleria-intermedia.html">Virtual Gallery</a>
-    <a href="opere.html">Works Archive</a>
-    <a href="progetto.html">CIMA Project</a>
-    <a href="contatti.html">Contacts</a>
+  <!-- BLOCCO CENTRALE: immagine panoramica + pulsanti -->
+  <div class="central-block">
+    <img src="panoramica-home.jpg" alt="Panoramic image" class="panoramica">
+
+    <div class="buttons">
+      <a href="galleria-intermedia.html">Virtual Gallery</a>
+      <a href="opere.html">Works Archive</a>
+      <a href="progetto.html">CIMA Project</a>
+      <a href="contatti.html">Contacts</a>
+    </div>
   </div>
 
   <div class="footer">
