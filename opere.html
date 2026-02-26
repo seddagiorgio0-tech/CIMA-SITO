@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Works – CIMA</title>
+  <title>Works – CIMA Project</title>
 
   <style>
     body {
@@ -13,15 +13,16 @@
       text-align: center;
     }
 
+    /* NAVIGAZIONE CENTRATA E ABBASSATA */
     nav {
       display: flex;
-      justify-content: flex-end;
-      padding: 20px;
+      justify-content: center;
+      gap: 20px;
+      padding: 40px 0 10px 0;   /* stessa altezza della home */
       font-size: 14px;
     }
 
     nav a {
-      margin-left: 20px;
       text-decoration: none;
       color: black;
     }
@@ -31,32 +32,73 @@
       text-decoration: underline;
     }
 
-    .container {
-      margin-top: 80px;
-      max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
-      text-align: left;
+    /* LOGHI */
+    .logo-container {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+      height: auto;
+    }
+
+    .logo-cima {
+      display: block;
+      margin: 0 auto;
+      max-width: 260px;
+      height: auto;
+    }
+
+    hr {
+      width: 200px;
+      margin: 5px auto;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    /* CONTENUTO CENTRALE */
+    .central-block {
+      width: 720px;
+      max-width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
+      text-align: left;   /* per testi descrittivi */
+      line-height: 1.6;
     }
 
     h1 {
-      text-align: center;
       font-size: 22px;
-      font-weight: normal;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 14px;
-      color: #444;
-      line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       text-align: center;
     }
 
+    .work-item {
+      margin-bottom: 35px;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .work-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .work-description {
+      font-size: 14px;
+      color: #333;
+    }
+
+    /* FOOTER */
     .footer {
-      margin-top: 80px;
+      margin-top: 40px;
       font-size: 12px;
       color: #555;
       text-align: center;
@@ -68,20 +110,44 @@
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="galleria-intermedia.html">Galleries</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html" class="active">Works</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
     <a href="contatti.html">Contacts</a>
   </nav>
 
-  <div class="container">
-    <h1>Works</h1>
+  <div class="logo-container">
+    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
+    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
+    <hr>
+  </div>
 
-    <p>
-      A selection of photographs and projects created during my travels and lived experiences.  
-      Each work is part of a broader narrative that connects places, people, and the movement of life.
-    </p>
+  <div class="central-block">
+
+    <h1>Works Archive</h1>
+
+    <!-- Esempio di struttura per una singola opera -->
+    <div class="work-item">
+      <img src="opera-1.jpg" alt="Work 1">
+      <div class="work-title">Titolo dell’opera</div>
+      <div class="work-description">
+        Breve descrizione dell’opera, tecnica, luogo, anno, e qualsiasi informazione utile.
+      </div>
+    </div>
+
+    <div class="work-item">
+      <img src="opera-2.jpg" alt="Work 2">
+      <div class="work-title">Titolo dell’opera</div>
+      <div class="work-description">
+        Breve descrizione dell’opera, tecnica, luogo, anno, e qualsiasi informazione utile.
+      </div>
+    </div>
+
+    <!-- Puoi duplicare questo blocco per tutte le opere -->
+
   </div>
 
   <div class="footer">
