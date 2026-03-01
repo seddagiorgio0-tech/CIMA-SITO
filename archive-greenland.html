@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greenland Archive – CIMA Project</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* LOGO + NAME */
+    .logo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+    }
+
+    .logo-cima {
+      display: block;
+      margin: 0 auto;
+      max-width: 260px;
+    }
+
+    .name-right {
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #555;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .name-right {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        transform: none;
+        text-align: center;
+      }
+    }
+
+    hr {
+      width: 200px;
+      margin: 10px auto;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    /* TITLE */
+    h1 {
+      text-align: center;
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    /* TWO COLUMNS */
+    .columns {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    .column {
+      width: 45%;
+      text-align: center;
+    }
+
+    .column h2 {
+      font-size: 18px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .artwork {
+      width: 100%;
+      max-width: 260px;
+      margin: 15px auto;
+      cursor: pointer;
+      border: 1px solid black;
+      transition: 0.2s;
+    }
+
+    .artwork:hover {
+      opacity: 0.7;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      max-width: 700px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .modal img {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .close {
+      cursor: pointer;
+      font-size: 20px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 16px;
+      color: #555;
+      padding-bottom: 40px;
+    }
+  </style>
+
+  <script>
+    function openModal(src, info) {
+      document.getElementById("modal-img").src = src;
+      document.getElementById("modal-info").innerHTML = info;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+  </script>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+    <a href="opere.html">Works</a>
+    <a href="progetto.html">CIMA Project</a>
+    <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="contatti.html">Contacts</a>
+    <a href="work-in-progress.html">Buy</a>
+  </nav>
+
+  <div class="logo-wrapper">
+    <img src="logo-a.png" class="logo-a">
+    <img src="logo-cima.png" class="logo-cima">
+    <div class="name-right">GIORGIO SEDDA</div>
+  </div>
+
+  <hr>
+
+  <h1>Greenland – Works Archive</h1>
+
+  <div class="columns">
+
+    <!-- LEFT COLUMN – PHOTOGRAPHS -->
+    <div class="column">
+      <h2>Photographs</h2>
+
+      <!-- SAMPLE IMAGE -->
+      <img src="photo-sample.jpg" class="artwork"
+           onclick="openModal('photo-sample.jpg', 'Technical sheet of the photograph…')">
+
+      <!-- Add more images here -->
+    </div>
+
+    <!-- RIGHT COLUMN – DRAWINGS -->
+    <div class="column">
+      <h2>Drawings</h2>
+
+      <!-- SAMPLE IMAGE -->
+      <img src="drawing-sample.jpg" class="artwork"
+           onclick="openModal('drawing-sample.jpg', 'Technical sheet of the drawing…')">
+
+      <!-- Add more images here -->
+    </div>
+
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="close" onclick="closeModal()">✕ Close</span>
+      <img id="modal-img" src="">
+      <div id="modal-info"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
+
+</body>
+</html>
