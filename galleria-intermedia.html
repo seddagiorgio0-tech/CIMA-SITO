@@ -1,1 +1,187 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <title>Works – CIMA Project</title> <style> body { margin: 0; font-family: Arial, sans-serif; background-color: white; color: black; text-align: center; } /* NAVIGATION */ nav { display: flex; justify-content: center; gap: 20px; padding: 30px 0 5px 0; font-size: 16px; position: relative; } nav a { text-decoration: none; color: black; } nav a.active { font-weight: bold; text-decoration: underline; } /* LOGO + NAME */ .logo-wrapper { position: relative; width: 100%; max-width: 420px; margin: 0 auto; margin-top: 10px; } .logo-a { display: block; margin: 5px auto 0 auto; max-width: 220px; height: auto; } .logo-cima { display: block; margin: 0 auto; max-width: 260px; height: auto; } .name-right { position: absolute; top: 50%; right: -150px; transform: translateY(-50%); font-size: 22px; color: #555; font-weight: bold; letter-spacing: 1px; white-space: nowrap; } @media (max-width: 600px) { .name-right { position: static; display: block; margin-top: 10px; transform: none; text-align: center; } } hr { width: 200px; margin: 5px auto; border: none; border-top: 1px solid black; } /* CENTRAL BLOCK */ .central-block { width: 720px; max-width: 100%; margin: 0 auto; margin-top: 20px; text-align: left; line-height: 1.6; } h1 { font-size: 22px; margin-bottom: 20px; text-align: center; letter-spacing: 1px; } /* BUTTONS */ .button-container { text-align: center; margin-bottom: 40px; } .gallery-button { display: inline-block; padding: 12px 28px; margin: 10px; border: 1px solid black; text-decoration: none; color: black; font-size: 16px; letter-spacing: 1px; transition: 0.2s; min-width: 320px; text-align: center; } .gallery-button:hover { background-color: black; color: white; } /* FOOTER */ .footer { margin-top: 40px; font-size: 16px; color: #555; text-align: center; } </style> </head> <body> <nav> <a href="index.html">Home</a> <a href="galleria-intermedia.html">Virtual Exhibitions</a> <a href="opere.html" class="active">Works</a> <a href="progetto.html">CIMA Project</a> <a href="biography.html">Biography</a> <a href="book.html">Book</a> <a href="news.html">News</a> <a href="contatti.html">Contacts</a> <a href="work-in-progress.html">Buy</a> </nav> <!-- LOGO + NAME --> <div class="logo-wrapper"> <img src="logo-a.png" alt="CIMA symbol" class="logo-a"> <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima"> <div class="name-right">GIORGIO SEDDA</div> </div> <hr> <div class="central-block"> <h1>Works Archive</h1> <!-- BUTTONS --> <div class="button-container"> <a href="works-greenland.html" class="gallery-button"> GREENLAND — A winter between people and wilderness </a> <a href="gallery-under-construction.html" class="gallery-button"> AFRICA — Un monde de couleurs </a> <a href="gallery-under-construction.html" class="gallery-button"> ICELAND — Face au froid </a> </div> </div> <div class="footer"> <strong>Giorgio Sedda</strong> – CIMA Project </div> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Virtual Exhibitions – CIMA</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      text-align: center;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
+      position: relative;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* LOGO + NAME */
+    .logo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      margin-top: 10px;
+    }
+
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+      height: auto;
+    }
+
+    .logo-cima {
+      display: block;
+      margin: 0 auto;
+      max-width: 260px;
+      height: auto;
+    }
+
+    .name-right {
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #555;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .name-right {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        transform: none;
+        text-align: center;
+      }
+    }
+
+    hr {
+      width: 200px;
+      margin: 5px auto;
+      border: none;
+      border-top: 1px solid black;
+    }
+
+    /* CENTRAL BLOCK */
+    .central-block {
+      width: 720px;
+      max-width: 100%;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    /* TITLE — same style as Works Archive */
+    h1 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    /* BUTTONS */
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .buttons a {
+      border: 1px solid black;
+      padding: 12px 26px;
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+      margin: 0 auto;
+      text-align: center;
+      transition: 0.2s;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .buttons a:hover {
+      background-color: black;
+      color: white;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 35px;
+      font-size: 16px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="galleria-intermedia.html" class="active">Virtual Exhibitions</a>
+    <a href="opere.html">Works</a>
+    <a href="progetto.html">CIMA Project</a>
+    <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="contatti.html">Contacts</a>
+    <a href="work-in-progress.html">Buy</a>
+  </nav>
+
+  <!-- LOGO + NAME -->
+  <div class="logo-wrapper">
+    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
+    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
+    <div class="name-right">GIORGIO SEDDA</div>
+  </div>
+
+  <hr>
+
+  <div class="central-block">
+
+    <h1>Virtual Exhibitions</h1>
+
+    <div class="buttons">
+      <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
+        GREENLAND – A winter between people and wilderness
+      </a>
+
+      <a href="gallery-under-construction.html">
+        AFRICA – Un monde de couleurs
+      </a>
+
+      <a href="gallery-under-construction.html">
+        ICELAND – Face au froid
+      </a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
+
+</body>
+</html>
