@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Virtual Exhibitions – CIMA</title>
+  <title>Works – CIMA Project</title>
 
   <style>
     body {
@@ -13,7 +13,7 @@
       text-align: center;
     }
 
-    /* NAVIGAZIONE */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
@@ -33,7 +33,7 @@
       text-decoration: underline;
     }
 
-    /* CONTENITORE LOGO + NOME */
+    /* LOGO + NAME */
     .logo-wrapper {
       position: relative;
       width: 100%;
@@ -56,7 +56,6 @@
       height: auto;
     }
 
-    /* NOME A DESTRA DEL LOGO */
     .name-right {
       position: absolute;
       top: 50%;
@@ -69,7 +68,6 @@
       white-space: nowrap;
     }
 
-    /* VERSIONE MOBILE */
     @media (max-width: 600px) {
       .name-right {
         position: static;
@@ -87,15 +85,16 @@
       border-top: 1px solid black;
     }
 
-    /* BLOCCO CENTRALE */
+    /* CENTRAL BLOCK */
     .central-block {
       width: 720px;
       max-width: 100%;
       margin: 0 auto;
       margin-top: 20px;
+      text-align: left;
+      line-height: 1.6;
     }
 
-    /* TITOLO — STESSO STILE DI "WORKS ARCHIVE" */
     h1 {
       font-size: 22px;
       margin-bottom: 20px;
@@ -103,38 +102,37 @@
       letter-spacing: 1px;
     }
 
-    /* PULSANTI MOSTRE */
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
+    /* BUTTONS */
+    .button-container {
+      text-align: center;
+      margin-bottom: 40px;
     }
 
-    .buttons a {
+    .gallery-button {
+      display: inline-block;
+      padding: 12px 28px;
+      margin: 10px;
       border: 1px solid black;
-      padding: 12px 26px;
       text-decoration: none;
       color: black;
       font-size: 16px;
-      margin: 0 auto;
-      text-align: center;
+      letter-spacing: 1px;
       transition: 0.2s;
-      white-space: nowrap; /* Mantiene tutto su una riga */
-      display: inline-block; /* Permette al pulsante di allargarsi */
+      min-width: 320px;
+      text-align: center;
     }
 
-    /* EFFETTO HOVER IDENTICO A WORK ARCHIVE */
-    .buttons a:hover {
+    .gallery-button:hover {
       background-color: black;
       color: white;
     }
 
     /* FOOTER */
     .footer {
-      margin-top: 35px;
+      margin-top: 40px;
       font-size: 16px;
       color: #555;
+      text-align: center;
     }
   </style>
 </head>
@@ -143,8 +141,8 @@
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="galleria-intermedia.html" class="active">Virtual Exhibitions</a>
-    <a href="opere.html">Works</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+    <a href="opere.html" class="active">Works</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="biography.html">Biography</a>
     <a href="book.html">Book</a>
@@ -153,11 +151,10 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <!-- LOGO + NOME -->
+  <!-- LOGO + NAME -->
   <div class="logo-wrapper">
     <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
     <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-
     <div class="name-right">GIORGIO SEDDA</div>
   </div>
 
@@ -165,19 +162,20 @@
 
   <div class="central-block">
 
-    <h1>Virtual Exhibitions</h1>
+    <h1>Works Archive</h1>
 
-    <div class="buttons">
-      <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
-        GREENLAND – A winter between people and wilderness
+    <!-- BUTTONS -->
+    <div class="button-container">
+      <a href="works-greenland.html" class="gallery-button">
+        GREENLAND — A winter between people and wilderness
       </a>
 
-      <a href="mostra-in-allestimento.html">
-        AFRICA – Un monde de couleurs
+      <a href="gallery-under-construction.html" class="gallery-button">
+        AFRICA — Un monde de couleurs
       </a>
 
-      <a href="mostra-in-allestimento.html">
-        ICELAND – Face au froid
+      <a href="gallery-under-construction.html" class="gallery-button">
+        ICELAND — Face au froid
       </a>
     </div>
 
