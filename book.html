@@ -13,13 +13,14 @@
       text-align: center;
     }
 
-    /* NAVIGATION CENTERED AND LOWERED */
+    /* NAVIGAZIONE */
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 40px 0 10px 0;
+      padding: 30px 0 5px 0;
       font-size: 16px;
+      position: relative;
     }
 
     nav a {
@@ -32,21 +33,13 @@
       text-decoration: underline;
     }
 
-   /* NOME A DESTRA DEL LOGO */
-    .name-right {
-      position: absolute;
-      top: 100px; /* altezza del logo */
-      right: 460px;
-      font-size: 22px;
-      color: #555; /* grigio medio */
-      font-weight: bold;
-      letter-spacing: 1px;
-   }
-
-    /* LOGOS */
-    .logo-container {
-      margin-top: 5px;
-      margin-bottom: 0;
+    /* CONTENITORE LOGO + NOME */
+    .logo-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      margin-top: 10px;
     }
 
     .logo-a {
@@ -63,6 +56,30 @@
       height: auto;
     }
 
+    /* NOME A DESTRA DEL LOGO */
+    .name-right {
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #555;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* VERSIONE MOBILE */
+    @media (max-width: 600px) {
+      .name-right {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        transform: none;
+        text-align: center;
+      }
+    }
+
     hr {
       width: 200px;
       margin: 5px auto;
@@ -70,7 +87,7 @@
       border-top: 1px solid black;
     }
 
-    /* CENTRAL CONTENT */
+    /* BLOCCO CENTRALE */
     .central-block {
       width: 720px;
       max-width: 100%;
@@ -82,22 +99,15 @@
 
     h1 {
       font-size: 22px;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       text-align: center;
+      letter-spacing: 1px;
     }
 
     p {
       font-size: 15px;
-      margin-bottom: 18px;
       color: #333;
-    }
-
-    .book-cover {
-      width: 100%;
-      max-width: 350px;
-      display: block;
-      margin: 0 auto 20px auto;
-      border: 1px solid #ccc;
+      margin-bottom: 18px;
     }
 
     /* FOOTER */
@@ -124,37 +134,28 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <!-- NOME A DESTRA DEL LOGO -->
-  <div class="name-right">GIORGIO SEDDA</div>
-
-  <div class="logo-container">
+  <!-- LOGO + NOME -->
+  <div class="logo-wrapper">
     <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
     <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-    <hr>
+
+    <div class="name-right">GIORGIO SEDDA</div>
   </div>
+
+  <hr>
 
   <div class="central-block">
 
-    <h1>Book</h1>
-
-    <!-- OPTIONAL BOOK COVER -->
-    <!-- <img src="book-cover.jpg" alt="Book Cover" class="book-cover"> -->
+    <h1>Book – Crossing Into My Art</h1>
 
     <p>
-      This book gathers years of travels, encounters, and transformations. Photographs, drawings,
-      texts, and documents intertwine to narrate a human and artistic journey across Africa, Iceland,
-      Greenland, and other places around the world.
+      This section will present the book <strong>Crossing Into My Art</strong>, a narrative journey
+      through lived experiences, remote communities, artistic transformation, and the origins of the CIMA Project.
     </p>
 
     <p>
-      It was born from the desire to share not only images, but also the stories, relationships,
-      and lived experiences that shaped the CIMA Project. Each chapter is a crossing — a fragment
-      of life that becomes art.
-    </p>
-
-    <p>
-      The volume is currently in development and will be presented through exhibitions, conferences,
-      and public events. This page will be updated with previews, excerpts, and publication details.
+      The book is currently in development. This page will soon include previews, excerpts,
+      publication details, and information about how to obtain a copy.
     </p>
 
   </div>
@@ -165,4 +166,3 @@
 
 </body>
 </html>
-
