@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>CIMA – Crossing Into My Art</title>
+  <title>Buy – CIMA Project</title>
 
   <style>
     body {
@@ -13,12 +13,12 @@
       text-align: center;
     }
 
-    /* NAVIGAZIONE CENTRATA E ABBASSATA */
+    /* NAVIGAZIONE */
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 40px 0 5px 0;
+      padding: 30px 0 5px 0;
       font-size: 16px;
       position: relative;
     }
@@ -33,22 +33,13 @@
       text-decoration: underline;
     }
 
-    /* NOME A DESTRA DEL LOGO */
-    .name-right {
-      position: absolute;
-      top: 100px; /* altezza del logo */
-      right: 460px;
-      font-size: 22px;
-      color: #555; /* grigio medio */
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
-
-    /* LOGHI */
-    .logo-container {
-      margin-top: 10px;
-      margin-bottom: 0;
+    /* CONTENITORE LOGO + NOME */
+    .logo-wrapper {
       position: relative;
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      margin-top: 10px;
     }
 
     .logo-a {
@@ -65,6 +56,30 @@
       height: auto;
     }
 
+    /* NOME A DESTRA DEL LOGO */
+    .name-right {
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #555;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* VERSIONE MOBILE */
+    @media (max-width: 600px) {
+      .name-right {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        transform: none;
+        text-align: center;
+      }
+    }
+
     hr {
       width: 200px;
       margin: 5px auto;
@@ -77,40 +92,29 @@
       width: 720px;
       max-width: 100%;
       margin: 0 auto;
-    }
-
-    .panoramica {
-      display: block;
-      width: 100%;
-      height: auto;
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-
-    /* PULSANTI */
-    .buttons {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: nowrap;
-      margin-top: 0;
-    }
-
-    .buttons a {
-      border: 1px solid black;
-      padding: 6px 14px;
-      text-decoration: none;
-      color: black;
-      font-size: 14px;
-      min-width: 145px;
+      margin-top: 40px;
       text-align: center;
+      line-height: 1.6;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #444;
+      margin-top: 10px;
     }
 
     /* FOOTER */
     .footer {
-      margin-top: 35px;
+      margin-top: 60px;
       font-size: 16px;
       color: #555;
+      text-align: center;
     }
   </style>
 </head>
@@ -118,7 +122,7 @@
 <body>
 
   <nav>
-    <a href="index.html" >Home</a>
+    <a href="index.html">Home</a>
     <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html">Works</a>
     <a href="progetto.html">CIMA Project</a>
@@ -129,27 +133,20 @@
     <a href="work-in-progress.html" class="active">Buy</a>
   </nav>
 
-  <!-- NOME A DESTRA DEL LOGO -->
-  <div class="name-right">GIORGIO SEDDA</div>
-
-  <div class="logo-container">
+  <!-- LOGO + NOME -->
+  <div class="logo-wrapper">
     <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
     <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-    <hr>
+
+    <div class="name-right">GIORGIO SEDDA</div>
   </div>
 
-    <div class="central-block">
+  <hr>
 
-    <h1>Buy</h1>
-
-    <div class="buttons-container">
-
-    <p>
-     Page under construction — the service will be online shortly!
-    </p>
-
-
-
+  <div class="central-block">
+    <h1>Work in progress</h1>
+    <p>This section is currently being developed.</p>
+  </div>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
