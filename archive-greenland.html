@@ -32,18 +32,49 @@
       text-decoration: underline;
     }
 
-    /* LOGO */
+    /* LOGO BLOCK */
     .logo-wrapper {
+      position: relative;
       width: 100%;
       max-width: 420px;
       margin: 0 auto;
       margin-top: 10px;
     }
 
+    .logo-a {
+      display: block;
+      margin: 5px auto 0 auto;
+      max-width: 220px;
+      height: auto;
+    }
+
     .logo-cima {
       display: block;
       margin: 0 auto;
       max-width: 260px;
+      height: auto;
+    }
+
+    .name-right {
+      position: absolute;
+      top: 50%;
+      right: -150px;
+      transform: translateY(-50%);
+      font-size: 22px;
+      color: #555;
+      font-weight: bold;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 600px) {
+      .name-right {
+        position: static;
+        display: block;
+        margin-top: 10px;
+        transform: none;
+        text-align: center;
+      }
     }
 
     hr {
@@ -60,26 +91,26 @@
       margin-top: 20px;
     }
 
-    /* BUTTON GRID */
-    .button-container {
-      margin-top: 50px;
+    /* HORIZONTAL BUTTON BAR */
+    .button-row {
+      margin-top: 40px;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       gap: 20px;
-      width: 100%;
-      max-width: 300px;
-      margin-left: auto;
-      margin-right: auto;
+      flex-wrap: wrap;
     }
 
     .menu-btn {
-      padding: 12px;
+      padding: 12px 0;
+      width: 150px; /* SAME WIDTH FOR ALL BUTTONS */
       border: 1px solid black;
       background: white;
       font-size: 16px;
       text-decoration: none;
       color: black;
       transition: 0.2s;
+      display: inline-block;
+      text-align: center;
     }
 
     .menu-btn:hover {
@@ -87,13 +118,25 @@
       color: white;
     }
 
-    /* BACK LINK (NO RECTANGLE) */
+    /* SELECTED BUTTON (PHOTOGRAPHY) */
+    .selected {
+      background: black;
+      color: white;
+      cursor: default;
+    }
+
+    .selected:hover {
+      background: black;
+      color: white;
+    }
+
+    /* BACK LINK */
     .back-link {
       margin-top: 25px;
+      display: inline-block;
       font-size: 15px;
       color: black;
       text-decoration: underline;
-      cursor: pointer;
       transition: 0.2s;
     }
 
@@ -126,21 +169,23 @@
   </nav>
 
   <div class="logo-wrapper">
+    <img src="logo-a.png" class="logo-a">
     <img src="logo-cima.png" class="logo-cima">
+    <div class="name-right">GIORGIO SEDDA</div>
   </div>
 
   <hr>
 
   <h1>Greenland – Archive</h1>
 
-  <div class="button-container">
-    <a href="greenland-photo.html" class="menu-btn">Photography</a>
+  <div class="button-row">
+    <a href="greenland-photo.html" class="menu-btn selected">Photography</a>
     <a href="greenland-video.html" class="menu-btn">Video</a>
     <a href="greenland-drawings.html" class="menu-btn">Drawings</a>
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
-
-    <a href="galleria-intermedia.html" class="back-link">Back</a>
   </div>
+
+  <a href="galleria-intermedia.html" class="back-link">Back</a>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
