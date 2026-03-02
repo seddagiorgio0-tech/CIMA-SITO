@@ -1,145 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Buy – CIMA Project</title>
+<meta charset="UTF-8">
+<title>Buy – CIMA Project</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-      text-align: center;
-    }
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
 
-    /* NAVIGAZIONE */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 0 5px 0;
-      font-size: 16px;
-      position: relative;
-    }
+/* NAVIGAZIONE */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0 5px 0;
+    font-size: 16px;
+    position: relative;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+}
+nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
 
-    nav a {
-      text-decoration: none;
-      color: black;
-    }
+/* CONTENITORE LOGO + NOME */
+.logo-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+.logo-a {
+    display: block;
+    margin: 5px auto 0 auto;
+    max-width: 220px;
+    height: auto;
+}
+.logo-cima {
+    display: block;
+    margin: 0 auto;
+    max-width: 260px;
+    height: auto;
+}
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
+/* NOME A DESTRA DEL LOGO */
+.name-right {
+    position: absolute;
+    top: 50%;
+    right: -150px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #555;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
 
-    /* CONTENITORE LOGO + NOME */
-    .logo-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      margin-top: 10px;
-    }
-
-    .logo-a {
-      display: block;
-      margin: 5px auto 0 auto;
-      max-width: 220px;
-      height: auto;
-    }
-
-    .logo-cima {
-      display: block;
-      margin: 0 auto;
-      max-width: 260px;
-      height: auto;
-    }
-
-    /* NOME A DESTRA DEL LOGO */
+/* VERSIONE MOBILE */
+@media (max-width: 600px) {
     .name-right {
-      position: absolute;
-      top: 50%;
-      right: -150px;
-      transform: translateY(-50%);
-      font-size: 22px;
-      color: #555;
-      font-weight: bold;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    /* VERSIONE MOBILE */
-    @media (max-width: 600px) {
-      .name-right {
         position: static;
         display: block;
         margin-top: 10px;
         transform: none;
         text-align: center;
-      }
     }
+}
 
-    hr {
-      width: 200px;
-      margin: 5px auto;
-      border: none;
-      border-top: 1px solid black;
-    }
+hr {
+    width: 200px;
+    margin: 5px auto;
+    border: none;
+    border-top: 1px solid black;
+}
 
-    /* BLOCCO CENTRALE */
-    .central-block {
-      width: 720px;
-      max-width: 100%;
-      margin: 0 auto;
-      margin-top: 40px;
-      text-align: center;
-      line-height: 1.6;
-    }
+/* BLOCCO CENTRALE */
+.central-block {
+    width: 720px;
+    max-width: 100%;
+    margin: 0 auto;
+    margin-top: 40px;
+    text-align: center;
+    line-height: 1.6;
+}
+h1 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+p {
+    font-size: 18px;
+    color: #444;
+    margin-top: 10px;
+}
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      letter-spacing: 1px;
-    }
+/* BOTTONE PAYPAL */
+.paypal-button {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid black;
+    background: white;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+.paypal-button:hover {
+    background: black;
+    color: white;
+}
 
-    p {
-      font-size: 18px;
-      color: #444;
-      margin-top: 10px;
-    }
+/* FOOTER */
+.footer {
+    margin-top: 60px;
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+}
+</style>
 
-    /* BOTTONE PAYPAL */
-    .paypal-button {
-      display: inline-block;
-      padding: 12px 28px;
-      border: 1px solid black;
-      background: white;
-      color: black;
-      text-decoration: none;
-      font-size: 16px;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-
-    .paypal-button:hover {
-      background: black;
-      color: white;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      font-size: 16px;
-      color: #555;
-      text-align: center;
-    }
-  </style>
 </head>
-
 <body>
 
-  <nav>
+<nav>
     <a href="index.html">Home</a>
     <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html">Works</a>
@@ -149,30 +142,30 @@
     <a href="news.html">News</a>
     <a href="contatti.html">Contacts</a>
     <a href="work-in-progress.html" class="active">Buy</a>
-  </nav>
+</nav>
 
-  <!-- LOGO + NOME -->
-  <div class="logo-wrapper">
+<!-- LOGO + NOME -->
+<div class="logo-wrapper">
     <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
     <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-
     <div class="name-right">GIORGIO SEDDA</div>
-  </div>
+</div>
 
-  <hr>
+<hr>
 
-  <div class="central-block">
+<div class="central-block">
     <h1>Buy</h1>
     <p>You can purchase works or support the CIMA Project through PayPal.</p>
 
+    <!-- PULSANTE PAYPAL AGGIORNATO -->
     <a href="https://paypal.me/giorgiosedda" target="_blank" class="paypal-button">
-      Buy with PayPal
+        Buy with PayPal
     </a>
-  </div>
+</div>
 
-  <div class="footer">
+<div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
-  </div>
+</div>
 
 </body>
 </html>
