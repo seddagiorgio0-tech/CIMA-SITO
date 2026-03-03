@@ -26,11 +26,6 @@
       color: black;
     }
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
     h1 {
       font-size: 22px;
       letter-spacing: 1px;
@@ -255,7 +250,11 @@
       anno: "2023",
       tecnica: "Digital photography",
       supporto: "3 mm aluminum (variants: mounted paper, forex)",
-      dimensioni: "30×40 cm · 50×70 cm · 80×100 cm",
+      dimensioni: [
+        "30×40 cm — ",
+        "50×70 cm — ",
+        "80×100 cm — "
+      ],
       tiratura: "Limited edition of 5 total prints (including 1 artist’s proof)",
       testo: "From the project “GREENLAND – a winter between people and wilderness”. A real photographic shot taken during the journey."
     };
@@ -269,7 +268,10 @@
         <strong>Year:</strong> ${technicalSheet.anno}<br>
         <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
         <strong>Support:</strong> ${technicalSheet.supporto}<br>
-        <strong>Sizes:</strong> ${technicalSheet.dimensioni}<br>
+        <strong>Sizes:</strong><br>
+        &nbsp;&nbsp;${technicalSheet.dimensioni[0]}<br>
+        &nbsp;&nbsp;${technicalSheet.dimensioni[1]}<br>
+        &nbsp;&nbsp;${technicalSheet.dimensioni[2]}<br>
         <strong>Edition:</strong> ${technicalSheet.tiratura}<br><br>
         ${technicalSheet.testo}
       `;
