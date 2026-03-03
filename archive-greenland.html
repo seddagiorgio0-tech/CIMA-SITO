@@ -51,7 +51,7 @@
     .menu-btn {
       padding: 12px 0;
       width: 150px;
-      border: 1px solid black;
+      border: 1px solid #ccc;
       background: white;
       font-size: 16px;
       text-decoration: none;
@@ -62,14 +62,14 @@
     }
 
     .menu-btn:hover {
-      background: black;
-      color: white;
+      background: #e6e6e6;
     }
 
     .selected {
-      background: black;
-      color: white;
+      background: #e6e6e6;
+      color: black;
       cursor: default;
+      border-color: #ccc;
     }
 
     /* BACK LINK */
@@ -89,7 +89,7 @@
     /* PHOTO VIEWER */
     .photo-container {
       width: 100%;
-      max-width: 900px; /* RIDOTTA DA 1200px A 900px */
+      max-width: 700px;
       margin: 50px auto 10px auto;
     }
 
@@ -103,33 +103,40 @@
     .caption {
       font-size: 16px;
       margin: 10px auto 25px auto;
-      max-width: 900px;
+      max-width: 700px;
     }
 
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 900px;
+      max-width: 700px;
       margin: 0 auto;
     }
 
     .nav-buttons button {
       padding: 10px 20px;
       font-size: 16px;
-      background: black;
-      color: white;
-      border: none;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
       cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
     }
 
     .nav-buttons button:disabled {
-      background: #ccc;
+      background: #f2f2f2;
+      color: #999;
+      border-color: #ddd;
       cursor: default;
     }
 
     .info-btn {
-      background: #444;
+      background: white;
     }
 
     /* FOOTER */
