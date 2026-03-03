@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greenland – Drawings</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    .button-row {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-btn {
+      padding: 12px 0;
+      width: 150px;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+      transition: 0.2s;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .menu-btn:hover {
+      background: #e6e6e6;
+    }
+
+    .selected {
+      background: #e6e6e6;
+      color: black;
+      cursor: default;
+      border-color: #ccc;
+    }
+
+    /* BLOCCO DOPPIO (1–5 e 11) */
+    .block {
+      max-width: 900px;
+      margin: 60px auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .text-col {
+      width: 50%;
+      text-align: justify;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .img-col {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .block img {
+      width: 78%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* BLOCCO SINGOLO (6–10) */
+    .single-img {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .single-img img {
+      width: 85%;
+      margin: 0 auto;
+      display: block;
+      height: auto;
+    }
+
+    /* NAV BUTTONS */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
+    }
+
+    .nav-buttons button:disabled {
+      background: #f2f2f2;
+      color: #999;
+      border-color: #ddd;
+      cursor: default;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 16px;
+      color: #555;
+      padding-bottom: 40px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+    <a href="opere.html">Works</a>
+    <a href="progetto.html">CIMA Project</a>
+    <a href="biography.html">Biography</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="contatti.html">Contacts</a>
+    <a href="work-in-progress.html">Buy</a>
+  </nav>
+
+  <h1>Greenland – Drawings</h1>
+
+  <div class="button-row">
+    <a href="archive-greenland.html" class="menu-btn">Photography</a>
+    <a href="greenland-video.html" class="menu-btn">Video</a>
+    <a href="g-drawing.html" class="menu-btn selected">Drawings</a>
+    <a href="greenland-diary.html" class="menu-btn">Diary</a>
+  </div>
+
+  <!-- CONTENT -->
+  <div id="content"></div>
+
+  <!-- NAVIGATION UNDER IMAGES -->
+  <div class="nav-buttons">
+    <button id="backBtn">Back</button>
+    <button id="infoBtn">Info</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
+
+  <script>
+    const totalDrawings = 11;
+    let index = 1;
+
+    const content = document.getElementById("content");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    const texts = [
+      "",
+
+      `The wind had changed its voice; it was no longer the steady breath that had followed me all day. Now it came in gusts, as if something were disturbing it, as if the fjord itself were holding its breath. I was alone, and I knew it. I pitched the tent quickly, my hands trembling more from exhaustion than from the cold. The fjord was motionless, a sheet of ice reflecting the last glimmers of twilight. And yet, behind that apparent calm, I felt an attention I couldn’t ignore. He was there, somewhere. The White Bear.`,
+
+      `The rifle lay next to the tent. It didn’t make me feel safe — not really. It was just an object, an extra weight. But I needed it. It was my only psychological anchor, the illusion of having a margin, a boundary, a “if something happens…”. The truth is, I didn’t want to use it. I hadn’t come to challenge him. I had come to cross his home, and I hoped he would let me pass. When night fell, it truly fell. A total, dense darkness that seemed to absorb every sound. I slipped into my sleeping bag and closed my eyes, but it was useless. The silence was too vast to sleep. Then came the first noise.`,
+
+      `A rustle, distant but not distant enough. I opened my eyes in an instant, and my heart began pounding as if it wanted to burst out of my chest. I stayed still, listening. The wind had stopped, and when the wind falls silent, the Arctic speaks. Another sound, closer now, and the snow giving way under an enormous weight. I lifted myself slightly, holding my breath. I couldn’t see anything, but I felt him — like having a thought walking outside the tent. The smell came last, a strong, wild smell. A smell I had never sensed so close.`,
+
+      `He was there, the White Bear, just a few meters from me. I didn’t dare move. I didn’t even dare take a deep breath. The tent was a ridiculous boundary, a thin veil between me and a force I could not control. And yet, in the midst of fear, I felt something else. A shiver of excitement, of respect, of awareness. I was in his world, and he knew it. Minutes passed that felt like hours; every step I heard outside was a blow to the heart. Every silence an endless wait.`,
+
+      `Then slowly, the sounds drifted away — first one step, then another. Then only the fjord again, still and silent. I stayed awake until dawn, unable to close my eyes. When I finally stepped out of the tent, the low sun lit up a paradise, but it revealed no tracks. I knelt, brushing the snow with my hand, and in that moment I understood something simple and immense: I had not been threatened. I had been tolerated. In the silence of the fjord, I felt part of something greater than myself.`,
+
+      "", "", "", "", "",
+    ];
+
+    function render() {
+      content.innerHTML = "";
+
+      const num = String(index).padStart(2, '0');
+      const img = `g-drawing${num}.jpg`;
+
+      /* BLOCCO DOPPIO */
+      if (index <= 5) {
+        const block = document.createElement("div");
+        block.className = "block";
+
+        const textCol = `<div class="text-col">${texts[index]}</div>`;
+        const imgCol = `<div class="img-col"><img src="${img}"></div>`;
+
+        block.innerHTML = (index % 2 === 1)
+          ? textCol + imgCol
+          : imgCol + textCol;
+
+        content.appendChild(block);
+
+      /* BLOCCO SINGOLO */
+      } else if (index <= 10) {
+        const single = document.createElement("div");
+        single.className = "single-img";
+
+        single.innerHTML = `<img src="${img}">`;
+
+        content.appendChild(single);
+
+      /* BLOCCO 11 */
+      } else {
+        const block = document.createElement("div");
+        block.className = "block";
+
+        block.innerHTML = `
+          <div class="img-col"><img src="${img}"></div>
+          <div class="text-col"></div>
+        `;
+
+        content.appendChild(block);
+      }
+
+      backBtn.disabled = index === 1;
+      nextBtn.disabled = index === totalDrawings;
+    }
+
+    backBtn.onclick = () => { if (index > 1) index--; render(); };
+    nextBtn.onclick = () => { if (index < totalDrawings) index++; render(); };
+
+    render();
+  </script>
+
+  <!-- MODAL -->
+  <div id="infoModal" style="
+    display:none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
+
+    <div style="
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      text-align: left;
+    ">
+
+      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+      <div style="margin-top:25px; display:flex; justify-content:space-between;">
+        <button id="closeModal" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+
+        <a href="https://www.paypal.me/giorgiosedda" target="_blank" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+        ">Buy</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const infoBtn = document.getElementById("infoBtn");
+    const modal = document.getElementById("infoModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    infoBtn.onclick = () => {
+      let sheet = "";
+
+      if (index <= 5) {
+        sheet = `
+          <strong>Location:</strong> France, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 250 × 180 cm<br>
+          <strong>Edition:</strong> Limited edition of 5 total prints (including 1 artist’s proof)<br><br>
+          From the project “GREENLAND – a winter between people and wilderness”.<br>
+          Original drawing for sale, also available as a limited‑edition fine‑art print.
+        `;
+      }
+
+      else if (index <= 10) {
+        sheet = `
+          <strong>Location:</strong> Italy, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 180 × 125 cm<br>
+          <strong>Edition:</strong> Limited edition of 5 total prints (including 1 artist’s proof)<br><br>
+          From the project “GREENLAND – a winter between people and wilderness”.<br>
+          Original drawing for sale, also available as a limited‑edition fine‑art print.
+        `;
+      }
+
+      else {
+        sheet = `
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 130 × 100 cm<br>
+          <strong>Edition:</strong> Limited edition of 5 total prints (including 1 artist’s proof)<br><br>
+          Original drawing for sale, also available as a limited‑edition fine‑art print.
+        `;
+      }
+
+      modalContent.innerHTML = sheet;
+      modal.style.display = "flex";
+    };
+
+    closeModal.onclick = () => { modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+  </script>
+
+</body>
+</html>
