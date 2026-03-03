@@ -13,7 +13,6 @@
       text-align: center;
     }
 
-    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
@@ -27,19 +26,12 @@
       color: black;
     }
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    /* TITLE */
     h1 {
       font-size: 22px;
       letter-spacing: 1px;
       margin-top: 20px;
     }
 
-    /* BUTTON ROW */
     .button-row {
       margin-top: 40px;
       display: flex;
@@ -72,21 +64,6 @@
       border-color: #ccc;
     }
 
-    /* BACK LINK */
-    .back-link {
-      margin-top: 25px;
-      display: inline-block;
-      font-size: 15px;
-      color: black;
-      text-decoration: underline;
-      transition: 0.2s;
-    }
-
-    .back-link:hover {
-      color: #555;
-    }
-
-    /* PHOTO VIEWER */
     .photo-container {
       width: 100%;
       max-width: 700px;
@@ -106,7 +83,6 @@
       max-width: 700px;
     }
 
-    /* NAV BUTTONS */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
@@ -136,11 +112,6 @@
       cursor: default;
     }
 
-    .info-btn {
-      background: white;
-    }
-
-    /* FOOTER */
     .footer {
       margin-top: 60px;
       font-size: 16px;
@@ -167,13 +138,12 @@
   <h1>Greenland – Photography</h1>
 
   <div class="button-row">
-    <a href="greenland-photo.html" class="menu-btn selected">Photography</a>
+    <a href="archive-greenland.html" class="menu-btn selected">Photography</a>
     <a href="greenland-video.html" class="menu-btn">Video</a>
     <a href="greenland-drawings.html" class="menu-btn">Drawings</a>
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
   </div>
 
-  <!-- PHOTO VIEWER -->
   <div class="photo-container">
     <img id="photo" src="g01.jpg" alt="Photo">
   </div>
@@ -182,14 +152,11 @@
     Greenland – Photo 01
   </div>
 
-  <!-- ONLY THREE BUTTONS NOW -->
   <div class="nav-buttons">
     <button id="backBtn">Back</button>
-    <button id="infoBtn" class="info-btn">Info</button>
+    <button id="infoBtn">Info</button>
     <button id="nextBtn">Next</button>
   </div>
-
-  <a href="galleria-intermedia.html" class="back-link">Back</a>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
@@ -209,7 +176,6 @@
       const num = String(index).padStart(2, '0');
       photo.src = `g${num}.jpg`;
       caption.textContent = `Greenland – Photo ${num}`;
-
       backBtn.disabled = index === 1;
       nextBtn.disabled = index === totalPhotos;
     }
