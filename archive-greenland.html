@@ -102,7 +102,7 @@
 
     .menu-btn {
       padding: 12px 0;
-      width: 150px;
+      width: 150px; /* SAME WIDTH FOR ALL BUTTONS */
       border: 1px solid black;
       background: white;
       font-size: 16px;
@@ -118,6 +118,7 @@
       color: white;
     }
 
+    /* SELECTED BUTTON (PHOTOGRAPHY) */
     .selected {
       background: black;
       color: white;
@@ -143,44 +144,6 @@
       color: #555;
     }
 
-    /* PHOTO BLOCKS */
-    .photo-block {
-      margin: 40px 0;
-    }
-
-    .thumb {
-      width: 100%;
-      max-width: 900px;
-      display: block;
-      margin: 0 auto;
-      cursor: pointer;
-    }
-
-    .caption {
-      margin-top: 8px;
-      font-size: 14px;
-      color: #444;
-    }
-
-    /* MODAL */
-    #modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      justify-content: center;
-      align-items: center;
-    }
-
-    #modal img {
-      max-width: 95%;
-      max-height: 95%;
-    }
-
     /* FOOTER */
     .footer {
       margin-top: 60px;
@@ -189,20 +152,6 @@
       padding-bottom: 40px;
     }
   </style>
-
-  <script>
-    function openModal(src) {
-      const modal = document.getElementById("modal");
-      const modalImg = document.getElementById("modal-img");
-      modal.style.display = "flex";
-      modalImg.src = src;
-    }
-
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
-    }
-  </script>
-
 </head>
 
 <body>
@@ -230,7 +179,7 @@
   <h1>Greenland – Archive</h1>
 
   <div class="button-row">
-    <a href="archive-greenland.html" class="menu-btn selected">Photography</a>
+    <a href="greenland-photo.html" class="menu-btn selected">Photography</a>
     <a href="greenland-video.html" class="menu-btn">Video</a>
     <a href="greenland-drawings.html" class="menu-btn">Drawings</a>
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
@@ -238,356 +187,9 @@
 
   <a href="galleria-intermedia.html" class="back-link">Back</a>
 
-  <!-- FOTO COMPLETE -->
-<!-- FOTO COMPLETE -->
-
-<div id="photo-container">
-
-  <!-- Foto 01 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland01.jpeg" class="thumb" onclick="openModal('grandi/g-greenland01.jpeg')">
-    <div class="caption"></div>
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
 
-  <!-- Foto 02 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland02.jpeg" class="thumb" onclick="openModal('grandi/g-greenland02.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 03 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland03.jpeg" class="thumb" onclick="openModal('grandi/g-greenland03.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 04 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland04.jpeg" class="thumb" onclick="openModal('grandi/g-greenland04.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 05 MANCANTE -->
-
-  <!-- Foto 06 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland06.jpeg" class="thumb" onclick="openModal('grandi/g-greenland06.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 07 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland07.jpeg" class="thumb" onclick="openModal('grandi/g-greenland07.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 08 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland08.jpeg" class="thumb" onclick="openModal('grandi/g-greenland08.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 09 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland09.jpeg" class="thumb" onclick="openModal('grandi/g-greenland09.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 10 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland10.jpeg" class="thumb" onclick="openModal('grandi/g-greenland10.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 11 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland11.jpeg" class="thumb" onclick="openModal('grandi/g-greenland11.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 12 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland12.jpeg" class="thumb" onclick="openModal('grandi/g-greenland12.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 13 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland13.jpeg" class="thumb" onclick="openModal('grandi/g-greenland13.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 14 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland14.jpeg" class="thumb" onclick="openModal('grandi/g-greenland14.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 15 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland15.jpeg" class="thumb" onclick="openModal('grandi/g-greenland15.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 16 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland16.jpeg" class="thumb" onclick="openModal('grandi/g-greenland16.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 17 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland17.jpeg" class="thumb" onclick="openModal('grandi/g-greenland17.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 18 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland18.jpeg" class="thumb" onclick="openModal('grandi/g-greenland18.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 19 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland19.jpeg" class="thumb" onclick="openModal('grandi/g-greenland19.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 20 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland20.jpeg" class="thumb" onclick="openModal('grandi/g-greenland20.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 21 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland21.jpeg" class="thumb" onclick="openModal('grandi/g-greenland21.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 22 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland22.jpeg" class="thumb" onclick="openModal('grandi/g-greenland22.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 23 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland23.jpeg" class="thumb" onclick="openModal('grandi/g-greenland23.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 24 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland24.jpeg" class="thumb" onclick="openModal('grandi/g-greenland24.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 25 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland25.jpeg" class="thumb" onclick="openModal('grandi/g-greenland25.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 26 MANCANTE -->
-
-  <!-- Foto 27 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland27.jpeg" class="thumb" onclick="openModal('grandi/g-greenland27.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 28 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland28.jpeg" class="thumb" onclick="openModal('grandi/g-greenland28.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 29 MANCANTE -->
-
-  <!-- Foto 30 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland30.jpeg" class="thumb" onclick="openModal('grandi/g-greenland30.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 31 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland31.jpeg" class="thumb" onclick="openModal('grandi/g-greenland31.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 32 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland32.jpeg" class="thumb" onclick="openModal('grandi/g-greenland32.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 33 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland33.jpeg" class="thumb" onclick="openModal('grandi/g-greenland33.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 34 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland34.jpeg" class="thumb" onclick="openModal('grandi/g-greenland34.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 35 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland35.jpeg" class="thumb" onclick="openModal('grandi/g-greenland35.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 36 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland36.jpeg" class="thumb" onclick="openModal('grandi/g-greenland36.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 37 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland37.jpeg" class="thumb" onclick="openModal('grandi/g-greenland37.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 38 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland38.jpeg" class="thumb" onclick="openModal('grandi/g-greenland38.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 39 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland39.jpeg" class="thumb" onclick="openModal('grandi/g-greenland39.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 40 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland40.jpeg" class="thumb" onclick="openModal('grandi/g-greenland40.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 41 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland41.jpeg" class="thumb" onclick="openModal('grandi/g-greenland41.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 42 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland42.jpeg" class="thumb" onclick="openModal('grandi/g-greenland42.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 43 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland43.jpeg" class="thumb" onclick="openModal('grandi/g-greenland43.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 44 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland44.jpeg" class="thumb" onclick="openModal('grandi/g-greenland44.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 45 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland45.jpeg" class="thumb" onclick="openModal('grandi/g-greenland45.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 46 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland46.jpeg" class="thumb" onclick="openModal('grandi/g-greenland46.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 47 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland47.jpeg" class="thumb" onclick="openModal('grandi/g-greenland47.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 48 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland48.jpeg" class="thumb" onclick="openModal('grandi/g-greenland48.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 49 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland49.jpeg" class="thumb" onclick="openModal('grandi/g-greenland49.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 50 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland50.jpeg" class="thumb" onclick="openModal('grandi/g-greenland50.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 51 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland51.jpeg" class="thumb" onclick="openModal('grandi/g-greenland51.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 52 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland52.jpeg" class="thumb" onclick="openModal('grandi/g-greenland52.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 53 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland53.jpeg" class="thumb" onclick="openModal('grandi/g-greenland53.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 54 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland54.jpeg" class="thumb" onclick="openModal('grandi/g-greenland54.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 55 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland55.jpeg" class="thumb" onclick="openModal('grandi/g-greenland55.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 56 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland56.jpeg" class="thumb" onclick="openModal('grandi/g-greenland56.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 57 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland57.jpeg" class="thumb" onclick="openModal('grandi/g-greenland57.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 58 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland58.jpeg" class="thumb" onclick="openModal('grandi/g-greenland58.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-  <!-- Foto 59 -->
-  <div class="photo-block">
-    <img src="miniature/m-greenland59.jpeg" class="thumb" onclick="openModal('grandi/g-greenland59.jpeg')">
-    <div class="caption"></div>
-  </div>
-
-</div>
-
-<!-- MODAL -->
-<div id="modal" onclick="closeModal()">
-  <img id="modal-img" src="">
-</div>
+</body>
+</html>
