@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Greenland Archive – CIMA Project</title>
+  <title>Greenland – Photography</title>
 
   <style>
     body {
@@ -32,58 +32,6 @@
       text-decoration: underline;
     }
 
-    /* LOGO BLOCK */
-    .logo-wrapper {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
-      margin-top: 10px;
-    }
-
-    .logo-a {
-      display: block;
-      margin: 5px auto 0 auto;
-      max-width: 220px;
-      height: auto;
-    }
-
-    .logo-cima {
-      display: block;
-      margin: 0 auto;
-      max-width: 260px;
-      height: auto;
-    }
-
-    .name-right {
-      position: absolute;
-      top: 50%;
-      right: -150px;
-      transform: translateY(-50%);
-      font-size: 22px;
-      color: #555;
-      font-weight: bold;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    @media (max-width: 600px) {
-      .name-right {
-        position: static;
-        display: block;
-        margin-top: 10px;
-        transform: none;
-        text-align: center;
-      }
-    }
-
-    hr {
-      width: 200px;
-      margin: 10px auto;
-      border: none;
-      border-top: 1px solid black;
-    }
-
     /* TITLE */
     h1 {
       font-size: 22px;
@@ -91,7 +39,7 @@
       margin-top: 20px;
     }
 
-    /* HORIZONTAL BUTTON BAR */
+    /* BUTTON ROW */
     .button-row {
       margin-top: 40px;
       display: flex;
@@ -102,7 +50,7 @@
 
     .menu-btn {
       padding: 12px 0;
-      width: 150px; /* SAME WIDTH FOR ALL BUTTONS */
+      width: 150px;
       border: 1px solid black;
       background: white;
       font-size: 16px;
@@ -118,16 +66,10 @@
       color: white;
     }
 
-    /* SELECTED BUTTON (PHOTOGRAPHY) */
     .selected {
       background: black;
       color: white;
       cursor: default;
-    }
-
-    .selected:hover {
-      background: black;
-      color: white;
     }
 
     /* BACK LINK */
@@ -142,6 +84,52 @@
 
     .back-link:hover {
       color: #555;
+    }
+
+    /* PHOTO VIEWER */
+    .photo-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 50px auto 10px auto;
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
+    .caption {
+      font-size: 16px;
+      margin: 10px auto 25px auto;
+      max-width: 900px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .nav-buttons button:disabled {
+      background: #ccc;
+      cursor: default;
+    }
+
+    .info-btn {
+      background: #444;
     }
 
     /* FOOTER */
@@ -168,15 +156,7 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <div class="logo-wrapper">
-    <img src="logo-a.png" class="logo-a">
-    <img src="logo-cima.png" class="logo-cima">
-    <div class="name-right">GIORGIO SEDDA</div>
-  </div>
-
-  <hr>
-
-  <h1>Greenland – Archive</h1>
+  <h1>Greenland – Photography</h1>
 
   <div class="button-row">
     <a href="greenland-photo.html" class="menu-btn selected">Photography</a>
@@ -185,11 +165,62 @@
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
   </div>
 
+  <!-- PHOTO VIEWER -->
+  <div class="photo-container">
+    <img id="photo" src="g01.jpg" alt="Photo">
+  </div>
+
+  <div class="caption" id="caption">
+    Greenland – Photo 01
+  </div>
+
+  <div class="nav-buttons">
+    <button id="backBtn">Back</button>
+    <button id="infoBtn" class="info-btn">Info</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
   <a href="galleria-intermedia.html" class="back-link">Back</a>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
+
+  <script>
+    const totalPhotos = 56;
+    let index = 1;
+
+    const photo = document.getElementById("photo");
+    const caption = document.getElementById("caption");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const infoBtn = document.getElementById("infoBtn");
+
+    function updatePhoto() {
+      const num = String(index).padStart(2, '0');
+      photo.src = `g${num}.jpg`;
+      caption.textContent = `Greenland – Photo ${num}`;
+
+      backBtn.disabled = index === 1;
+      nextBtn.disabled = index === totalPhotos;
+    }
+
+    backBtn.onclick = () => {
+      if (index > 1) index--;
+      updatePhoto();
+    };
+
+    nextBtn.onclick = () => {
+      if (index < totalPhotos) index++;
+      updatePhoto();
+    };
+
+    infoBtn.onclick = () => {
+      alert("Scheda tecnica / Opzione di acquisto per la foto " + index);
+    };
+
+    updatePhoto();
+  </script>
 
 </body>
 </html>
