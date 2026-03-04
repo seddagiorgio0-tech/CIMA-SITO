@@ -94,6 +94,7 @@
       width: 78%;
       height: auto;
       object-fit: contain;
+      cursor: zoom-in;
     }
 
     /* BLOCCO SINGOLO (6–10) */
@@ -108,6 +109,7 @@
       margin: 0 auto;
       display: block;
       height: auto;
+      cursor: zoom-in;
     }
 
     /* NAV BUTTONS */
@@ -257,14 +259,14 @@ Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi s
       const num = String(index).padStart(2, '0');
       const img = `g-drawing${num}.jpg`;
 
-      /* BLOCCO DOPPIO */
+      /* BLOCCO DOPPIO (1–5) */
       if (index <= 5) {
         const block = document.createElement("div");
         block.className = "block";
 
         const textCol = `<div class="text-col">${texts[index]}</div>`;
         const imgCol = `<div class="img-col">
-          <img src="${img}" ${index === 5 ? 'class="zoomable"' : ''}>
+          <img src="${img}" class="zoomable">
         </div>`;
 
         block.innerHTML = (index % 2 === 1)
@@ -273,12 +275,12 @@ Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi s
 
         content.appendChild(block);
 
-      /* BLOCCO SINGOLO */
+      /* BLOCCO SINGOLO (6–10) */
       } else if (index <= 10) {
         const single = document.createElement("div");
         single.className = "single-img";
 
-        single.innerHTML = `<img src="${img}">`;
+        single.innerHTML = `<img src="${img}" class="zoomable">`;
 
         content.appendChild(single);
 
@@ -288,7 +290,7 @@ Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi s
         block.className = "block";
 
         block.innerHTML = `
-          <div class="img-col"><img src="${img}"></div>
+          <div class="img-col"><img src="${img}" class="zoomable"></div>
           <div class="text-col"></div>
         `;
 
