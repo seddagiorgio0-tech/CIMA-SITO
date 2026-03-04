@@ -74,7 +74,7 @@
       width: 100%;
       height: auto;
       object-fit: contain;
-      pointer-events: none;
+      cursor: zoom-in; /* ATTIVATO PER LO ZOOM */
     }
 
     .caption {
@@ -118,6 +118,35 @@
       color: #555;
       padding-bottom: 40px;
     }
+
+    /* MODAL ZOOM */
+    .img-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .img-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -145,7 +174,7 @@
   </div>
 
   <div class="photo-container">
-    <img id="photo" src="g01.jpg" alt="Photo">
+    <img id="photo" src="g01.jpg" alt="Photo" class="zoomable">
   </div>
 
   <div class="caption" id="caption">
@@ -161,7 +190,6 @@
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
-
   <script>
     const totalPhotos = 56;
     let index = 1;
@@ -192,7 +220,7 @@
     updatePhoto();
   </script>
 
-  <!-- MODAL OVERLAY -->
+  <!-- MODAL OVERLAY (INFO) -->
   <div id="infoModal" style="
     display:none;
     position: fixed;
@@ -285,6 +313,34 @@
 
     modal.onclick = (e) => {
       if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+  <!-- MODAL ZOOM -->
+  <div id="imgModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img id="imgModalContent" src="">
+  </div>
+
+  <script>
+    const imgModal = document.getElementById("imgModal");
+    const imgModalContent = document.getElementById("imgModalContent");
+    const imgModalClose = document.querySelector(".img-modal-close");
+
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("zoomable")) {
+        imgModal.style.display = "flex";
+        imgModalContent.src = e.target.src;
+      }
+    });
+
+    imgModalClose.onclick = () => {
+      imgModal.style.display = "none";
+    };
+
+    imgModal.onclick = (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = "none";
+      }
     };
   </script>
 
