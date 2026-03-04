@@ -146,6 +146,35 @@
       color: #555;
       padding-bottom: 40px;
     }
+
+    /* MODAL IMMAGINI INGRANDITE */
+    .img-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .img-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -185,7 +214,6 @@
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
-
   <script>
     const totalDrawings = 11;
     let index = 1;
@@ -214,14 +242,13 @@ Un fruscio, lontano ma non abbastanza lontano. Aprii gli occhi di scatto, e il c
 
       `He was there, the White Bear, just a few meters from me. I didn’t dare move. I didn’t even dare take a deep breath. The tent was a ridiculous boundary, a thin veil between me and a force I could not control. And yet, in the midst of fear, I felt something else. A shiver of excitement, of respect, of awareness. I was in his world, and he knew it. Minutes passed that felt like hours; every step I heard outside was a blow to the heart. Every silence an endless wait.<br>
 <br>
-Era lì, l’Orso Bianco, a pochi metri da me. Non osavo muovermi. Non osavo nemmeno fare un respiro profondo. La tenda era un confine ridicolo, un velo sottile tra me e una forza che non potevo controllare. Eppure, in mezzo alla paura, sentii qualcos’altro. Un brivido di eccitazione, di rispetto, di consapevolezza. Ero nel suo mondo, e lui lo sapeva. I minuti passarono come ore; ogni passo che sentivo fuori era un colpo al cuore. Ogni silenzio un’attesa infinita.
+Era lì, l’Orso Bianco, a pochi metri da me. Non osavo muovermi. Non osavo nemmeno fare un respiro profondo. La tenda era un confine ridicolo, un velo sottile tra me e una forza che non potevo controllare. Eppure, in mezzo alla paura, sentii qualcos’altro. Un brivido di eccitazione, di rispetto, di consapevolezza. Ero nel suo mondo, e lui lo sapeva. I minuti passarono come ore; ogni passo che sentivo fuori era un colpo al cuore. Ogni silenzio un’attesa infinita.`,
 
-`,
       `Then slowly, the sounds drifted away — first one step, then another. Then only the fjord again, still and silent. I stayed awake until dawn, unable to close my eyes. When I finally stepped out of the tent, the low sun lit up a paradise, but it revealed no tracks. I knelt, brushing the snow with my hand, and in that moment I understood something simple and immense: I had not been threatened. I had been tolerated. In the silence of the fjord, I felt part of something greater than myself.<br>
 <br>
 Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi solo il fiordo di nuovo, immobile e silenzioso. Rimasi sveglio fino all’alba, incapace di chiudere gli occhi. Quando finalmente uscii dalla tenda, il sole basso illuminava un paradiso, ma non rivelava alcuna traccia. Mi inginocchiai, sfiorando la neve con la mano, e in quel momento compresi qualcosa di semplice e immenso: non ero stato minacciato. Ero stato tollerato. Nel silenzio del fiordo, mi sentii parte di qualcosa più grande di me.`,
 
-      "", "", "", "", "",
+      "", "", "", "", ""
     ];
 
     function render() {
@@ -236,7 +263,9 @@ Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi s
         block.className = "block";
 
         const textCol = `<div class="text-col">${texts[index]}</div>`;
-        const imgCol = `<div class="img-col"><img src="${img}"></div>`;
+        const imgCol = `<div class="img-col">
+          <img src="${img}" ${index === 5 ? 'class="zoomable"' : ''}>
+        </div>`;
 
         block.innerHTML = (index % 2 === 1)
           ? textCol + imgCol
@@ -275,8 +304,36 @@ Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi s
 
     render();
   </script>
+  <!-- MODAL IMMAGINE (ZOOM) -->
+  <div id="imgModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img id="imgModalContent" src="">
+  </div>
 
-  <!-- MODAL -->
+  <script>
+    const imgModal = document.getElementById("imgModal");
+    const imgModalContent = document.getElementById("imgModalContent");
+    const imgModalClose = document.querySelector(".img-modal-close");
+
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("zoomable")) {
+        imgModal.style.display = "flex";
+        imgModalContent.src = e.target.src;
+      }
+    });
+
+    imgModalClose.onclick = () => {
+      imgModal.style.display = "none";
+    };
+
+    imgModal.onclick = (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = "none";
+      }
+    };
+  </script>
+
+  <!-- MODAL INFO (SCHEDA TECNICA ORIGINALE) -->
   <div id="infoModal" style="
     display:none;
     position: fixed;
