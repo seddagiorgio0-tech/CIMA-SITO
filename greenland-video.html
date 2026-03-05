@@ -1,349 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Greenland – Video</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-      text-align: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 0 5px 0;
-      font-size: 16px;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: black;
-    }
-
-    h1 {
-      font-size: 22px;
-      letter-spacing: 1px;
-      margin-top: 20px;
-    }
-
-    .button-row {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .menu-btn {
-      padding: 12px 0;
-      width: 150px;
-      border: 1px solid #ccc;
-      background: white;
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-      transition: 0.2s;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .menu-btn:hover {
-      background: #e6e6e6;
-    }
-
-    .selected {
-      background: #e6e6e6;
-      color: black;
-      cursor: default;
-      border-color: #ccc;
-    }
-
-    .video-container {
-      width: 100%;
-      max-width: 800px;
-      margin: 50px auto 10px auto;
-    }
-
-    video {
-      width: 100%;
-      height: auto;
-      cursor: zoom-in; /* clic per aprire la modal */
-      background: black;
-    }
-
-    .caption {
-      font-size: 16px;
-      margin: 10px auto 25px auto;
-      max-width: 700px;
-    }
-
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .nav-buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: white;
-      color: black;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .nav-buttons button:hover {
-      background: #e6e6e6;
-    }
-
-    .nav-buttons button:disabled {
-      background: #f2f2f2;
-      color: #999;
-      border-color: #ddd;
-      cursor: default;
-    }
-
-    .footer {
-      margin-top: 60px;
-      font-size: 16px;
-      color: #555;
-      padding-bottom: 40px;
-    }
-
-    /* MODAL VIDEO */
-    .video-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .video-modal video {
-      max-width: 90%;
-      max-height: 90%;
-      background: black;
-    }
-
-    .video-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 32px;
-      color: white;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenland Video – CIMA Project</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <nav>
-    <a href="../index.html">Home</a>
-    <a href="../galleria-intermedia.html">Virtual Exhibitions</a>
-    <a href="../opere.html">Works</a>
-    <a href="../progetto.html">CIMA Project</a>
-    <a href="../biography.html">Biography</a>
-    <a href="../book.html">Book</a>
-    <a href="../news.html">News</a>
-    <a href="../contatti.html">Contacts</a>
-    <a href="../work-in-progress.html">Buy</a>
-  </nav>
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            <a href="index.html">CIMA Project</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="progetto.html">Progetto</a></li>
+                <li><a href="opere.html">Opere</a></li>
+                <li><a href="archive-greenland.html">Archivio Groenlandia</a></li>
+                <li><a href="greenland-video.html" class="active">Video</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <h1>Greenland – Video</h1>
+    <!-- TITOLO SEZIONE -->
+    <section class="section-title">
+        <h1>Tracce documentate del progetto Groenlandia</h1>
+        <p class="subtitle">Video dal viaggio e dalla ricerca sul campo</p>
+    </section>
 
-  <div class="button-row">
-    <a href="../archive-greenland.html" class="menu-btn">Photography</a>
-    <a href="greenland-video.html" class="menu-btn selected">Video</a>
-    <a href="../g-drawing.html" class="menu-btn">Drawings</a>
-    <a href="../greenland-diary.html" class="menu-btn">Diary</a>
-  </div>
+    <!-- VIDEO PRINCIPALE -->
+    <section class="video-section">
+        <video controls preload="metadata" class="video-cima" onclick="openVideoModal()">
+            <source src="video/g-video01.mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video.
+        </video>
+        <p class="video-caption">g-video01 — Groenlandia, ricerca sul campo</p>
+    </section>
 
-  <div class="video-container">
-    <video id="videoPlayer" controls>
-      <source src="g-video01.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="caption" id="caption">
-    Greenland – Video 01
-  </div>
-
-  <div class="nav-buttons">
-    <button id="backBtn">Back</button>
-    <button id="infoBtn">Info</button>
-    <button id="nextBtn">Next</button>
-  </div>
-
-  <div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
-  </div>
-  <script>
-    const totalVideos = 1;  // per ora solo 1 video
-    let index = 1;
-
-    const videoPlayer = document.getElementById("videoPlayer");
-    const caption = document.getElementById("caption");
-    const backBtn = document.getElementById("backBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    function updateVideo() {
-      const num = String(index).padStart(2, '0');
-      videoPlayer.src = `g-video${num}.mp4`;
-      caption.textContent = `Greenland – Video ${num}`;
-
-      backBtn.disabled = index === 1;
-      nextBtn.disabled = index === totalVideos;
-    }
-
-    backBtn.onclick = () => {
-      if (index > 1) index--;
-      updateVideo();
-    };
-
-    nextBtn.onclick = () => {
-      if (index < totalVideos) index++;
-      updateVideo();
-    };
-
-    updateVideo();
-  </script>
-
-  <!-- MODAL INFO -->
-  <div id="infoModal" style="
-    display:none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(2px);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  ">
-
-    <div style="
-      background: white;
-      padding: 30px;
-      width: 90%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      text-align: left;
-    ">
-
-      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
-
-      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
-
-      <div style="margin-top:25px; display:flex; justify-content:space-between;">
-        <button id="closeModal" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          cursor:pointer;
-        ">Close</button>
-
-        <a href="https://www.paypal.me/giorgiosedda" target="_blank" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          text-decoration:none;
-          color:black;
-        ">Buy</a>
-      </div>
-
+    <!-- MODAL VIDEO -->
+    <div id="videoModal" class="modal" onclick="closeVideoModal()">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <video controls autoplay class="modal-video">
+                <source src="video/g-video01.mp4" type="video/mp4">
+            </video>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const infoBtn = document.getElementById("infoBtn");
-    const modal = document.getElementById("infoModal");
-    const closeModal = document.getElementById("closeModal");
-    const modalContent = document.getElementById("modalContent");
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; CIMA Project – Giorgio Sedda</p>
+    </footer>
 
-    const technicalSheet = {
-      luogo: "Greenland",
-      anno: "2023",
-      tecnica: "Digital video",
-      supporto: "High‑resolution MP4",
-      durata: "Short documentary clip",
-      tiratura: "Available as limited edition video art",
-      testo: "From the project “GREENLAND – a winter between people and wilderness”. A real moment captured during the journey."
-    };
+    <!-- SCRIPT -->
+    <script>
+        function openVideoModal() {
+            document.getElementById("videoModal").style.display = "block";
+        }
 
-    infoBtn.onclick = () => {
-      const num = String(index).padStart(2, '0');
-
-      modalContent.innerHTML = `
-        <strong>Title:</strong> Greenland – Video ${num}<br>
-        <strong>Location:</strong> ${technicalSheet.luogo}<br>
-        <strong>Year:</strong> ${technicalSheet.anno}<br>
-        <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
-        <strong>Format:</strong> ${technicalSheet.supporto}<br>
-        <strong>Duration:</strong> ${technicalSheet.durata}<br>
-        <strong>Edition:</strong> ${technicalSheet.tiratura}<br><br>
-        ${technicalSheet.testo}
-      `;
-
-      modal.style.display = "flex";
-    };
-
-    closeModal.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  </script>
-  <!-- MODAL VIDEO -->
-  <div id="videoModal" class="video-modal">
-    <span class="video-modal-close">&times;</span>
-    <video id="videoModalPlayer" controls>
-      <source src="" type="video/mp4">
-    </video>
-  </div>
-
-  <script>
-    const videoModal = document.getElementById("videoModal");
-    const videoModalPlayer = document.getElementById("videoModalPlayer");
-    const videoModalClose = document.querySelector(".video-modal-close");
-
-    // Apri modal cliccando sul video principale
-    videoPlayer.addEventListener("click", () => {
-      const num = String(index).padStart(2, '0');
-      videoModalPlayer.src = `g-video${num}.mp4`;  // stesso video
-      videoModal.style.display = "flex";
-    });
-
-    // Chiudi modal
-    videoModalClose.onclick = () => {
-      videoModal.style.display = "none";
-      videoModalPlayer.pause();
-    };
-
-    // Chiudi cliccando fuori dal video
-    videoModal.onclick = (e) => {
-      if (e.target === videoModal) {
-        videoModal.style.display = "none";
-        videoModalPlayer.pause();
-      }
-    };
-  </script>
+        function closeVideoModal() {
+            document.getElementById("videoModal").style.display = "none";
+        }
+    </script>
 
 </body>
 </html>
