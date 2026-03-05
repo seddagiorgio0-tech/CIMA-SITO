@@ -172,7 +172,7 @@ video {
 <!-- VIDEO -->
 <div class="video-container">
   <video id="videoPlayer" controls>
-    <source src="greenland-video01.mp4" type="video/mp4">
+    <source src="g-v01.mp4" type="video/mp4">
   </video>
 </div>
 
@@ -200,7 +200,7 @@ const nextBtn = document.getElementById("nextBtn");
 
 function updateVideo() {
   const num = String(index).padStart(2, '0');
-  videoPlayer.src = `greenland-video${num}.mp4`;
+  videoPlayer.src = `g-v${num}.mp4`;
   caption.textContent = `Greenland – Video ${num}`;
 
   backBtn.disabled = index === 1;
@@ -309,7 +309,7 @@ const videoModalClose = document.querySelector(".video-modal-close");
 
 videoPlayer.addEventListener("click", () => {
   const num = String(index).padStart(2, '0');
-  videoModalPlayer.src = `greenland-video${num}.mp4`;
+  videoModalPlayer.src = `g-v${num}.mp4`;
   videoModal.style.display = "flex";
 });
 
