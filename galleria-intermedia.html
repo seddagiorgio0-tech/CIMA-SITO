@@ -87,7 +87,7 @@
 
     /* CENTRAL BLOCK */
     .central-block {
-      width: 720px;
+      width: 900px;
       max-width: 100%;
       margin: 0 auto;
       margin-top: 20px;
@@ -101,30 +101,41 @@
       letter-spacing: 1px;
     }
 
-    /* BUTTONS */
-    .buttons {
+    /* BUTTONS ROW */
+    .buttons-row {
       display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 20px;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 30px;
+      flex-wrap: wrap;
     }
 
-    .buttons a {
+    .gallery-item {
+      width: 240px;
+      text-align: center;
+    }
+
+    .gallery-item a {
+      display: block;
       border: 1px solid black;
-      padding: 12px 26px;
+      padding: 12px 10px;
       text-decoration: none;
       color: black;
-      font-size: 16px;
-      margin: 0 auto;
-      text-align: center;
+      font-size: 15px;
       transition: 0.2s;
-      white-space: nowrap;
-      display: inline-block;
+      white-space: normal;
+      min-height: 48px;
     }
 
-    .buttons a:hover {
+    .gallery-item a:hover {
       background-color: black;
       color: white;
+    }
+
+    .gallery-item img {
+      margin-top: 10px;
+      width: 70%;
+      height: auto;
     }
 
     /* FOOTER */
@@ -163,18 +174,32 @@
 
     <h1>Virtual Exhibitions</h1>
 
-    <div class="buttons">
-      <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
-        GREENLAND – A winter between people and wilderness
-      </a>
+    <div class="buttons-row">
 
-      <a href="mostra-in-allestimento.html">
-        AFRICA – Un monde de couleurs
-      </a>
+      <!-- GREENLAND -->
+      <div class="gallery-item">
+        <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
+          GREENLAND – A winter between people and wilderness
+        </a>
+        <img src="logo01.png" alt="Greenland logo">
+      </div>
 
-      <a href="mostra-in-allestimento.html">
-        ICELAND – Face au froid
-      </a>
+      <!-- ICELAND -->
+      <div class="gallery-item">
+        <a href="mostra-in-allestimento.html">
+          ICELAND – Face au froid
+        </a>
+        <img src="logo02.png" alt="Iceland logo">
+      </div>
+
+      <!-- AFRICA -->
+      <div class="gallery-item">
+        <a href="mostra-in-allestimento.html">
+          AFRICA – Un monde de couleurs
+        </a>
+        <img src="logo03.png" alt="Africa logo">
+      </div>
+
     </div>
 
   </div>
