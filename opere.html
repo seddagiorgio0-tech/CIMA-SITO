@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Works – CIMA Project</title>
+  <title>Works – CIMA</title>
 
   <style>
     body {
@@ -91,10 +91,9 @@
       max-width: 100%;
       margin: 0 auto;
       margin-top: 20px;
-      text-align: left;
-      line-height: 1.6;
     }
 
+    /* TITLE */
     h1 {
       font-size: 22px;
       margin-bottom: 20px;
@@ -102,37 +101,94 @@
       letter-spacing: 1px;
     }
 
-    /* BUTTONS */
-    .button-container {
-      text-align: center;
-      margin-bottom: 40px;
+    /* WORKS LAYOUT */
+    .works-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 30px;
+      align-items: center;
     }
 
-    .gallery-button {
-      display: inline-block;
-      padding: 12px 28px;
-      margin: 10px;
+    .work-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      width: 100%;
+    }
+
+    /* BUTTON LEFT COLUMN */
+    .work-button {
+      width: 260px;
+      text-align: center;
+    }
+
+    .work-button a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
       border: 1px solid black;
+      padding: 10px 12px;
       text-decoration: none;
       color: black;
-      font-size: 16px;
-      letter-spacing: 1px;
+      font-size: 15px;
       transition: 0.2s;
-      min-width: 320px;
+      height: 80px; /* più alto per centratura perfetta */
+    }
+
+    .work-button a:hover {
+      background-color: #d9d9d9;
+      color: black;
+    }
+
+    /* TITLES INSIDE BUTTONS */
+    .title-line1 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .title-line2 {
+      font-style: italic;
+      font-size: 13px; /* leggermente ridotto per il primo pulsante */
+      line-height: 1.2;
+    }
+
+    /* LOGO RIGHT COLUMN */
+    .work-logo {
+      width: 150px;
       text-align: center;
     }
 
-    .gallery-button:hover {
-      background-color: black;
-      color: white;
+    .work-logo img {
+      width: 85%;
+      height: auto;
+      opacity: 0.7;
     }
 
     /* FOOTER */
     .footer {
-      margin-top: 40px;
+      margin-top: 35px;
       font-size: 16px;
       color: #555;
-      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .work-row {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .work-button {
+        width: 100%;
+      }
+
+      .work-button a {
+        align-items: center;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -141,13 +197,13 @@
 
   <nav>
     <a href="index.html">Home</a>
-    <a href="progetto.html">CIMA Project</a>
+    <a href="progetto.html">CIMA Project</a>  
     <a href="galleria-intermedia.html">Virtual Exhibitions</a>
     <a href="opere.html" class="active">Works</a>
     <a href="book.html">Book</a>
     <a href="news.html">News</a>
     <a href="biography.html">Biography</a>
-    <a href="contatti.html">Contacts</a>
+    <a href="contatti.html">Contacts</a> 
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
@@ -162,21 +218,49 @@
 
   <div class="central-block">
 
-    <h1>Works Archive</h1>
+    <h1>Works</h1>
 
-    <!-- BUTTONS -->
-    <div class="button-container">
-      <a href="archive-greenland.html" class="gallery-button">
-        GREENLAND — A winter between people and wilderness
-      </a>
+    <div class="works-wrapper">
 
-      <a href="gallery-under-construction.html" class="gallery-button">
-        AFRICA — Un monde de couleurs
-      </a>
+      <!-- GREENLAND -->
+      <div class="work-row">
+        <div class="work-button">
+          <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
+            <div class="title-line1">GREENLAND</div>
+            <div class="title-line2">A winter between people and wilderness</div>
+          </a>
+        </div>
+        <div class="work-logo">
+          <img src="Logo01.png" alt="Greenland logo">
+        </div>
+      </div>
 
-      <a href="gallery-under-construction.html" class="gallery-button">
-        ICELAND — Face au froid
-      </a>
+      <!-- ICELAND -->
+      <div class="work-row">
+        <div class="work-button">
+          <a href="mostra-in-allestimento.html">
+            <div class="title-line1">ICELAND</div>
+            <div class="title-line2">Face au froid</div>
+          </a>
+        </div>
+        <div class="work-logo">
+          <img src="Logo02.png" alt="Iceland logo">
+        </div>
+      </div>
+
+      <!-- AFRICA -->
+      <div class="work-row">
+        <div class="work-button">
+          <a href="mostra-in-allestimento.html">
+            <div class="title-line1">AFRICA</div>
+            <div class="title-line2">Un monde de couleurs</div>
+          </a>
+        </div>
+        <div class="work-logo">
+          <img src="Logo03.png" alt="Africa logo">
+        </div>
+      </div>
+
     </div>
 
   </div>
