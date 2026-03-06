@@ -87,7 +87,7 @@
 
     /* CENTRAL BLOCK */
     .central-block {
-      width: 900px;
+      width: 720px; /* come blocco superiore */
       max-width: 100%;
       margin: 0 auto;
       margin-top: 20px;
@@ -105,36 +105,53 @@
     .buttons-row {
       display: flex;
       justify-content: center;
-      gap: 25px;
+      gap: 30px; /* adattato alla nuova larghezza */
       margin-top: 30px;
       flex-wrap: wrap;
     }
 
     .gallery-item {
-      width: 240px;
+      width: 220px; /* pulsanti leggermente più larghi */
       text-align: center;
     }
 
+    /* BUTTON STYLE */
     .gallery-item a {
-      display: block;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
       border: 1px solid black;
-      padding: 12px 10px;
+      padding: 10px 8px;
       text-decoration: none;
       color: black;
       font-size: 15px;
       transition: 0.2s;
-      white-space: normal;
-      min-height: 48px;
+      height: 70px;
     }
 
     .gallery-item a:hover {
-      background-color: black;
-      color: white;
+      background-color: #d9d9d9; /* grigio chiaro */
+      color: black;
     }
 
+    /* TWO-LINE TITLE */
+    .title-line1 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .title-line2 {
+      font-style: italic;
+      font-size: 14px;
+    }
+
+    /* LOGOS */
     .gallery-item img {
-      margin-top: 10px;
-      width: 70%;
+      margin-top: 36px; /* leggermente più in basso */
+      width: 60%;       /* un po' più grandi */
+      opacity: 0.7;     /* riduzione 30% */
       height: auto;
     }
 
@@ -179,7 +196,8 @@
       <!-- GREENLAND -->
       <div class="gallery-item">
         <a href="https://metasteps.com/viewer/c97aa9c4-ced4-4fdb-8987-27f021111539" target="_blank">
-          GREENLAND – A winter between people and wilderness
+          <div class="title-line1">GREENLAND</div>
+          <div class="title-line2">A winter between people and wilderness</div>
         </a>
         <img src="logo01.png" alt="Greenland logo">
       </div>
@@ -187,7 +205,8 @@
       <!-- ICELAND -->
       <div class="gallery-item">
         <a href="mostra-in-allestimento.html">
-          ICELAND – Face au froid
+          <div class="title-line1">ICELAND</div>
+          <div class="title-line2">Face au froid</div>
         </a>
         <img src="logo02.png" alt="Iceland logo">
       </div>
@@ -195,7 +214,8 @@
       <!-- AFRICA -->
       <div class="gallery-item">
         <a href="mostra-in-allestimento.html">
-          AFRICA – Un monde de couleurs
+          <div class="title-line1">AFRICA</div>
+          <div class="title-line2">Un monde de couleurs</div>
         </a>
         <img src="logo03.png" alt="Africa logo">
       </div>
