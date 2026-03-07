@@ -258,8 +258,8 @@ const technicalSheet = {
   luogo: "Greenland",
   anno: "2023",
   tecnica: "Digital video",
-  supporto: "High‑resolution MP4",
-  durata: "Short documentary clip",
+  supporto: "High‑resolution MOV",
+  durata: "1.9 min",
   
   testo: "From the project “GREENLAND – a winter between people and wilderness”. A real moment captured during the journey."
 };
@@ -267,7 +267,7 @@ const technicalSheet = {
 infoBtn.onclick = () => {
   const num = String(index).padStart(2, '0');
   modalContent.innerHTML =
-    `<strong>Title:</strong> Greenland – Video ${num}<br>
+    `<strong>Title:</strong> Interview on TGR3 from the Red House ${num}<br>
      <strong>Location:</strong> ${technicalSheet.luogo}<br>
      <strong>Year:</strong> ${technicalSheet.anno}<br>
      <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
