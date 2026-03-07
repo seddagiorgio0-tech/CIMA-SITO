@@ -205,6 +205,10 @@
       font-size: 14px;
     }
 
+    .buy-button + .buy-button {
+      margin-left: 8px;
+    }
+
     /* FOOTER */
     .footer {
       margin-top: 40px;
@@ -305,7 +309,7 @@ function updateCatalogImage() {
 
   document.getElementById("catalog-image").src = prefix + pad(currentPage) + ".jpeg";
 
-  /* CALCOLO PAGINE MOSTRATE */
+  /* DIDASCALIA */
   let caption = "";
 
   if (currentPage === 1) {
@@ -346,19 +350,25 @@ function openTech() {
     tech.innerHTML = `
       <p><strong>Title:</strong> CIMA – Northern Routes</p>
       <p><strong>Locations:</strong> Greenland, Iceland</p>
-      <p><strong>Total pages:</strong> 42 (displayed 1 or 2 at a time)</p>
-      <p><strong>Medium:</strong> Digital catalogue</p>
+      <p><strong>Total pages:</strong> 42</p>
+      <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
+      <p><strong>Digital edition:</strong> Same content as printed edition</p>
+      <p><strong>Medium:</strong> Digital + printed catalogue</p>
       <p><strong>Concept:</strong> A crossing through northern territories.</p>
-      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy digital edition</a>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy printed edition</a>
     `;
   } else {
     tech.innerHTML = `
       <p><strong>Title:</strong> CIMA – Southern Routes</p>
       <p><strong>Location:</strong> Africa</p>
-      <p><strong>Total pages:</strong> 34 (displayed 1 or 2 at a time)</p>
-      <p><strong>Medium:</strong> Digital catalogue</p>
+      <p><strong>Total pages:</strong> 34</p>
+      <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
+      <p><strong>Digital edition:</strong> Same content as printed edition</p>
+      <p><strong>Medium:</strong> Digital + printed catalogue</p>
       <p><strong>Concept:</strong> Encounters with African communities.</p>
-      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy digital edition</a>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy printed edition</a>
     `;
   }
 
