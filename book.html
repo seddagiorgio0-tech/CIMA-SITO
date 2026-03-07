@@ -102,7 +102,7 @@
       letter-spacing: 1px;
     }
 
-    /* MINIATURE CATALOGHI (più piccole) */
+    /* MINIATURE CATALOGHI */
     .catalog-thumbs {
       display: flex;
       justify-content: center;
@@ -111,7 +111,7 @@
     }
 
     .catalog-thumb {
-      width: 200px; /* DIMENSIONE RIDOTTA */
+      width: 200px;
       cursor: pointer;
       transition: opacity 0.2s;
     }
@@ -279,7 +279,12 @@
 <script>
 let currentCatalog = 1;
 let currentPage = 1;
-let maxPages = {1: 41, 2: 33};
+
+/* PAGINE REALI */
+let totalPages = {
+  1: 42,  // Islanda
+  2: 34   // Africa
+};
 
 function pad(n) { return n.toString().padStart(2, '0'); }
 
@@ -296,20 +301,42 @@ function closeCatalog() {
 
 function updateCatalogImage() {
   const prefix = currentCatalog === 1 ? "c-i" : "c-a";
+  const max = totalPages[currentCatalog];
+
   document.getElementById("catalog-image").src = prefix + pad(currentPage) + ".jpeg";
-  document.getElementById("page-indicator").textContent =
-    "Page " + currentPage + " / " + maxPages[currentCatalog];
+
+  /* CALCOLO PAGINE MOSTRATE */
+  let caption = "";
+
+  if (currentPage === 1) {
+    caption = "Page 1 of " + max;
+  } else if (currentPage >= max) {
+    caption = "Page " + max + " of " + max;
+  } else {
+    caption = "Page " + currentPage + "–" + (currentPage + 1) + " of " + max;
+  }
+
+  document.getElementById("page-indicator").textContent = caption;
 
   document.getElementById("prev-btn").disabled = currentPage === 1;
-  document.getElementById("next-btn").disabled = currentPage === maxPages[currentCatalog];
+  document.getElementById("next-btn").disabled = currentPage >= max - 1;
 }
 
 document.getElementById("prev-btn").onclick = function() {
-  if (currentPage > 1) { currentPage--; updateCatalogImage(); }
+  if (currentPage > 1) {
+    currentPage -= 2;
+    if (currentPage < 1) currentPage = 1;
+    updateCatalogImage();
+  }
 };
 
 document.getElementById("next-btn").onclick = function() {
-  if (currentPage < maxPages[currentCatalog]) { currentPage++; updateCatalogImage(); }
+  const max = totalPages[currentCatalog];
+  if (currentPage < max - 1) {
+    currentPage += 2;
+    if (currentPage > max) currentPage = max;
+    updateCatalogImage();
+  }
 };
 
 function openTech() {
@@ -319,7 +346,7 @@ function openTech() {
     tech.innerHTML = `
       <p><strong>Title:</strong> CIMA – Northern Routes</p>
       <p><strong>Locations:</strong> Greenland, Iceland</p>
-      <p><strong>Pages:</strong> 41</p>
+      <p><strong>Total pages:</strong> 42 (displayed 1 or 2 at a time)</p>
       <p><strong>Medium:</strong> Digital catalogue</p>
       <p><strong>Concept:</strong> A crossing through northern territories.</p>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
@@ -328,7 +355,7 @@ function openTech() {
     tech.innerHTML = `
       <p><strong>Title:</strong> CIMA – Southern Routes</p>
       <p><strong>Location:</strong> Africa</p>
-      <p><strong>Pages:</strong> 33</p>
+      <p><strong>Total pages:</strong> 34 (displayed 1 or 2 at a time)</p>
       <p><strong>Medium:</strong> Digital catalogue</p>
       <p><strong>Concept:</strong> Encounters with African communities.</p>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
