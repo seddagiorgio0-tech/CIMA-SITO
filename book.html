@@ -102,7 +102,7 @@
       letter-spacing: 1px;
     }
 
-    /* MINIATURE CATALOGHI (più grandi) */
+    /* MINIATURE CATALOGHI (più piccole) */
     .catalog-thumbs {
       display: flex;
       justify-content: center;
@@ -111,10 +111,9 @@
     }
 
     .catalog-thumb {
-      width: 260px; /* AUMENTATO */
+      width: 200px; /* DIMENSIONE RIDOTTA */
       cursor: pointer;
       transition: opacity 0.2s;
-      border: 1px solid #ccc;
     }
 
     .catalog-thumb:hover {
@@ -138,8 +137,8 @@
     .modal-window {
       background: white;
       padding: 20px;
-      max-width: 95%;
-      max-height: 95%;
+      max-width: 98%;
+      max-height: 98%;
       position: relative;
       text-align: center;
       border-radius: 4px;
@@ -153,18 +152,18 @@
       cursor: pointer;
     }
 
-    /* IMMAGINE GRANDE (quasi full-screen) */
+    /* IMMAGINE FULL-SCREEN */
     .modal-image {
-      max-width: 90vw;
-      max-height: 80vh;
-      border: 1px solid #ccc;
+      max-width: 95vw;
+      max-height: 85vh;
+      border: none;
     }
 
     .modal-controls {
       margin-top: 12px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 30px;
     }
 
     .modal-button {
@@ -194,6 +193,16 @@
     .tech-sheet p {
       font-size: 14px;
       margin: 6px 0;
+    }
+
+    .buy-button {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 14px;
+      background: black;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
     }
 
     /* FOOTER */
@@ -247,11 +256,11 @@
       <span class="modal-close" onclick="closeCatalog()">✕</span>
       <img id="catalog-image" class="modal-image" src="">
       <div class="modal-controls">
-        <button id="prev-btn" class="modal-button">Previous</button>
-        <span id="page-indicator"></span>
+        <button id="prev-btn" class="modal-button">Back</button>
+        <button class="modal-button" onclick="openTech()">Info</button>
         <button id="next-btn" class="modal-button">Next</button>
-        <button class="modal-button" onclick="openTech()">Technical sheet</button>
       </div>
+      <div id="page-indicator" style="margin-top:10px; font-size:14px; color:#555;"></div>
     </div>
   </div>
 
@@ -313,6 +322,7 @@ function openTech() {
       <p><strong>Pages:</strong> 41</p>
       <p><strong>Medium:</strong> Digital catalogue</p>
       <p><strong>Concept:</strong> A crossing through northern territories.</p>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
     `;
   } else {
     tech.innerHTML = `
@@ -321,6 +331,7 @@ function openTech() {
       <p><strong>Pages:</strong> 33</p>
       <p><strong>Medium:</strong> Digital catalogue</p>
       <p><strong>Concept:</strong> Encounters with African communities.</p>
+      <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy</a>
     `;
   }
 
