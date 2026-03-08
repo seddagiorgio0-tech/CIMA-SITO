@@ -286,11 +286,9 @@ let currentPage = 1;
 
 /* PAGINE REALI */
 let totalPages = {
-  1: 42,  // Islanda
-  2: 34   // Africa
+  1: 80,  // Islanda
+  2: 64   // Africa
 };
-
-function pad(n) { return n.toString().padStart(2, '0'); }
 
 function openCatalog(n) {
   currentCatalog = n;
@@ -304,41 +302,29 @@ function closeCatalog() {
 }
 
 function updateCatalogImage() {
-  const prefix = currentCatalog === 1 ? "c-i" : "c-a";
+  const prefix = currentCatalog === 1 ? "i-" : "a-";
   const max = totalPages[currentCatalog];
 
-  document.getElementById("catalog-image").src = prefix + pad(currentPage) + ".jpeg";
+  document.getElementById("catalog-image").src = prefix + currentPage + ".jpg";
 
-  /* DIDASCALIA */
-  let caption = "";
-
-  if (currentPage === 1) {
-    caption = "Page 1 of " + max;
-  } else if (currentPage >= max) {
-    caption = "Page " + max + " of " + max;
-  } else {
-    caption = "Page " + currentPage + "–" + (currentPage + 1) + " of " + max;
-  }
-
-  document.getElementById("page-indicator").textContent = caption;
+  document.getElementById("page-indicator").textContent =
+    "Page " + currentPage + " of " + max;
 
   document.getElementById("prev-btn").disabled = currentPage === 1;
-  document.getElementById("next-btn").disabled = currentPage >= max - 1;
+  document.getElementById("next-btn").disabled = currentPage === max;
 }
 
 document.getElementById("prev-btn").onclick = function() {
   if (currentPage > 1) {
-    currentPage -= 2;
-    if (currentPage < 1) currentPage = 1;
+    currentPage--;
     updateCatalogImage();
   }
 };
 
 document.getElementById("next-btn").onclick = function() {
   const max = totalPages[currentCatalog];
-  if (currentPage < max - 1) {
-    currentPage += 2;
-    if (currentPage > max) currentPage = max;
+  if (currentPage < max) {
+    currentPage++;
     updateCatalogImage();
   }
 };
@@ -350,7 +336,7 @@ function openTech() {
     tech.innerHTML = `
       <p><strong>Title:</strong> "Face au froid" - Un monde de couleurs project</p>
       <p><strong>Locations:</strong> Iceland</p>
-      <p><strong>Total pages:</strong> 42</p>
+      <p><strong>Total pages:</strong> 80</p>
       <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
       <p><strong>Digital edition:</strong> Same content as printed edition</p>
       <p><strong>Medium:</strong> Digital + printed catalogue</p>
@@ -362,7 +348,7 @@ function openTech() {
     tech.innerHTML = `
       <p><strong>Title:</strong> "Reportage en Africa" - Un monde de couleurs project</p>
       <p><strong>Location:</strong> Togo</p>
-      <p><strong>Total pages:</strong> 34</p>
+      <p><strong>Total pages:</strong> 64</p>
       <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
       <p><strong>Digital edition:</strong> Same content as printed edition</p>
       <p><strong>Medium:</strong> Digital + printed catalogue</p>
