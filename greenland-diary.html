@@ -93,6 +93,8 @@
       cursor: pointer;
       transition: 0.2s;
       box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: black;
     }
 
     .book-icon:hover {
@@ -137,17 +139,17 @@
 
     <div class="book-icons">
 
-      <!-- COPERTINA EN PROVVISORIA -->
-      <div class="book-icon" onclick="alert('Aprirà il diario in inglese')">
+      <!-- COPERTINA EN COLLEGATA AL PDF -->
+      <a class="book-icon" href="L-en1.pdf" target="_blank">
         <strong>GREENLAND</strong>
         <span style="font-size:16px; margin-top:10px;">Diary – EN</span>
-      </div>
+      </a>
 
-      <!-- COPERTINA IT PROVVISORIA -->
-      <div class="book-icon" onclick="alert('Aprirà il diario in italiano')">
+      <!-- COPERTINA IT COLLEGATA AL PDF -->
+      <a class="book-icon" href="L-it1.pdf" target="_blank">
         <strong>GROENLANDIA</strong>
         <span style="font-size:16px; margin-top:10px;">Diario – IT</span>
-      </div>
+      </a>
 
     </div>
 
