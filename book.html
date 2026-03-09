@@ -246,10 +246,11 @@
 
     <h1>Book</h1>
 
-    <!-- MINIATURE -->
+    <!-- MINIATURE ORDINATE: AFRICA – ISLANDA – GROENLANDIA -->
     <div class="catalog-thumbs">
-      <img src="c-i01.jpeg" class="catalog-thumb" onclick="openCatalog(1)">
       <img src="c-a01.jpeg" class="catalog-thumb" onclick="openCatalog(2)">
+      <img src="c-i01.jpeg" class="catalog-thumb" onclick="openCatalog(1)">
+      <img src="g-1.jpg" class="catalog-thumb" onclick="openCatalog(3)">
     </div>
 
   </div>
@@ -287,7 +288,8 @@ let currentPage = 1;
 /* PAGINE REALI */
 let totalPages = {
   1: 80,  // Islanda
-  2: 64   // Africa
+  2: 64,  // Africa
+  3: 1    // Groenlandia (solo copertina)
 };
 
 function openCatalog(n) {
@@ -302,7 +304,12 @@ function closeCatalog() {
 }
 
 function updateCatalogImage() {
-  const prefix = currentCatalog === 1 ? "i-" : "a-";
+  let prefix = "";
+
+  if (currentCatalog === 1) prefix = "i-";
+  if (currentCatalog === 2) prefix = "a-";
+  if (currentCatalog === 3) prefix = "g-";
+
   const max = totalPages[currentCatalog];
 
   document.getElementById("catalog-image").src = prefix + currentPage + ".jpg";
@@ -311,7 +318,7 @@ function updateCatalogImage() {
     "Page " + currentPage + " of " + max;
 
   document.getElementById("prev-btn").disabled = currentPage === 1;
-  document.getElementById("next-btn").disabled = currentPage === max;
+  document.getElementById("next-btn").disabled = false;
 }
 
 document.getElementById("prev-btn").onclick = function() {
@@ -323,6 +330,12 @@ document.getElementById("prev-btn").onclick = function() {
 
 document.getElementById("next-btn").onclick = function() {
   const max = totalPages[currentCatalog];
+
+  if (currentCatalog === 3 && currentPage === 1) {
+    alert("Currently in production");
+    return;
+  }
+
   if (currentPage < max) {
     currentPage++;
     updateCatalogImage();
@@ -337,28 +350,34 @@ function openTech() {
       <p><strong>Title:</strong> "Face au froid" - Un monde de couleurs project</p>
       <p><strong>Locations:</strong> Iceland</p>
       <p><strong>Total pages:</strong> 80</p>
-      </p>
       <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
       <p><strong>Digital edition:</strong> Same content as printed edition</p>
       <p><strong>Medium:</strong> Digital + printed catalogue</p>
-      </p>
       <p><strong>Concept:</strong> A crossing through northern territories.</p>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy digital edition</a>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy printed edition</a>
     `;
-  } else {
+  }
+
+  else if (currentCatalog === 2) {
     tech.innerHTML = `
       <p><strong>Title:</strong> "Reportage en Africa" - Un monde de couleurs project</p>
       <p><strong>Location:</strong> Togo</p>
       <p><strong>Total pages:</strong> 64</p>
-      <pr>
       <p><strong>Printed edition:</strong> Softcover, 30 × 19 cm</p>
       <p><strong>Digital edition:</strong> Same content as printed edition</p>
       <p><strong>Medium:</strong> Digital + printed catalogue</p>
-      </p>
       <p><strong>Concept:</strong> Encounters with African communities.</p>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy digital edition</a>
       <a class="buy-button" href="https://paypal.me/giorgiosedda" target="_blank">Buy printed edition</a>
+    `;
+  }
+
+  else if (currentCatalog === 3) {
+    tech.innerHTML = `
+      <p><strong>Title:</strong> "Groenlandia" - CIMA Project</p>
+      <p><strong>Status:</strong> Currently in production</p>
+      <p><strong>Content:</strong> The catalogue is being finalized.</p>
     `;
   }
 
