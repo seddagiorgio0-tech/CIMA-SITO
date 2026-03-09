@@ -13,7 +13,7 @@
       text-align: center;
     }
 
-    /* NAVIGAZIONE */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
@@ -33,7 +33,7 @@
       text-decoration: underline;
     }
 
-    /* CONTENITORE LOGO + NOME */
+    /* LOGO + NAME */
     .logo-wrapper {
       position: relative;
       width: 100%;
@@ -56,7 +56,6 @@
       height: auto;
     }
 
-    /* NOME A DESTRA DEL LOGO */
     .name-right {
       position: absolute;
       top: 50%;
@@ -69,7 +68,6 @@
       white-space: nowrap;
     }
 
-    /* VERSIONE MOBILE */
     @media (max-width: 600px) {
       .name-right {
         position: static;
@@ -87,7 +85,7 @@
       border-top: 1px solid black;
     }
 
-    /* BLOCCO CENTRALE */
+    /* CENTRAL BLOCK */
     .central-block {
       width: 720px;
       max-width: 100%;
@@ -114,17 +112,30 @@
       font-size: 18px;
       font-weight: bold;
       margin-bottom: 8px;
+      text-align: center;
     }
 
     .news-date {
       font-size: 13px;
       color: #777;
       margin-bottom: 10px;
+      text-align: center;
     }
 
     .news-text {
       font-size: 15px;
       color: #333;
+      text-align: justify;
+      margin-top: 10px;
+    }
+
+    .news-image {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      margin: 10px auto 15px auto;
+      display: block;
+      border-radius: 4px;
     }
 
     /* FOOTER */
@@ -151,11 +162,10 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <!-- LOGO + NOME -->
+  <!-- LOGO + NAME -->
   <div class="logo-wrapper">
     <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
     <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-
     <div class="name-right">GIORGIO SEDDA</div>
   </div>
 
@@ -165,24 +175,17 @@
 
     <h1>News</h1>
 
-    <!-- NEWS EXAMPLE -->
+    <!-- ASSILAH 2026 EVENT -->
     <div class="news-item">
-      <div class="news-title">News Title</div>
-      <div class="news-date">Date – Location</div>
+      <div class="news-title">Invited to the 47th Moussem Culturel International of Assilah</div>
+      <div class="news-date">March 27th, 2026 – Assilah, Morocco</div>
+
+      <img src="assilah.jpg" alt="Assilah 2026" class="news-image">
+
       <div class="news-text">
-        News text, updates, official communications, events, exhibitions, lectures,
-        publications, or any information relevant to the public.
+        From March 27th, 2026, I will share <strong>CIMA – Crossing Into My Art</strong> within the international contemporary graphic arts program of the 47th Moussem Culturel International of Assilah, Morocco. This invitation offers an opportunity to bring the essence of the CIMA project into a space dedicated to artistic dialogue and cultural exchange.
       </div>
     </div>
-
-    <!-- DUPLICA QUESTO BLOCCO PER ALTRE NEWS -->
-    <!--
-    <div class="news-item">
-      <div class="news-title">Title</div>
-      <div class="news-date">Date – Location</div>
-      <div class="news-text">News text.</div>
-    </div>
-    -->
 
   </div>
 
