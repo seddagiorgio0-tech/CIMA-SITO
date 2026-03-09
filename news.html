@@ -13,14 +13,12 @@
       text-align: center;
     }
 
-    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
       padding: 30px 0 5px 0;
       font-size: 16px;
-      position: relative;
     }
 
     nav a {
@@ -33,7 +31,6 @@
       text-decoration: underline;
     }
 
-    /* LOGO + NAME */
     .logo-wrapper {
       position: relative;
       width: 100%;
@@ -46,14 +43,12 @@
       display: block;
       margin: 5px auto 0 auto;
       max-width: 220px;
-      height: auto;
     }
 
     .logo-cima {
       display: block;
       margin: 0 auto;
       max-width: 260px;
-      height: auto;
     }
 
     .name-right {
@@ -68,16 +63,6 @@
       white-space: nowrap;
     }
 
-    @media (max-width: 600px) {
-      .name-right {
-        position: static;
-        display: block;
-        margin-top: 10px;
-        transform: none;
-        text-align: center;
-      }
-    }
-
     hr {
       width: 200px;
       margin: 5px auto;
@@ -85,60 +70,68 @@
       border-top: 1px solid black;
     }
 
-    /* CENTRAL BLOCK */
+    /* CONTENITORE PIÙ LARGO PER ALLARGARE IL TESTO */
     .central-block {
       width: 720px;
       max-width: 100%;
       margin: 0 auto;
-      margin-top: 20px;
+      margin-top: 40px;
       text-align: left;
       line-height: 1.6;
     }
 
     h1 {
       font-size: 22px;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
       text-align: center;
       letter-spacing: 1px;
     }
 
+    /* FOTO INVARIATA, TESTO PIÙ LARGO: MENO GAP, PIÙ SPAZIO A DESTRA */
     .news-item {
-      margin-bottom: 35px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #ddd;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;          /* prima 40px: ora più spazio al testo */
+      align-items: start;
+      padding: 20px 0;
+      margin-bottom: 0;
+    }
+
+    .news-item-bottom-line {
+      width: 100%;
+      border-bottom: 2px solid #000;
+      margin: 0 auto 50px auto;
+    }
+
+    .news-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      display: block;
     }
 
     .news-title {
-      font-size: 18px;
+      font-size: 22px;
       font-weight: bold;
-      margin-bottom: 8px;
-      text-align: center;
+      margin-bottom: 10px;
+      text-align: left;
     }
 
     .news-date {
-      font-size: 13px;
+      font-size: 14px;
       color: #777;
-      margin-bottom: 10px;
-      text-align: center;
+      margin-bottom: 20px;
+      text-align: left;
     }
 
     .news-text {
       font-size: 15px;
       color: #333;
       text-align: justify;
-      margin-top: 10px;
-    }
-
-    .news-image {
       width: 100%;
-      max-width: 260px;
-      height: auto;
-      margin: 10px auto 15px auto;
-      display: block;
-      border-radius: 4px;
+      max-width: 100%;
     }
 
-    /* FOOTER */
     .footer {
       margin-top: 40px;
       font-size: 16px;
@@ -162,10 +155,9 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <!-- LOGO + NAME -->
   <div class="logo-wrapper">
-    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
-    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
+    <img src="logo-a.png" class="logo-a">
+    <img src="logo-cima.png" class="logo-cima">
     <div class="name-right">GIORGIO SEDDA</div>
   </div>
 
@@ -175,17 +167,24 @@
 
     <h1>News</h1>
 
-    <!-- ASSILAH 2026 EVENT -->
     <div class="news-item">
-      <div class="news-title">Invited to the 47th Moussem Culturel International of Assilah</div>
-      <div class="news-date">March 27th, 2026 – Assilah, Morocco</div>
 
-      <img src="assilah.jpg" alt="Assilah 2026" class="news-image">
-
-      <div class="news-text">
-        From March 27th, 2026, I will share <strong>CIMA – Crossing Into My Art</strong> within the international contemporary graphic arts program of the 47th Moussem Culturel International of Assilah, Morocco. This invitation offers an opportunity to bring the essence of the CIMA project into a space dedicated to artistic dialogue and cultural exchange.
+      <div>
+        <img src="assilah.jpg" class="news-image">
       </div>
+
+      <div>
+        <div class="news-title">Invited to the 47th Moussem Culturel International of Assilah</div>
+        <div class="news-date">March 27th, 2026 – Assilah, Morocco</div>
+
+        <div class="news-text">
+          From March 27th, 2026, I will share <strong>CIMA – Crossing Into My Art</strong> within the international contemporary graphic arts program of the 47th Moussem Culturel International of Assilah, Morocco. This invitation offers an opportunity to bring the essence of the CIMA project into a space dedicated to artistic dialogue and cultural exchange.
+        </div>
+      </div>
+
     </div>
+
+    <div class="news-item-bottom-line"></div>
 
   </div>
 
