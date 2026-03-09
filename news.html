@@ -70,7 +70,6 @@
       border-top: 1px solid black;
     }
 
-    /* CONTENITORE PIÙ LARGO PER ALLARGARE IL TESTO */
     .central-block {
       width: 720px;
       max-width: 100%;
@@ -87,11 +86,10 @@
       letter-spacing: 1px;
     }
 
-    /* FOTO INVARIATA, TESTO PIÙ LARGO: MENO GAP, PIÙ SPAZIO A DESTRA */
     .news-item {
       display: grid;
       grid-template-columns: 300px 1fr;
-      gap: 20px;          /* prima 40px: ora più spazio al testo */
+      gap: 20px;
       align-items: start;
       padding: 20px 0;
       margin-bottom: 0;
@@ -110,24 +108,36 @@
       display: block;
     }
 
+    /* TITOLO GRIGIO MEDIO */
     .news-title {
       font-size: 22px;
       font-weight: bold;
       margin-bottom: 10px;
       text-align: left;
+      color: #666;
     }
 
     .news-date {
       font-size: 14px;
       color: #777;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-align: left;
     }
 
+    /* ✔️ LINEA MOLTO CHIARA SOTTO LA DATA */
+    .news-date-line {
+      border-bottom: 1px solid #ddd; /* linea chiarissima */
+      width: 100%;
+      margin: 0 0 20px 0; /* spazio sotto la linea */
+    }
+
+    /* TESTO IN CORSIVO, NON GIUSTIFICATO, PIÙ IN BASSO */
     .news-text {
       font-size: 15px;
       color: #333;
-      text-align: justify;
+      font-style: italic;
+      text-align: left;
+      margin-top: 10px; /* abbassa il testo */
       width: 100%;
       max-width: 100%;
     }
@@ -176,6 +186,9 @@
       <div>
         <div class="news-title">Invited to the 47th Moussem Culturel International of Assilah</div>
         <div class="news-date">March 27th, 2026 – Assilah, Morocco</div>
+
+        <!-- ✔️ LINEA CHIARA SOTTO LA DATA -->
+        <div class="news-date-line"></div>
 
         <div class="news-text">
           From March 27th, 2026, I will share <strong>CIMA – Crossing Into My Art</strong> within the international contemporary graphic arts program of the 47th Moussem Culturel International of Assilah, Morocco. This invitation offers an opportunity to bring the essence of the CIMA project into a space dedicated to artistic dialogue and cultural exchange.
