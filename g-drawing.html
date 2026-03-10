@@ -415,34 +415,139 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
   render();
 </script>
 <!-- MODAL PER ZOOM IMMAGINI -->
+<!-- MODAL IMMAGINI -->
 <div id="imgModal" class="img-modal">
   <span class="img-modal-close">&times;</span>
-  <img id="modalImg" src="">
+  <img id="imgModalContent" src="">
 </div>
 
 <script>
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImg");
-  const closeModal = document.querySelector(".img-modal-close");
+    const imgModal = document.getElementById("imgModal");
+    const imgModalContent = document.getElementById("imgModalContent");
+    const imgModalClose = document.querySelector(".img-modal-close");
 
-  document.addEventListener("click", function(e) {
-    if (e.target.classList.contains("zoomable")) {
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("zoomable")) {
+        imgModal.style.display = "flex";
+        imgModalContent.src = e.target.src;
+      }
+    });
+
+    imgModalClose.onclick = () => {
+      imgModal.style.display = "none";
+    };
+
+    imgModal.onclick = (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = "none";
+      }
+    };
+</script>
+
+<!-- MODAL INFO (SCHEDA TECNICA ORIGINALE) -->
+<div id="infoModal" style="
+    display:none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
+
+    <div style="
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      text-align: left;
+    ">
+
+      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+      <div style="margin-top:25px; display:flex; justify-content:space-between;">
+        <button id="closeModal" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+
+        <a href="https://www.paypal.me/giorgiosedda" target="_blank" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+        ">Buy</a>
+      </div>
+
+    </div>
+</div>
+
+<script>
+    const infoBtn = document.getElementById("infoBtn");
+    const modal = document.getElementById("infoModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    infoBtn.onclick = () => {
+      let sheet = "";
+      const num = String(index).padStart(2, '0');
+
+      if (index <= 5) {
+        sheet = `
+          <strong>Title:</strong> Greenland – Night in the Fjord<br>
+          <strong>Location:</strong> France, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 250 × 180 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
+
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
+      }
+
+      else if (index <= 10) {
+        sheet = `
+          <strong>Title:</strong> Greenland – The perfect storm<br>
+          <strong>Location:</strong> Italy, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 180 × 125 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
+
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
+      }
+
+      else {
+        sheet = `
+          <strong>Title:</strong> Greenland – Robert Peroni explorator<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 130 × 100 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).
+        `;
+      }
+
+      modalContent.innerHTML = sheet;
       modal.style.display = "flex";
-      modalImg.src = e.target.src;
-    }
-  });
+    };
 
-  closeModal.onclick = () => {
-    modal.style.display = "none";
-    modalImg.src = "";
-  };
-
-  modal.onclick = (e) => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      modalImg.src = "";
-    }
-  };
+    closeModal.onclick = () => { modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
 </script>
 
 </body>
