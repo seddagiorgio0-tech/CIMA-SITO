@@ -11,37 +11,44 @@
       background-color: white;
       color: black;
       text-align: center;
+      overflow-y: hidden; /* NIENTE SCROLL */
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 15px 0;
     }
 
     .page-container {
       width: 100%;
-      max-width: 700px;
-      margin: 50px auto 10px auto;
+      max-width: 500px;
+      margin: 10px auto 5px auto;
     }
 
     .page-container img {
       width: 100%;
       height: auto;
       object-fit: contain;
+      border: 1px solid #ddd;
     }
 
     .caption {
-      font-size: 16px;
-      margin: 10px auto 25px auto;
-      max-width: 700px;
+      font-size: 15px;
+      margin: 5px auto 10px auto;
+      max-width: 500px;
     }
 
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 700px;
+      max-width: 500px;
       margin: 0 auto;
     }
 
     .nav-buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
+      padding: 8px 18px;
+      font-size: 15px;
       background: white;
       color: black;
       border: 1px solid #ccc;
@@ -75,9 +82,9 @@
 
     #infoBox {
       background: white;
-      padding: 30px;
+      padding: 25px;
       width: 90%;
-      max-width: 500px;
+      max-width: 450px;
       border: 1px solid #ccc;
       text-align: left;
     }
@@ -105,13 +112,13 @@
   <!-- MODAL INFO -->
   <div id="infoModal">
     <div id="infoBox">
-      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+      <h2 style="margin-top:0; font-size:18px;">Technical Sheet</h2>
 
-      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+      <div id="modalContent" style="font-size:15px; line-height:1.5;"></div>
 
-      <div style="margin-top:25px; display:flex; justify-content:flex-end;">
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
         <button id="closeModal" style="
-          padding: 10px 20px;
+          padding: 8px 18px;
           background:white;
           border:1px solid #ccc;
           cursor:pointer;
