@@ -13,7 +13,6 @@
       text-align: center;
     }
 
-    /* MENU PRINCIPALE */
     nav {
       display: flex;
       justify-content: center;
@@ -27,14 +26,12 @@
       color: black;
     }
 
-    /* TITOLO */
     h1 {
       font-size: 22px;
       letter-spacing: 1px;
       margin-top: 20px;
     }
 
-    /* PULSANTI SEZIONI */
     .button-row {
       margin-top: 40px;
       display: flex;
@@ -67,15 +64,6 @@
       border-color: #ccc;
     }
 
-    /* CONTENITORE DIARIO */
-    .diary-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 60px auto;
-      text-align: center;
-    }
-
-    /* ICONE LIBRO */
     .book-icons {
       display: flex;
       justify-content: center;
@@ -105,19 +93,65 @@
       background: #e6e6e6;
     }
 
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      font-size: 16px;
-      color: #555;
-      padding-bottom: 40px;
+    /* LETTORE */
+    #reader {
+      display: none;
+      margin-top: 40px;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto 5px auto;
+    }
+
+    .page-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid #ddd;
+    }
+
+    .caption {
+      font-size: 15px;
+      margin: 5px auto 10px auto;
+      max-width: 500px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .nav-buttons button {
+      padding: 8px 18px;
+      font-size: 15px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
+    }
+
+    #backToBooks {
+      margin-top: 30px;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- MENU PRINCIPALE -->
   <nav>
     <a href="index.html">Home</a>
     <a href="progetto.html">CIMA Project</a>
@@ -130,10 +164,8 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <!-- TITOLO -->
   <h1>Greenland – Diary</h1>
 
-  <!-- PULSANTI SEZIONI -->
   <div class="button-row">
     <a href="archive-greenland.html" class="menu-btn">Photography</a>
     <a href="greenland-video.html" class="menu-btn">Video</a>
@@ -141,33 +173,76 @@
     <a href="greenland-diary.html" class="menu-btn selected">Diary</a>
   </div>
 
-  <!-- CONTENITORE DIARIO -->
-  <div class="diary-container">
-
+  <!-- SCELTA LIBRO -->
+  <div id="bookChoice">
     <h2>Diary – Choose your language</h2>
 
     <div class="book-icons">
-
-      <!-- LIBRO EN -->
-      <a class="book-icon" href="greenland-diary-en.html">
+      <div class="book-icon" onclick="openBook('en')">
         <strong>GREENLAND</strong>
         <span style="font-size:16px; margin-top:10px;">Diary – EN</span>
-      </a>
+      </div>
 
-      <!-- LIBRO IT -->
-      <a class="book-icon" href="greenland-diary-it.html">
+      <div class="book-icon" onclick="openBook('it')">
         <strong>GROENLANDIA</strong>
         <span style="font-size:16px; margin-top:10px;">Diario – IT</span>
-      </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- LETTORE -->
+  <div id="reader">
+    <div class="page-container">
+      <img id="page" src="" alt="Diary Page">
     </div>
 
+    <div class="caption" id="caption">Page 01</div>
+
+    <div class="nav-buttons">
+      <button id="backBtn">Back</button>
+      <button id="infoBtn">Info</button>
+      <button id="nextBtn">Next</button>
+    </div>
+
+    <button id="backToBooks" onclick="closeBook()">Back to languages</button>
   </div>
 
-  <!-- FOOTER -->
-  <div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
-  </div>
+  <script>
+    let lang = "";
+    let index = 1;
+    const totalPages = 1;
+
+    function openBook(selectedLang) {
+      lang = selectedLang;
+      index = 1;
+
+      document.getElementById("bookChoice").style.display = "none";
+      document.getElementById("reader").style.display = "block";
+
+      updatePage();
+    }
+
+    function closeBook() {
+      document.getElementById("reader").style.display = "none";
+      document.getElementById("bookChoice").style.display = "block";
+    }
+
+    function updatePage() {
+      const num = String(index).padStart(2, '0');
+      document.getElementById("page").src = `L-${lang}${index}.jpg`;
+      document.getElementById("caption").textContent = `Page ${num}`;
+    }
+
+    document.getElementById("backBtn").onclick = () => {
+      if (index > 1) index--;
+      updatePage();
+    };
+
+    document.getElementById("nextBtn").onclick = () => {
+      if (index < totalPages) index++;
+      updatePage();
+    };
+  </script>
 
 </body>
 </html>
