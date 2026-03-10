@@ -17,7 +17,7 @@
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 30px 0 5px 0;
+      padding: 15px 0 5px 0;
       font-size: 16px;
     }
 
@@ -29,11 +29,11 @@
     h1 {
       font-size: 22px;
       letter-spacing: 1px;
-      margin-top: 20px;
+      margin-top: 5px;
     }
 
     .button-row {
-      margin-top: 40px;
+      margin-top: 20px;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -66,7 +66,7 @@
       display: flex;
       justify-content: center;
       gap: 80px;
-      margin-top: 60px;
+      margin-top: 40px;
       flex-wrap: wrap;
     }
 
@@ -91,48 +91,48 @@
 
     #reader {
       display: none;
-      margin-top: 40px;
+      margin-top: 0;
     }
 
     .page-container {
       width: 100%;
-      max-width: 500px;
-      margin: 20px auto 5px auto;
+      max-width: 560px; /* <<< ALLUNGATA */
+      margin: 0 auto;
     }
 
     .page-container img {
       width: 100%;
       height: auto;
+      max-height: 90vh; /* <<< ALTEZZA PERFETTA */
       border: 1px solid #ddd;
     }
 
     .caption {
       font-size: 15px;
-      margin: 5px auto 10px auto;
+      margin: 2px auto 4px auto;
       max-width: 500px;
     }
 
-    /* NAV BUTTONS — uniform size */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 600px;
+      max-width: 560px; /* <<< COERENTE */
       margin: 0 auto;
       gap: 10px;
     }
 
     .nav-btn {
-      padding: 8px 0;
+      padding: 6px 0;
       font-size: 15px;
       background: white;
       border: 1px solid #ccc;
       cursor: pointer;
       flex: 1;
-      height: 40px;
+      height: 38px;
+      white-space: nowrap;
     }
 
-    /* Slightly smaller font for long label */
     #backToBooks {
       font-size: 14px;
     }
@@ -157,11 +157,6 @@
       max-width: 450px;
       border: 1px solid #ccc;
       text-align: left;
-    }
-
-    /* FOOTER */
-    .footer {
-      margin-top: 120px;
     }
   </style>
 
@@ -311,10 +306,6 @@
       }
     };
   </script>
-
-  <div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
-  </div>
 
 </body>
 </html>
