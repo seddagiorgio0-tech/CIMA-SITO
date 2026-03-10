@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Diary – EN</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      text-align: center;
+      overflow-y: hidden;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 20px auto 5px auto;
+    }
+
+    .page-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      border: 1px solid #ddd;
+    }
+
+    .caption {
+      font-size: 15px;
+      margin: 5px auto 10px auto;
+      max-width: 500px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .nav-buttons button {
+      padding: 8px 18px;
+      font-size: 15px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
+    }
+
+    .nav-buttons button:disabled {
+      background: #f2f2f2;
+      color: #999;
+      border-color: #ddd;
+      cursor: default;
+    }
+
+    #infoModal {
+      display:none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(2px);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    #infoBox {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 450px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page-container">
+    <img id="page" src="L-en1.jpg" alt="Diary Page">
+  </div>
+
+  <div class="caption" id="caption">
+    Page 01
+  </div>
+
+  <div class="nav-buttons">
+    <button id="backBtn">Back</button>
+    <button id="infoBtn">Info</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <div id="infoModal">
+    <div id="infoBox">
+      <h2 style="margin-top:0; font-size:18px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:15px; line-height:1.5;"></div>
+
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+        <button id="closeModal" style="
+          padding: 8px 18px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let index = 1;
+    const totalPages = 1;
+
+    const page = document.getElementById("page");
+    const caption = document.getElementById("caption");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+
+    function updatePage() {
+      const num = String(index).padStart(2, '0');
+      page.src = `L-en${index}.jpg`;
+      caption.textContent = `Page ${num}`;
+      backBtn.disabled = index === 1;
+      nextBtn.disabled = index === totalPages;
+    }
+
+    backBtn.onclick = () => {
+      if (index > 1) index--;
+      updatePage();
+    };
+
+    nextBtn.onclick = () => {
+      if (index < totalPages) index++;
+      updatePage();
+    };
+
+    updatePage();
+
+    const infoBtn = document.getElementById("infoBtn");
+    const modal = document.getElementById("infoModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    infoBtn.onclick = () => {
+      const num = String(index).padStart(2, '0');
+
+      modalContent.innerHTML = `
+        <strong>Title:</strong> Greenland – Diary<br>
+        <strong>Page:</strong> ${num}<br>
+        <strong>Language:</strong> English<br>
+        <strong>Author:</strong> Giorgio Sedda<br>
+        <strong>Project:</strong> CIMA Project<br>
+        <strong>Technique:</strong> Travel diary narrative<br>
+        <strong>Year:</strong> 2023–2024<br><br>
+        This page is part of the narrative diary created during the winter journey in Greenland.
+      `;
+
+      modal.style.display = "flex";
+    };
+
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+
+</body>
+</html>
