@@ -112,28 +112,29 @@
       max-width: 500px;
     }
 
+    /* NAV BUTTONS — uniform size */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 500px;
+      max-width: 600px;
       margin: 0 auto;
+      gap: 10px;
     }
 
-    .nav-buttons button {
-      padding: 8px 18px;
+    .nav-btn {
+      padding: 8px 0;
       font-size: 15px;
       background: white;
       border: 1px solid #ccc;
       cursor: pointer;
+      flex: 1;
+      height: 40px;
     }
 
+    /* Slightly smaller font for long label */
     #backToBooks {
-      margin-top: 30px;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      background: white;
-      cursor: pointer;
+      font-size: 14px;
     }
 
     /* MODAL INFO */
@@ -158,7 +159,7 @@
       text-align: left;
     }
 
-    /* FOOTER — moved lower */
+    /* FOOTER */
     .footer {
       margin-top: 120px;
     }
@@ -205,7 +206,7 @@
     </div>
   </div>
 
-  <!-- LETTORE -->
+  <!-- READER -->
   <div id="reader">
     <div class="page-container">
       <img id="page" src="">
@@ -214,12 +215,11 @@
     <div class="caption" id="caption">Page 01</div>
 
     <div class="nav-buttons">
-      <button id="backBtn">Back</button>
-      <button id="infoBtn">Info</button>
-      <button id="nextBtn">Next</button>
+      <button id="backBtn" class="nav-btn">Back</button>
+      <button id="infoBtn" class="nav-btn">Info</button>
+      <button id="nextBtn" class="nav-btn">Next</button>
+      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
     </div>
-
-    <button id="backToBooks" onclick="closeBook()">Back to languages</button>
   </div>
 
   <!-- MODAL INFO -->
@@ -284,7 +284,6 @@
       updatePage();
     };
 
-    /* INFO BUTTON */
     document.getElementById("infoBtn").onclick = () => {
       const num = String(index).padStart(2, '0');
 
@@ -293,9 +292,9 @@
         <strong>Page:</strong> ${num}<br>
         <strong>Language:</strong> ${lang === "en" ? "English" : "Italian"}<br>
         <strong>Author:</strong> Giorgio Sedda<br>
-        <strong>Project:</strong> Un monde de couleurs Project and CIMA Project<br>
+        <strong>Project:</strong> CIMA Project<br>
         <strong>Technique:</strong> Travel diary narrative<br>
-        <strong>Year:</strong> 2023<br><br>
+        <strong>Year:</strong> 2023–2024<br><br>
         This page is part of the narrative diary created during the winter journey in Greenland.
       `;
 
