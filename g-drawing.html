@@ -117,11 +117,12 @@
     }
 
     .single-text {
-      width: 70%;
+      width: 80%;
       margin: 20px auto 0 auto;
       font-size: 12px; /* UGUALE AI RACCONTI 1–5 */
       line-height: 1.55;
       text-align: justify;
+
     }
 
     /* NAV BUTTONS */
@@ -189,6 +190,19 @@
       color: white;
       cursor: pointer;
     }
+
+/* Ingrandisce solo il disegno 11 */
+.block:nth-child(11) .img-col img {
+  max-width:600px;   /* puoi aumentare o diminuire */
+  width: 150%;
+}
+
+.big-drawing {
+  width: 90% !important;
+  max-width:700px !important;
+
+}
+
   </style>
 </head>
 
@@ -386,30 +400,34 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
       const single = document.createElement("div");
       single.className = "single-img";
 
-      single.innerHTML = `
-        <img src="${img}" class="zoomable">
+     single.innerHTML = `
+        <img src="${img}" class="zoomable big-drawing">
         <div class="single-text">${singleTexts[index]}</div>
       `;
 
       content.appendChild(single);
 
-    /* BLOCCO 11 — ORA CON TESTO A DESTRA */
+ /* BLOCCO 11 — ORA CON TESTO A DESTRA */
 } else {
   const block = document.createElement("div");
   block.className = "block";
 
   block.innerHTML = `
-    <div class="img-col"><img src="${img}" class="zoomable"></div>
+    <div class="img-col">
+      <img src="${img}" class="zoomable big-drawing">
+    </div>
+
     <div class="text-col">
       <strong>Robert Peroni</strong><br>
       Mountaineer, explorer, writer. In 1980, Robert Peroni reached Greenland on an extreme expedition and, fascinated by the Inuit people, decided to stay. He integrated into the community, founded the Red House as a refuge and workplace for young locals, and became a key voice in raising awareness about the cultural and social crisis affecting the Inuit.
 In 2023 he created the Red House Greenland Foundation to ensure long‑term support for the community.
-In the same year, he supported my artistic project at The Red House, the main base camp of my mission.<br>
-<br>
-<strong>Robert Peroni</strong><br>
+In the same year, he supported my artistic project at The Red House, the main base camp of my mission.<br><br>
+
+      <strong>Robert Peroni</strong><br>
       Alpinista, esploratore, scrittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
 Nel 2023 istituisce la fondazione The Red House Greenland per garantire continuità al suo sostegno alla comunità.
-Nello stesso anno appoggia il mio progetto artistico presso la The Red House, campo base principale della mia missione.    </div>
+Nello stesso anno appoggia il mio progetto artistico presso la The Red House, campo base principale della mia missione.
+    </div>
   `;
 
   content.appendChild(block);
