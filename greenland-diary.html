@@ -96,7 +96,7 @@
       padding-bottom: 40px;
     }
 
-    /* LETTORE — CORREZIONE DEFINITIVA */
+    /* LETTORE — COPRE TUTTO E NON LASCIA NULLA SOPRA */
     #reader {
       display: none;
       position: fixed;
@@ -152,6 +152,7 @@
       font-size: 14px;
     }
 
+    /* MODAL INFO — SEMPRE SOPRA AL LETTORE */
     #infoModal {
       display:none;
       position: fixed;
@@ -161,7 +162,7 @@
       backdrop-filter: blur(2px);
       justify-content: center;
       align-items: center;
-      z-index: 9999;
+      z-index: 10000; /* <<< PIÙ ALTO DEL LETTORE */
     }
 
     #infoBox {
@@ -231,6 +232,23 @@
       <button id="infoBtn" class="nav-btn">Info</button>
       <button id="nextBtn" class="nav-btn">Next</button>
       <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
+    </div>
+  </div>
+
+  <div id="infoModal">
+    <div id="infoBox">
+      <h2 style="margin-top:0; font-size:18px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:15px; line-height:1.5;"></div>
+
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+        <button id="closeModal" style="
+          padding: 8px 18px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+      </div>
     </div>
   </div>
 
