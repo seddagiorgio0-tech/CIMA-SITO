@@ -13,6 +13,7 @@
       text-align: center;
     }
 
+    /* MENU */
     nav {
       display: flex;
       justify-content: center;
@@ -32,6 +33,7 @@
       margin-top: 20px;
     }
 
+    /* PULSANTI SEZIONI */
     .button-row {
       margin-top: 40px;
       display: flex;
@@ -59,11 +61,10 @@
 
     .selected {
       background: #e6e6e6;
-      color: black;
       cursor: default;
-      border-color: #ccc;
     }
 
+    /* ICONE LIBRO */
     .book-icons {
       display: flex;
       justify-content: center;
@@ -85,8 +86,6 @@
       cursor: pointer;
       transition: 0.2s;
       box-shadow: 0 0 10px rgba(0,0,0,0.08);
-      text-decoration: none;
-      color: black;
     }
 
     .book-icon:hover {
@@ -108,7 +107,6 @@
     .page-container img {
       width: 100%;
       height: auto;
-      object-fit: contain;
       border: 1px solid #ddd;
     }
 
@@ -130,14 +128,8 @@
       padding: 8px 18px;
       font-size: 15px;
       background: white;
-      color: black;
       border: 1px solid #ccc;
       cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .nav-buttons button:hover {
-      background: #e6e6e6;
     }
 
     #backToBooks {
@@ -152,7 +144,8 @@
 
 <body>
 
-  <nav>
+  <!-- MENU -->
+  <nav id="menu">
     <a href="index.html">Home</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="galleria-intermedia.html">Virtual Exhibitions</a>
@@ -164,9 +157,9 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <h1>Greenland – Diary</h1>
+  <h1 id="title">Greenland – Diary</h1>
 
-  <div class="button-row">
+  <div class="button-row" id="sectionButtons">
     <a href="archive-greenland.html" class="menu-btn">Photography</a>
     <a href="greenland-video.html" class="menu-btn">Video</a>
     <a href="g-drawing.html" class="menu-btn">Drawings</a>
@@ -193,7 +186,7 @@
   <!-- LETTORE -->
   <div id="reader">
     <div class="page-container">
-      <img id="page" src="" alt="Diary Page">
+      <img id="page" src="">
     </div>
 
     <div class="caption" id="caption">Page 01</div>
@@ -216,15 +209,27 @@
       lang = selectedLang;
       index = 1;
 
+      // NASCONDE TUTTO
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("title").style.display = "none";
+      document.getElementById("sectionButtons").style.display = "none";
       document.getElementById("bookChoice").style.display = "none";
+
+      // MOSTRA SOLO IL LETTORE
       document.getElementById("reader").style.display = "block";
 
       updatePage();
     }
 
     function closeBook() {
-      document.getElementById("reader").style.display = "none";
+      // MOSTRA TUTTO
+      document.getElementById("menu").style.display = "flex";
+      document.getElementById("title").style.display = "block";
+      document.getElementById("sectionButtons").style.display = "flex";
       document.getElementById("bookChoice").style.display = "block";
+
+      // NASCONDE IL LETTORE
+      document.getElementById("reader").style.display = "none";
     }
 
     function updatePage() {
