@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Diary – IT</title>
+  <title>Greenland – Diary</title>
 
   <style>
     body {
@@ -11,182 +11,163 @@
       background-color: white;
       color: black;
       text-align: center;
-      overflow-y: hidden; /* NIENTE SCROLL */
     }
 
-    h1 {
-      font-size: 20px;
-      margin: 15px 0;
-    }
-
-    .page-container {
-      width: 100%;
-      max-width: 500px;
-      margin: 10px auto 5px auto;
-    }
-
-    .page-container img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      border: 1px solid #ddd;
-    }
-
-    .caption {
-      font-size: 15px;
-      margin: 5px auto 10px auto;
-      max-width: 500px;
-    }
-
-    .nav-buttons {
+    /* MENU PRINCIPALE */
+    nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 500px;
-      margin: 0 auto;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
     }
 
-    .nav-buttons button {
-      padding: 8px 18px;
-      font-size: 15px;
-      background: white;
+    nav a {
+      text-decoration: none;
       color: black;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: 0.2s;
     }
 
-    .nav-buttons button:hover {
+    /* TITOLO */
+    h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    /* PULSANTI SEZIONI */
+    .button-row {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-btn {
+      padding: 12px 0;
+      width: 150px;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+      transition: 0.2s;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .menu-btn:hover {
       background: #e6e6e6;
     }
 
-    .nav-buttons button:disabled {
-      background: #f2f2f2;
-      color: #999;
-      border-color: #ddd;
+    .selected {
+      background: #e6e6e6;
+      color: black;
       cursor: default;
+      border-color: #ccc;
     }
 
-    /* MODAL INFO */
-    #infoModal {
-      display:none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.35);
-      backdrop-filter: blur(2px);
+    /* CONTENITORE DIARIO */
+    .diary-container {
+      width: 100%;
+      max-width: 900px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    /* ICONE LIBRO */
+    .book-icons {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .book-icon {
+      width: 260px;
+      height: 360px;
+      border: 1px solid #ccc;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 9999;
+      font-size: 22px;
+      cursor: pointer;
+      transition: 0.2s;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: black;
     }
 
-    #infoBox {
-      background: white;
-      padding: 25px;
-      width: 90%;
-      max-width: 450px;
-      border: 1px solid #ccc;
-      text-align: left;
+    .book-icon:hover {
+      background: #e6e6e6;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 60px;
+      font-size: 16px;
+      color: #555;
+      padding-bottom: 40px;
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Diary – Italian Version</h1>
+  <!-- MENU PRINCIPALE -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="progetto.html">CIMA Project</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+    <a href="opere.html">Works</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="biography.html">Biography</a>
+    <a href="contatti.html">Contacts</a>
+    <a href="work-in-progress.html">Buy</a>
+  </nav>
 
-  <div class="page-container">
-    <img id="page" src="L-it1.jpg" alt="Diary Page">
+  <!-- TITOLO -->
+  <h1>Greenland – Diary</h1>
+
+  <!-- PULSANTI SEZIONI -->
+  <div class="button-row">
+    <a href="archive-greenland.html" class="menu-btn">Photography</a>
+    <a href="greenland-video.html" class="menu-btn">Video</a>
+    <a href="g-drawing.html" class="menu-btn">Drawings</a>
+    <a href="greenland-diary.html" class="menu-btn selected">Diary</a>
   </div>
 
-  <div class="caption" id="caption">
-    Page 01
-  </div>
+  <!-- CONTENITORE DIARIO -->
+  <div class="diary-container">
 
-  <div class="nav-buttons">
-    <button id="backBtn">Back</button>
-    <button id="infoBtn">Info</button>
-    <button id="nextBtn">Next</button>
-  </div>
+    <h2>Diary – Choose your language</h2>
 
-  <!-- MODAL INFO -->
-  <div id="infoModal">
-    <div id="infoBox">
-      <h2 style="margin-top:0; font-size:18px;">Technical Sheet</h2>
+    <div class="book-icons">
 
-      <div id="modalContent" style="font-size:15px; line-height:1.5;"></div>
+      <!-- LIBRO EN -->
+      <a class="book-icon" href="greenland-diary-en.html">
+        <strong>GREENLAND</strong>
+        <span style="font-size:16px; margin-top:10px;">Diary – EN</span>
+      </a>
 
-      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
-        <button id="closeModal" style="
-          padding: 8px 18px;
-          background:white;
-          border:1px solid #ccc;
-          cursor:pointer;
-        ">Close</button>
-      </div>
+      <!-- LIBRO IT -->
+      <a class="book-icon" href="greenland-diary-it.html">
+        <strong>GROENLANDIA</strong>
+        <span style="font-size:16px; margin-top:10px;">Diario – IT</span>
+      </a>
+
     </div>
+
   </div>
 
-  <script>
-    let index = 1;
-    const totalPages = 1; // aggiorneremo quando aggiungi L-it2.jpg
-
-    const page = document.getElementById("page");
-    const caption = document.getElementById("caption");
-    const backBtn = document.getElementById("backBtn");
-    const nextBtn = document.getElementById("nextBtn");
-
-    function updatePage() {
-      const num = String(index).padStart(2, '0');
-      page.src = `L-it${index}.jpg`;
-      caption.textContent = `Page ${num}`;
-      backBtn.disabled = index === 1;
-      nextBtn.disabled = index === totalPages;
-    }
-
-    backBtn.onclick = () => {
-      if (index > 1) index--;
-      updatePage();
-    };
-
-    nextBtn.onclick = () => {
-      if (index < totalPages) index++;
-      updatePage();
-    };
-
-    updatePage();
-
-    // INFO MODAL
-    const infoBtn = document.getElementById("infoBtn");
-    const modal = document.getElementById("infoModal");
-    const closeModal = document.getElementById("closeModal");
-    const modalContent = document.getElementById("modalContent");
-
-    infoBtn.onclick = () => {
-      const num = String(index).padStart(2, '0');
-
-      modalContent.innerHTML = `
-        <strong>Title:</strong> Greenland – Diary<br>
-        <strong>Page:</strong> ${num}<br>
-        <strong>Language:</strong> Italian<br>
-        <strong>Author:</strong> Giorgio Sedda<br>
-        <strong>Project:</strong> CIMA Project<br>
-        <strong>Technique:</strong> Travel diary narrative<br>
-        <strong>Year:</strong> 2023–2024<br><br>
-        This page is part of the narrative diary created during the winter journey in Greenland.
-      `;
-
-      modal.style.display = "flex";
-    };
-
-    closeModal.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  </script>
+  <!-- FOOTER -->
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
 
 </body>
 </html>
