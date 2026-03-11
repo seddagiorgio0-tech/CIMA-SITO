@@ -70,24 +70,142 @@
       flex-wrap: wrap;
     }
 
+    /* ---------------------------------------------------- */
+    /*   BOOK ICON — VERSIONE CALDA, NARRATIVA, CONTINUA    */
+    /* ---------------------------------------------------- */
+
     .book-icon {
       width: 260px;
       height: 360px;
-      border: 1px solid #ccc;
-      background: #f2f2f2;
+      border: 1px solid #cfc7b8;
+      background: #f7f3e9;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 22px;
       cursor: pointer;
-      transition: 0.2s;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      transition: 0.35s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      border-radius: 6px;
     }
 
     .book-icon:hover {
-      background: #e6e6e6;
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      background: #f3ecdf;
     }
+
+    /* Titoli poetici */
+    .book-icon strong {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .book-icon span {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    /* LIBRO APERTO */
+    .open-book {
+      width: 170px;
+      height: 210px;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      margin-bottom: 20px;
+      position: relative;
+      transform: rotate(-1deg);
+    }
+
+    .page {
+      flex: 1;
+      background: #faf4e6;
+      border: 1px solid #d8d0c0;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.10);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page.left {
+      border-right: none;
+    }
+
+    .page.right {
+      border-left: none;
+    }
+
+    /* Piega morbida */
+    .page::after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0) 0%, #e8dfcf 100%);
+      border-bottom-right-radius: 4px;
+      opacity: 0.8;
+    }
+
+    /* ---------------------------------------------------- */
+    /*   MAPPA CONTINUA — C1 (RICCA, NARRATIVA, AVVENTURA)  */
+    /* ---------------------------------------------------- */
+
+    .map-continua {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 200%;
+      height: 80%;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .map-continua svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ---------------------------------------------------- */
+    /*   PIEGHE DELLA CARTA (DIAGONALI)                     */
+    /* ---------------------------------------------------- */
+
+    .fold {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 40%);
+      pointer-events: none;
+    }
+
+    .fold2 {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(225deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 40%);
+      pointer-events: none;
+    }
+
+    /* ---------------------------------------------------- */
+    /*   MOVIMENTO PIÙ VIVO                                 */
+    /* ---------------------------------------------------- */
+
+    .book-icon:hover .open-book {
+      transform: rotate(-2deg) translateY(-2px);
+    }
+
+    /* ---------------------------------------------------- */
+    /*   LETTORE + MODAL (resto invariato)                  */
+    /* ---------------------------------------------------- */
 
     .footer {
       margin-top: 60px;
@@ -96,7 +214,6 @@
       padding-bottom: 40px;
     }
 
-    /* LETTORE — COPRE TUTTO E NON LASCIA NULLA SOPRA */
     #reader {
       display: none;
       position: fixed;
@@ -152,7 +269,6 @@
       font-size: 14px;
     }
 
-    /* MODAL INFO — SEMPRE SOPRA AL LETTORE */
     #infoModal {
       display:none;
       position: fixed;
@@ -162,7 +278,7 @@
       backdrop-filter: blur(2px);
       justify-content: center;
       align-items: center;
-      z-index: 10000; /* <<< PIÙ ALTO DEL LETTORE */
+      z-index: 10000;
     }
 
     #infoBox {
@@ -173,9 +289,37 @@
       border: 1px solid #ccc;
       text-align: left;
     }
-  </style>
 
-</head>
+/* SFONDO DEL LETTORE – colore avorio come le icone */
+#reader {
+  background: #f7f3e9;
+}
+
+/* CONTENITORE DELLA PAGINA – sfumatura morbida */
+.page-container {
+  background: linear-gradient(
+    to bottom,
+    #f7f3e9 0%,
+    #f3ecdf 100%
+  );
+  padding: 20px 0; /* leggermente ridotto */
+}
+
+/* PAGINA DEL DIARIO – ridotta per evitare scroll */
+.page-container img {
+  background: #f7f3e9;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+
+  max-height: 86vh;   /* <— QUESTA È LA CHIAVE */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+  </style></head>
 
 <body>
 
@@ -204,15 +348,121 @@
     <h2>Diary – Choose your language</h2>
 
     <div class="book-icons">
+
+      <!-- ICONA EN — MAPPA CONTINUA -->
       <div class="book-icon" onclick="openBook('en')">
+        <div class="open-book">
+
+          <div class="page left">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <!-- Percorso principale -->
+                <path d="M20 150 
+                         Q80 40 150 80 
+                         T280 60 
+                         Q330 90 380 40"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+                <!-- Tratteggi -->
+                <path d="M150 80 L200 100"
+                      stroke="#b8ae9f" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+
+                <!-- Simboli -->
+                <circle cx="20" cy="150" r="6" fill="#b8ae9f"/> <!-- punto di partenza -->
+                <circle cx="150" cy="80" r="5" fill="#b8ae9f"/> <!-- punto intermedio -->
+                <polygon points="280,60 275,70 285,70" fill="#b8ae9f"/> <!-- direzione -->
+                <line x1="380" y1="35" x2="390" y2="45" stroke="#b8ae9f" stroke-width="4"/> <!-- croce -->
+                <line x1="390" y1="35" x2="380" y2="45" stroke="#b8ae9f" stroke-width="4"/>
+
+                <!-- Bussola -->
+                <line x1="200" y1="20" x2="200" y2="50" stroke="#b8ae9f" stroke-width="3"/>
+                <line x1="185" y1="35" x2="215" y2="35" stroke="#b8ae9f" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+          <div class="page right">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <!-- Continuazione percorso -->
+                <path d="M20 40 
+                         Q80 120 150 100 
+                         T280 140 
+                         Q330 110 380 160"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+                <!-- Tratteggi -->
+                <path d="M150 100 L200 120"
+                      stroke="#b8ae9f" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+
+                <!-- Simboli -->
+                <circle cx="20" cy="40" r="6" fill="#b8ae9f"/> <!-- punto -->
+                <circle cx="150" cy="100" r="5" fill="#b8ae9f"/> <!-- punto -->
+                <polygon points="280,140 275,150 285,150" fill="#b8ae9f"/> <!-- direzione -->
+                <line x1="380" y1="155" x2="390" y2="165" stroke="#b8ae9f" stroke-width="4"/>
+                <line x1="390" y1="155" x2="380" y2="165" stroke="#b8ae9f" stroke-width="4"/>
+
+                <!-- Bussola -->
+                <line x1="200" y1="20" x2="200" y2="50" stroke="#b8ae9f" stroke-width="3"/>
+                <line x1="185" y1="35" x2="215" y2="35" stroke="#b8ae9f" stroke-width="3"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+        </div>
         <strong>GREENLAND</strong>
-        <span style="font-size:16px; margin-top:10px;">Diary – EN</span>
+        <span>Diary – EN</span>
       </div>
 
+      <!-- ICONA IT — MAPPA CONTINUA -->
       <div class="book-icon" onclick="openBook('it')">
+        <div class="open-book">
+
+          <div class="page left">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 150 Q80 40 150 80 T280 60 Q330 90 380 40"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M150 80 L200 100"
+                      stroke="#b8ae9f" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+                <circle cx="20" cy="150" r="6" fill="#b8ae9f"/>
+                <circle cx="150" cy="80" r="5" fill="#b8ae9f"/>
+                <polygon points="280,60 275,70 285,70" fill="#b8ae9f"/>
+                <line x1="380" y1="35" x2="390" y2="45" stroke="#b8ae9f" stroke-width="4"/>
+                <line x1="390" y1="35" x2="380" y2="45" stroke="#b8ae9f" stroke-width="4"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+          <div class="page right">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 40 Q80 120 150 100 T280 140 Q330 110 380 160"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+                <path d="M150 100 L200 120"
+                      stroke="#b8ae9f" stroke-width="3" stroke-dasharray="6 6" fill="none"/>
+                <circle cx="20" cy="40" r="6" fill="#b8ae9f"/>
+                <circle cx="150" cy="100" r="5" fill="#b8ae9f"/>
+                <polygon points="280,140 275,150 285,150" fill="#b8ae9f"/>
+                <line x1="380" y1="155" x2="390" y2="165" stroke="#b8ae9f" stroke-width="4"/>
+                <line x1="390" y1="155" x2="380" y2="165" stroke="#b8ae9f" stroke-width="4"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+        </div>
         <strong>GROENLANDIA</strong>
-        <span style="font-size:16px; margin-top:10px;">Diario – IT</span>
+        <span>Diario – IT</span>
       </div>
+
     </div>
   </div>
 
