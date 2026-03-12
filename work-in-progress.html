@@ -1,171 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Buy – CIMA Project</title>
-
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: white;
-    color: black;
-    text-align: center;
-}
-
-/* NAVIGAZIONE */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 30px 0 5px 0;
-    font-size: 16px;
-    position: relative;
-}
-nav a {
-    text-decoration: none;
-    color: black;
-}
-nav a.active {
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-/* CONTENITORE LOGO + NOME */
-.logo-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-    margin-top: 10px;
-}
-.logo-a {
-    display: block;
-    margin: 5px auto 0 auto;
-    max-width: 220px;
-    height: auto;
-}
-.logo-cima {
-    display: block;
-    margin: 0 auto;
-    max-width: 260px;
-    height: auto;
-}
-
-/* NOME A DESTRA DEL LOGO */
-.name-right {
-    position: absolute;
-    top: 50%;
-    right: -150px;
-    transform: translateY(-50%);
-    font-size: 22px;
-    color: #555;
-    font-weight: bold;
-    letter-spacing: 1px;
-    white-space: nowrap;
-}
-
-/* VERSIONE MOBILE */
-@media (max-width: 600px) {
-    .name-right {
-        position: static;
-        display: block;
-        margin-top: 10px;
-        transform: none;
-        text-align: center;
+  <meta charset="UTF-8">
+  <title>Artwork Purchase – Guided Procedure</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: #111111;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.5;
     }
-}
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    h3 {
+      font-size: 1rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+    p {
+      margin: 0 0 0.8rem 0;
+    }
+    .section {
+      border-top: 1px solid #e0e0e0;
+      padding-top: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    label {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #d0d0d0;
+      border-radius: 2px;
+      font-size: 0.9rem;
+      background: #fafafa;
+      box-sizing: border-box;
+    }
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+    .field {
+      margin-bottom: 1rem;
+    }
+    .hint {
+      font-size: 0.8rem;
+      color: #777777;
+      margin-top: 0.2rem;
+    }
+    .summary-box {
+      border: 1px solid #e0e0e0;
+      padding: 12px 14px;
+      font-size: 0.9rem;
+      background: #fafafa;
+    }
+    .button-row {
+      margin-top: 2rem;
+    }
+    button {
+      padding: 10px 22px;
+      font-size: 0.9rem;
+      border-radius: 2px;
+      border: 1px solid #111111;
+      background: #111111;
+      color: #ffffff;
+      cursor: pointer;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    button:hover {
+      background: #ffffff;
+      color: #111111;
+    }
 
-hr {
-    width: 200px;
-    margin: 5px auto;
-    border: none;
-    border-top: 1px solid black;
-}
-
-/* BLOCCO CENTRALE */
-.central-block {
-    width: 720px;
-    max-width: 100%;
-    margin: 0 auto;
-    margin-top: 40px;
-    text-align: center;
-    line-height: 1.6;
-}
-h1 {
-    font-size: 26px;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-}
-p {
-    font-size: 18px;
-    color: #444;
-    margin-top: 10px;
-}
-
-/* BOTTONE PAYPAL */
-.paypal-button {
-    display: inline-block;
-    padding: 12px 28px;
-    border: 1px solid black;
-    background: white;
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    letter-spacing: 1px;
-    transition: 0.3s;
-}
-.paypal-button:hover {
-    background: black;
-    color: white;
-}
-
-/* FOOTER */
-.footer {
-    margin-top: 60px;
-    font-size: 16px;
-    color: #555;
-    text-align: center;
-}
-</style>
-
+    #section-photo,
+    #section-drawing,
+    #section-catalogue {
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
+  <div class="container">
+    <h1>Artwork Purchase – Guided Procedure</h1>
+    <p>A curated selection, produced on request. Fill in the details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
 
-<nav>
-    <a href="index.html">Home</a>
-    <a href="progetto.html">CIMA Project</a>
-    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
-    <a href="opere.html">Works</a>
-    <a href="book.html">Book</a>
-    <a href="news.html">News</a>
-    <a href="biography.html">Biography</a>
-    <a href="contatti.html">Contacts</a>
-    <a href="work-in-progress.html" class="active">Buy</a>
-</nav>
+    <form action="#" method="post">
 
-<!-- LOGO + NOME -->
-<div class="logo-wrapper">
-    <img src="logo-a.png" alt="CIMA symbol" class="logo-a">
-    <img src="logo-cima.png" alt="CIMA – Crossing Into My Art" class="logo-cima">
-    <div class="name-right">GIORGIO SEDDA</div>
-</div>
+      <!-- 1. PERSONAL DETAILS -->
+      <div class="section">
+        <h2>1. Personal details</h2>
 
-<hr>
+        <div class="field">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" name="first_name">
+        </div>
 
-<div class="central-block">
-    <h1>Buy</h1>
-    <p>You can purchase works or support the CIMA Project through PayPal.</p>
+        <div class="field">
+          <label for="last-name">Last name</label>
+          <input type="text" id="last-name" name="last_name">
+        </div>
 
-    <!-- PULSANTE PAYPAL AGGIORNATO -->
-    <a href="https://paypal.me/giorgiosedda" target="_blank" class="paypal-button">
-        Buy with PayPal
-    </a>
-</div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
 
-<div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
-</div>
+        <div class="field">
+          <label for="address">Address (only for physical artworks)</label>
+          <input type="text" id="address" name="address">
+        </div>
+      </div>
+
+      <!-- 2. SELECT ARTWORK -->
+      <div class="section">
+        <h2>2. Select the artwork</h2>
+
+        <div class="field">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <option value="">— select —</option>
+            <option value="photo">Photography</option>
+            <option value="drawing">Drawing</option>
+            <option value="catalogue">Printed catalogue</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="artwork-title">Artwork title (required)</label>
+          <input type="text" id="artwork-title" name="artwork_title" required>
+        </div>
+
+        <!-- PHOTOGRAPHY -->
+        <div id="section-photo">
+          <h3>Photography</h3>
+
+          <div class="field">
+            <label for="photo-support">Support</label>
+            <select id="photo-support" name="photo_support">
+              <option value="">— select —</option>
+              <option value="aluminum">3 mm aluminum</option>
+              <option value="paper">Paper</option>
+              <option value="forex">Forex</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="photo-size">Format / Size</label>
+            <select id="photo-size" name="photo_size">
+              <option value="">— select —</option>
+              <option value="small">30–40 cm</option>
+              <option value="medium">50–70 cm</option>
+              <option value="large">80–100 cm</option>
+            </select>
+          </div>
+
+          <p class="hint">Edition: Limited edition of 5 total prints (including 1 artist’s proof).</p>
+        </div>
+
+        <!-- DRAWINGS -->
+        <div id="section-drawing">
+          <h3>Drawing</h3>
+
+          <div class="field">
+            <label for="drawing-type">Type of artwork</label>
+            <select id="drawing-type" name="drawing_type">
+              <option value="">— select —</option>
+              <option value="original">Original drawing — price based on format</option>
+              <option value="fineart">Fine‑art print — price based on format</option>
+            </select>
+          </div>
+
+          <div class="field" id="original-sizes">
+            <label for="original-size">Format / Size</label>
+            <select id="original-size" name="original_size">
+              <option value="">— select —</option>
+              <option value="small">A5–A4 — € 480</option>
+              <option value="medium">A3 — € 950</option>
+              <option value="large">70×100 – 100×140 — € 2.200</option>
+              <option value="xl">140×200 — € 4.800</option>
+              <option value="xxl">180×250 — € 10.000</option>
+            </select>
+          </div>
+
+          <div class="field" id="fineart-sizes">
+            <label for="fineart-size">Format / Size</label>
+            <select id="fineart-size" name="fineart_size">
+              <option value="">— select —</option>
+              <option value="small">A5–A4 — € 150</option>
+              <option value="medium">A3 — € 280</option>
+              <option value="large">70×100 — € 450</option>
+              <option value="xl">100×140 — € 750</option>
+              <option value="xxl">140×200 — € 1.200</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- PRINTED CATALOGUE -->
+        <div id="section-catalogue">
+          <h3>Printed catalogue</h3>
+
+          <div class="field">
+            <label for="catalogue-type">Choose edition</label>
+            <select id="catalogue-type" name="catalogue_type">
+              <option value="">— select —</option>
+              <option value="africa">Africa — € 5</option>
+              <option value="iceland">Iceland — € 3</option>
+            </select>
+          </div>
+        </div>
+
+        <input type="hidden" id="format-price-hidden" name="format_price" value="">
+      </div>
+
+      <!-- 3. SUMMARY -->
+      <div class="section">
+        <h2>3. Summary</h2>
+        <div class="summary-box">
+          <p><strong>Artwork title:</strong> <span id="summary-title">[not provided]</span></p>
+          <p><strong>Selected artwork:</strong> <span id="summary-artwork">[will be confirmed via email]</span></p>
+          <p><strong>Format & price:</strong> <span id="summary-format-price">[based on selection]</span></p>
+          <p><strong>Total price:</strong> <span id="summary-price">[based on selection]</span></p>
+          <p><strong>Shipping costs:</strong> will be communicated in the confirmation email</p>
+          <p><strong>Delivery time:</strong> will be communicated in the confirmation email</p>
+        </div>
+      </div>
+
+      <!-- 4. NOTES -->
+      <div class="section">
+        <h2>4. Notes (optional)</h2>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+
+      <!-- 5. SUBMIT -->
+      <div class="section button-row">
+        <h2>5. Send your request</h2>
+        <p class="hint">After submitting the form, you will receive a confirmation email. Only then you will be able to complete the purchase via PayPal.</p>
+        <button type="submit">Send purchase request</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- SCRIPT -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+
+    const category = document.getElementById("category");
+
+    const sectionPhoto = document.getElementById("section-photo");
+    const sectionDrawing = document.getElementById("section-drawing");
+    const sectionCatalogue = document.getElementById("section-catalogue");
+
+    const photoSupport = document.getElementById("photo-support");
+    const photoSize = document.getElementById("photo-size");
+
+    const drawingType = document.getElementById("drawing-type");
+    const originalSizes = document.getElementById("original-sizes");
+    const fineartSizes = document.getElementById("fineart-sizes");
+    const originalSize = document.getElementById("original-size");
+    const fineartSize = document.getElementById("fineart-size");
+
+    const catalogueType = document.getElementById("catalogue-type");
+
+    const artworkTitle = document.getElementById("artwork-title");
+
+    const summaryTitle = document.getElementById("summary-title");
+    const summaryArtwork = document.getElementById("summary-artwork");
+    const summaryFormatPrice = document.getElementById("summary-format-price");
+    const summaryPrice = document.getElementById("summary-price");
+    const hiddenFormatPrice = document.getElementById("format-price-hidden");
+
+    const priceTable = {
+      aluminum: { small: 220, medium: 500, large: 1200 },
+      paper:    { small: 176, medium: 400, large: 960 },
+      forex:    { small: 176, medium: 400, large: 960 }
+    };
+
+    const cataloguePrices = {
+      africa: 5,
+      iceland: 3
+    };
+
+    function hideAll() {
+      sectionPhoto.style.display = "none";
+      sectionDrawing.style.display = "none";
+      sectionCatalogue.style.display = "none";
+    }
+
+    function updateFormatOptions() {
+      const support = photoSupport.value;
+
+      const labels = {
+        small: "30–40 cm",
+        medium: "50–70 cm",
+        large: "80–100 cm"
+      };
+
+      if (!support) {
+        photoSize.innerHTML = `
+          <option value="">— select —</option>
+          <option value="small">30–40 cm</option>
+          <option value="medium">50–70 cm</option>
+          <option value="large">80–100 cm</option>
+        `;
+        return;
+      }
+
+      photoSize.innerHTML = `
+        <option value="">— select —</option>
+        <option value="small">${labels.small} — € ${priceTable[support].small}</option>
+        <option value="medium">${labels.medium} — € ${priceTable[support].medium}</option>
+        <option value="large">${labels.large} — € ${priceTable[support].large}</option>
+      `;
+    }
+
+    function updateVisibility() {
+      hideAll();
+
+      if (category.value === "photo") {
+        sectionPhoto.style.display = "block";
+        updateFormatOptions();
+      }
+
+      if (category.value === "drawing") {
+        sectionDrawing.style.display = "block";
+      }
+
+      if (category.value === "catalogue") {
+        sectionCatalogue.style.display = "block";
+      }
+
+      updateSummary();
+    }
+
+    function updateDrawingOptions() {
+      originalSizes.style.display = "none";
+      fineartSizes.style.display = "none";
+
+      if (drawingType.value === "original") {
+        originalSizes.style.display = "block";
+      }
+
+      if (drawingType.value === "fineart") {
+        fineartSizes.style.display = "block";
+      }
+
+      updateSummary();
+    }
+
+    function updateSummary() {
+      let artwork = "";
+      let formatPrice = "";
+      let price = "";
+
+      summaryTitle.textContent = artworkTitle.value || "[not provided]";
+
+      if (category.value === "photo") {
+        artwork = "Photography";
+
+        const support = photoSupport.value;
+        const size = photoSize.value;
+
+        if (support && size) {
+          price = "€ " + priceTable[support][size];
+          formatPrice = photoSize.options[photoSize.selectedIndex].text;
+        }
+      }
+
+      if (category.value === "drawing") {
+
+        if (drawingType.value === "original") {
+          artwork = "Original drawing";
+
+          const size = originalSize.value;
+
+          if (size === "small") { price = "€ 480"; formatPrice = "A5–A4 — € 480"; }
+          if (size === "medium") { price = "€ 950"; formatPrice = "A3 — € 950"; }
+          if (size === "large") { price = "€ 2.200"; formatPrice = "70×100 – 100×140 — € 2.200"; }
+          if (size === "xl") { price = "€ 4.800"; formatPrice = "140×200 — € 4.800"; }
+          if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
+        }
+
+        if (drawingType.value === "fineart") {
+          artwork = "Fine‑art print";
+
+          const size = fineartSize.value;
+
+          if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
+          if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
+          if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
+          if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
+          if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
+        }
+      }
+
+      if (category.value === "catalogue") {
+        artwork = "Printed catalogue";
+
+        const type = catalogueType.value;
+
+        if (type === "africa") {
+          price = "€ 5";
+          formatPrice = "Africa — € 5";
+        }
+
+        if (type === "iceland") {
+          price = "€ 3";
+          formatPrice = "Iceland — € 3";
+        }
+      }
+
+      summaryArtwork.textContent = artwork || "[will be confirmed via email]";
+      summaryFormatPrice.textContent = formatPrice || "[based on selection]";
+      summaryPrice.textContent = price || "[based on selection]";
+
+      hiddenFormatPrice.value = formatPrice || "";
+    }
+
+    category.addEventListener("change", updateVisibility);
+
+    artworkTitle.addEventListener("input", updateSummary);
+
+    photoSupport.addEventListener("change", function() {
+      updateFormatOptions();
+      updateSummary();
+    });
+
+    photoSize.addEventListener("change", updateSummary);
+
+    drawingType.addEventListener("change", updateDrawingOptions);
+    originalSize.addEventListener("change", updateSummary);
+    fineartSize.addEventListener("change", updateSummary);
+
+    catalogueType.addEventListener("change", updateSummary);
+
+    updateVisibility();
+    updateSummary();
+
+  });
+  </script>
 
 </body>
 </html>
