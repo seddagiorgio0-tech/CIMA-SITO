@@ -109,7 +109,13 @@
     <h1>Artwork Purchase – Guided Procedure</h1>
     <p>A curated selection, produced on request. Fill in the details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
 
-    <form action="#" method="post">
+    <!-- FORM SUBMIT ACTIVATED -->
+    <form action="https://formsubmit.co/info@giorgiosedda.com" method="POST">
+
+      <!-- FormSubmit hidden fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_subject" value="New purchase request from your website">
 
       <!-- 1. PERSONAL DETAILS -->
       <div class="section">
@@ -299,11 +305,6 @@
       aluminum: { small: 220, medium: 500, large: 1200 },
       paper:    { small: 176, medium: 400, large: 960 },
       forex:    { small: 176, medium: 400, large: 960 }
-    };
-
-    const cataloguePrices = {
-      africa: 5,
-      iceland: 3
     };
 
     function hideAll() {
