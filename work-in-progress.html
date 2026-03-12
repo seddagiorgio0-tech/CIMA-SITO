@@ -272,199 +272,236 @@
     </form>
   </div>
 
-  <!-- SCRIPT -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
+ <!-- SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
 
-    const category = document.getElementById("category");
+  /* ---------------------------------------------------------
+     1. PRECOMPILAZIONE SOLO DEL TITOLO (SE ARRIVA DAL BUY)
+     --------------------------------------------------------- */
+  const params = new URLSearchParams(window.location.search);
+  const incomingTitle = params.get("title");
 
-    const sectionPhoto = document.getElementById("section-photo");
-    const sectionDrawing = document.getElementById("section-drawing");
-    const sectionCatalogue = document.getElementById("section-catalogue");
+  const artworkTitle = document.getElementById("artwork-title");
+  const summaryTitle = document.getElementById("summary-title");
 
-    const photoSupport = document.getElementById("photo-support");
-    const photoSize = document.getElementById("photo-size");
+  if (incomingTitle) {
+    artworkTitle.value = incomingTitle;
+    summaryTitle.textContent = incomingTitle;
+  }
 
-    const drawingType = document.getElementById("drawing-type");
-    const originalSizes = document.getElementById("original-sizes");
-    const fineartSizes = document.getElementById("fineart-sizes");
-    const originalSize = document.getElementById("original-size");
-    const fineartSize = document.getElementById("fineart-size");
+  /* ---------------------------------------------------------
+     2. VARIABILI DEL MODULO
+     --------------------------------------------------------- */
+  const category = document.getElementById("category");
 
-    const catalogueType = document.getElementById("catalogue-type");
+  const sectionPhoto = document.getElementById("section-photo");
+  const sectionDrawing = document.getElementById("section-drawing");
+  const sectionCatalogue = document.getElementById("section-catalogue");
 
-    const artworkTitle = document.getElementById("artwork-title");
+  const photoSupport = document.getElementById("photo-support");
+  const photoSize = document.getElementById("photo-size");
 
-    const summaryTitle = document.getElementById("summary-title");
-    const summaryArtwork = document.getElementById("summary-artwork");
-    const summaryFormatPrice = document.getElementById("summary-format-price");
-    const summaryPrice = document.getElementById("summary-price");
-    const hiddenFormatPrice = document.getElementById("format-price-hidden");
+  const drawingType = document.getElementById("drawing-type");
+  const originalSizes = document.getElementById("original-sizes");
+  const fineartSizes = document.getElementById("fineart-sizes");
+  const originalSize = document.getElementById("original-size");
+  const fineartSize = document.getElementById("fineart-size");
 
-    const priceTable = {
-      aluminum: { small: 220, medium: 500, large: 1200 },
-      paper:    { small: 176, medium: 400, large: 960 },
-      forex:    { small: 176, medium: 400, large: 960 }
+  const catalogueType = document.getElementById("catalogue-type");
+
+  const summaryArtwork = document.getElementById("summary-artwork");
+  const summaryFormatPrice = document.getElementById("summary-format-price");
+  const summaryPrice = document.getElementById("summary-price");
+  const hiddenFormatPrice = document.getElementById("format-price-hidden");
+
+  /* Prezzi fotografie */
+  const priceTable = {
+    aluminum: { small: 220, medium: 500, large: 1200 },
+    paper:    { small: 176, medium: 400, large: 960 },
+    forex:    { small: 176, medium: 400, large: 960 }
+  };
+
+  /* ---------------------------------------------------------
+     3. FUNZIONI DI UTILITÀ
+     --------------------------------------------------------- */
+  function hideAll() {
+    sectionPhoto.style.display = "none";
+    sectionDrawing.style.display = "none";
+    sectionCatalogue.style.display = "none";
+  }
+
+  function updateFormatOptions() {
+    const support = photoSupport.value;
+
+    const labels = {
+      small: "30–40 cm",
+      medium: "50–70 cm",
+      large: "80–100 cm"
     };
 
-    function hideAll() {
-      sectionPhoto.style.display = "none";
-      sectionDrawing.style.display = "none";
-      sectionCatalogue.style.display = "none";
-    }
-
-    function updateFormatOptions() {
-      const support = photoSupport.value;
-
-      const labels = {
-        small: "30–40 cm",
-        medium: "50–70 cm",
-        large: "80–100 cm"
-      };
-
-      if (!support) {
-        photoSize.innerHTML = `
-          <option value="">— select —</option>
-          <option value="small">30–40 cm</option>
-          <option value="medium">50–70 cm</option>
-          <option value="large">80–100 cm</option>
-        `;
-        return;
-      }
-
+    if (!support) {
       photoSize.innerHTML = `
         <option value="">— select —</option>
-        <option value="small">${labels.small} — € ${priceTable[support].small}</option>
-        <option value="medium">${labels.medium} — € ${priceTable[support].medium}</option>
-        <option value="large">${labels.large} — € ${priceTable[support].large}</option>
+        <option value="small">30–40 cm</option>
+        <option value="medium">50–70 cm</option>
+        <option value="large">80–100 cm</option>
       `;
+      return;
     }
 
-    function updateVisibility() {
-      hideAll();
+    photoSize.innerHTML = `
+      <option value="">— select —</option>
+      <option value="small">${labels.small} — € ${priceTable[support].small}</option>
+      <option value="medium">${labels.medium} — € ${priceTable[support].medium}</option>
+      <option value="large">${labels.large} — € ${priceTable[support].large}</option>
+    `;
+  }
 
-      if (category.value === "photo") {
-        sectionPhoto.style.display = "block";
-        updateFormatOptions();
-      }
+  /* ---------------------------------------------------------
+     4. MOSTRARE LE SEZIONI IN BASE ALLA CATEGORIA
+     --------------------------------------------------------- */
+  function updateVisibility() {
+    hideAll();
 
-      if (category.value === "drawing") {
-        sectionDrawing.style.display = "block";
-      }
-
-      if (category.value === "catalogue") {
-        sectionCatalogue.style.display = "block";
-      }
-
-      updateSummary();
+    if (category.value === "photo") {
+      sectionPhoto.style.display = "block";
+      updateFormatOptions();
     }
 
-    function updateDrawingOptions() {
-      originalSizes.style.display = "none";
-      fineartSizes.style.display = "none";
+    if (category.value === "drawing") {
+      sectionDrawing.style.display = "block";
+    }
+
+    if (category.value === "catalogue") {
+      sectionCatalogue.style.display = "block";
+    }
+
+    updateSummary();
+  }
+
+  /* ---------------------------------------------------------
+     5. MOSTRARE FORMATI DISEGNI IN BASE AL TIPO
+     --------------------------------------------------------- */
+  function updateDrawingOptions() {
+    originalSizes.style.display = "none";
+    fineartSizes.style.display = "none";
+
+    if (drawingType.value === "original") {
+      originalSizes.style.display = "block";
+    }
+
+    if (drawingType.value === "fineart") {
+      fineartSizes.style.display = "block";
+    }
+
+    updateSummary();
+  }
+
+  /* ---------------------------------------------------------
+     6. AGGIORNAMENTO DEL SUMMARY
+     --------------------------------------------------------- */
+  function updateSummary() {
+    let artwork = "";
+    let formatPrice = "";
+    let price = "";
+
+    /* Titolo */
+    summaryTitle.textContent = artworkTitle.value || "[not provided]";
+
+    /* Fotografie */
+    if (category.value === "photo") {
+      artwork = "Photography";
+
+      const support = photoSupport.value;
+      const size = photoSize.value;
+
+      if (support && size) {
+        price = "€ " + priceTable[support][size];
+        formatPrice = photoSize.options[photoSize.selectedIndex].text;
+      }
+    }
+
+    /* Disegni */
+    if (category.value === "drawing") {
 
       if (drawingType.value === "original") {
-        originalSizes.style.display = "block";
+        artwork = "Original drawing";
+
+        const size = originalSize.value;
+
+        if (size === "small") { price = "€ 480"; formatPrice = "A5–A4 — € 480"; }
+        if (size === "medium") { price = "€ 950"; formatPrice = "A3 — € 950"; }
+        if (size === "large") { price = "€ 2.200"; formatPrice = "70×100 – 100×140 — € 2.200"; }
+        if (size === "xl") { price = "€ 4.800"; formatPrice = "140×200 — € 4.800"; }
+        if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
       }
 
       if (drawingType.value === "fineart") {
-        fineartSizes.style.display = "block";
-      }
+        artwork = "Fine‑art print";
 
-      updateSummary();
+        const size = fineartSize.value;
+
+        if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
+        if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
+        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
+        if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
+        if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
+      }
     }
 
-    function updateSummary() {
-      let artwork = "";
-      let formatPrice = "";
-      let price = "";
+    /* Cataloghi */
+    if (category.value === "catalogue") {
+      artwork = "Printed catalogue";
 
-      summaryTitle.textContent = artworkTitle.value || "[not provided]";
+      const type = catalogueType.value;
 
-      if (category.value === "photo") {
-        artwork = "Photography";
-
-        const support = photoSupport.value;
-        const size = photoSize.value;
-
-        if (support && size) {
-          price = "€ " + priceTable[support][size];
-          formatPrice = photoSize.options[photoSize.selectedIndex].text;
-        }
+      if (type === "africa") {
+        price = "€ 5";
+        formatPrice = "Africa — € 5";
       }
 
-      if (category.value === "drawing") {
-
-        if (drawingType.value === "original") {
-          artwork = "Original drawing";
-
-          const size = originalSize.value;
-
-          if (size === "small") { price = "€ 480"; formatPrice = "A5–A4 — € 480"; }
-          if (size === "medium") { price = "€ 950"; formatPrice = "A3 — € 950"; }
-          if (size === "large") { price = "€ 2.200"; formatPrice = "70×100 – 100×140 — € 2.200"; }
-          if (size === "xl") { price = "€ 4.800"; formatPrice = "140×200 — € 4.800"; }
-          if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
-        }
-
-        if (drawingType.value === "fineart") {
-          artwork = "Fine‑art print";
-
-          const size = fineartSize.value;
-
-          if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
-          if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
-          if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
-          if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
-          if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
-        }
+      if (type === "iceland") {
+        price = "€ 8";
+        formatPrice = "Iceland — € 8";
       }
-
-      if (category.value === "catalogue") {
-        artwork = "Printed catalogue";
-
-        const type = catalogueType.value;
-
-        if (type === "africa") {
-          price = "€ 5";
-          formatPrice = "Africa — € 5";
-        }
-
-        if (type === "iceland") {
-          price = "€ 8";
-          formatPrice = "Iceland — € 8";
-        }
-      }
-
-      summaryArtwork.textContent = artwork || "[will be confirmed via email]";
-      summaryFormatPrice.textContent = formatPrice || "[based on selection]";
-      summaryPrice.textContent = price || "[based on selection]";
-
-      hiddenFormatPrice.value = formatPrice || "";
     }
 
-    category.addEventListener("change", updateVisibility);
+    /* Aggiornamento Summary */
+    summaryArtwork.textContent = artwork || "[will be confirmed via email]";
+    summaryFormatPrice.textContent = formatPrice || "[based on selection]";
+    summaryPrice.textContent = price || "[based on selection]";
 
-    artworkTitle.addEventListener("input", updateSummary);
+    hiddenFormatPrice.value = formatPrice || "";
+  }
 
-    photoSupport.addEventListener("change", function() {
-      updateFormatOptions();
-      updateSummary();
-    });
+  /* ---------------------------------------------------------
+     7. EVENT LISTENERS
+     --------------------------------------------------------- */
+  category.addEventListener("change", updateVisibility);
 
-    photoSize.addEventListener("change", updateSummary);
+  artworkTitle.addEventListener("input", updateSummary);
 
-    drawingType.addEventListener("change", updateDrawingOptions);
-    originalSize.addEventListener("change", updateSummary);
-    fineartSize.addEventListener("change", updateSummary);
-
-    catalogueType.addEventListener("change", updateSummary);
-
-    updateVisibility();
+  photoSupport.addEventListener("change", function() {
+    updateFormatOptions();
     updateSummary();
-
   });
-  </script>
+
+  photoSize.addEventListener("change", updateSummary);
+
+  drawingType.addEventListener("change", updateDrawingOptions);
+  originalSize.addEventListener("change", updateSummary);
+  fineartSize.addEventListener("change", updateSummary);
+
+  catalogueType.addEventListener("change", updateSummary);
+
+  /* Avvio iniziale */
+  updateVisibility();
+  updateSummary();
+
+});
+</script>
 
 </body>
 </html>
+
