@@ -335,23 +335,6 @@ document.addEventListener("DOMContentLoaded", function() {
 /* RICONOSCIMENTO AUTOMATICO DELLA CATEGORIA DAL TITOLO */
 if (incomingTitle) {
 
-  // Cataloghi digitali
-  if (incomingTitle.includes("Digital Edition")) {
-    category.value = "catalogue";
-    category.disabled = true;
-    updateVisibility();
-  }
-
-  // Cataloghi cartacei
-  else if (incomingTitle.includes("Printed Edition")) {
-    category.value = "catalogue";
-    category.disabled = true;
-    updateVisibility();
-  }
-
-  // (Per ora ci fermiamo qui. Fotografie e disegni li aggiungiamo dopo.)
-}
-
 
   /* ---------------------------------------------------------
      2. VARIABILI DEL MODULO
@@ -370,6 +353,24 @@ if (incomingTitle) {
   const fineartSizes = document.getElementById("fineart-sizes");
   const originalSize = document.getElementById("original-size");
   const fineartSize = document.getElementById("fineart-size");
+
+ // Cataloghi digitali
+  if (incomingTitle.includes("Digital Edition")) {
+    category.value = "catalogue";
+    category.disabled = true;
+    updateVisibility();
+  }
+
+  // Cataloghi cartacei
+  else if (incomingTitle.includes("Printed Edition")) {
+    category.value = "catalogue";
+    category.disabled = true;
+    updateVisibility();
+  }
+
+  // (Per ora ci fermiamo qui. Fotografie e disegni li aggiungiamo dopo.)
+}
+
 
   const catalogueType = document.getElementById("catalogue-type");
 
