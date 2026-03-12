@@ -150,15 +150,12 @@
     <h1>Artwork Purchase – Guided Procedure</h1>
     <p>A curated selection, produced on request. Fill in the details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
 
-    <!-- FORM SUBMIT ACTIVATED -->
     <form action="https://formsubmit.co/info@giorgiosedda.com" method="POST">
 
-      <!-- FormSubmit hidden fields -->
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_subject" value="New purchase request from your website">
 
-      <!-- 1. PERSONAL DETAILS -->
       <div class="section">
         <h2>1. Personal details</h2>
 
@@ -183,7 +180,6 @@
         </div>
       </div>
 
-      <!-- 2. SELECT ARTWORK -->
       <div class="section">
         <h2>2. Select the artwork</h2>
 
@@ -202,7 +198,6 @@
           </select>
         </div>
 
-        <!-- PHOTOGRAPHY -->
         <div id="section-photo">
           <h3>Photography</h3>
 
@@ -229,7 +224,6 @@
           <p class="hint">Edition: Limited edition of 5 total prints (including 1 artist’s proof).</p>
         </div>
 
-        <!-- DRAWINGS -->
         <div id="section-drawing">
           <h3>Drawing</h3>
 
@@ -267,7 +261,6 @@
           </div>
         </div>
 
-        <!-- CATALOGUE -->
         <div id="section-catalogue">
           <h3>Catalogue</h3>
 
@@ -286,7 +279,6 @@
         <input type="hidden" id="format-price-hidden" name="format_price" value="">
       </div>
 
-      <!-- 3. SUMMARY -->
       <div class="section">
         <h2>3. Summary</h2>
         <div class="summary-box">
@@ -299,13 +291,11 @@
         </div>
       </div>
 
-      <!-- 4. NOTES -->
       <div class="section">
         <h2>4. Notes (optional)</h2>
         <textarea id="notes" name="notes"></textarea>
       </div>
 
-      <!-- 5. SUBMIT -->
       <div class="section button-row">
         <h2>5. Send your request</h2>
         <p class="hint">After submitting the form, you will receive a confirmation email. Only then you will be able to complete the purchase via PayPal.</p>
@@ -314,13 +304,10 @@
 
     </form>
   </div>
-<!-- SCRIPT -->
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  /* ---------------------------------------------------------
-     1. PRECOMPILAZIONE SOLO DEL TITOLO (SE ARRIVA DAL BUY)
-     --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
 
@@ -332,13 +319,6 @@ document.addEventListener("DOMContentLoaded", function() {
     summaryTitle.textContent = incomingTitle;
   }
 
-/* RICONOSCIMENTO AUTOMATICO DELLA CATEGORIA DAL TITOLO */
-if (incomingTitle) {
-
-
-  /* ---------------------------------------------------------
-     2. VARIABILI DEL MODULO
-     --------------------------------------------------------- */
   const category = document.getElementById("category");
 
   const sectionPhoto = document.getElementById("section-photo");
@@ -354,24 +334,6 @@ if (incomingTitle) {
   const originalSize = document.getElementById("original-size");
   const fineartSize = document.getElementById("fineart-size");
 
- // Cataloghi digitali
-  if (incomingTitle.includes("Digital Edition")) {
-    category.value = "catalogue";
-    category.disabled = true;
-    updateVisibility();
-  }
-
-  // Cataloghi cartacei
-  else if (incomingTitle.includes("Printed Edition")) {
-    category.value = "catalogue";
-    category.disabled = true;
-    updateVisibility();
-  }
-
-  // (Per ora ci fermiamo qui. Fotografie e disegni li aggiungiamo dopo.)
-}
-
-
   const catalogueType = document.getElementById("catalogue-type");
 
   const summaryArtwork = document.getElementById("summary-artwork");
@@ -379,16 +341,25 @@ if (incomingTitle) {
   const summaryPrice = document.getElementById("summary-price");
   const hiddenFormatPrice = document.getElementById("format-price-hidden");
 
-  /* Prezzi fotografie */
+  if (incomingTitle) {
+
+    if (incomingTitle.includes("Digital Edition")) {
+      category.value = "catalogue";
+      category.disabled = true;
+    }
+
+    else if (incomingTitle.includes("Printed Edition")) {
+      category.value = "catalogue";
+      category.disabled = true;
+    }
+  }
+
   const priceTable = {
     aluminum: { small: 220, medium: 500, large: 1200 },
     paper:    { small: 176, medium: 400, large: 960 },
     forex:    { small: 176, medium: 400, large: 960 }
   };
 
-  /* ---------------------------------------------------------
-     3. FUNZIONI DI UTILITÀ
-     --------------------------------------------------------- */
   function hideAll() {
     sectionPhoto.style.display = "none";
     sectionDrawing.style.display = "none";
@@ -422,9 +393,6 @@ if (incomingTitle) {
     `;
   }
 
-  /* ---------------------------------------------------------
-     4. MOSTRARE LE SEZIONI IN BASE ALLA CATEGORIA
-     --------------------------------------------------------- */
   function updateVisibility() {
     hideAll();
 
@@ -444,9 +412,6 @@ if (incomingTitle) {
     updateSummary();
   }
 
-  /* ---------------------------------------------------------
-     5. MOSTRARE FORMATI DISEGNI IN BASE AL TIPO
-     --------------------------------------------------------- */
   function updateDrawingOptions() {
     originalSizes.style.display = "none";
     fineartSizes.style.display = "none";
@@ -462,18 +427,13 @@ if (incomingTitle) {
     updateSummary();
   }
 
-  /* ---------------------------------------------------------
-     6. AGGIORNAMENTO DEL SUMMARY
-     --------------------------------------------------------- */
   function updateSummary() {
     let artwork = "";
     let formatPrice = "";
     let price = "";
 
-    /* Titolo */
     summaryTitle.textContent = artworkTitle.value || "[not provided]";
 
-    /* Fotografie */
     if (category.value === "photo") {
       artwork = "Photography";
 
@@ -486,7 +446,6 @@ if (incomingTitle) {
       }
     }
 
-    /* Disegni */
     if (category.value === "drawing") {
 
       if (drawingType.value === "original") {
@@ -508,6 +467,7 @@ if (incomingTitle) {
 
         if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
         if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
+        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
         if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
         if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
         if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
@@ -549,9 +509,7 @@ if (incomingTitle) {
     hiddenFormatPrice.value = formatPrice || "";
   }
 
-  /* ---------------------------------------------------------
-     7. EVENT LISTENERS
-     --------------------------------------------------------- */
+  /* EVENT LISTENERS */
   category.addEventListener("change", updateVisibility);
 
   artworkTitle.addEventListener("input", updateSummary);
@@ -569,7 +527,7 @@ if (incomingTitle) {
 
   catalogueType.addEventListener("change", updateSummary);
 
-  /* Avvio iniziale */
+  /* AVVIO INIZIALE */
   updateVisibility();
   updateSummary();
 
