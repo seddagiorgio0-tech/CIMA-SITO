@@ -332,6 +332,27 @@ document.addEventListener("DOMContentLoaded", function() {
     summaryTitle.textContent = incomingTitle;
   }
 
+/* RICONOSCIMENTO AUTOMATICO DELLA CATEGORIA DAL TITOLO */
+if (incomingTitle) {
+
+  // Cataloghi digitali
+  if (incomingTitle.includes("Digital Edition")) {
+    category.value = "catalogue";
+    category.disabled = true;
+    updateVisibility();
+  }
+
+  // Cataloghi cartacei
+  else if (incomingTitle.includes("Printed Edition")) {
+    category.value = "catalogue";
+    category.disabled = true;
+    updateVisibility();
+  }
+
+  // (Per ora ci fermiamo qui. Fotografie e disegni li aggiungiamo dopo.)
+}
+
+
   /* ---------------------------------------------------------
      2. VARIABILI DEL MODULO
      --------------------------------------------------------- */
