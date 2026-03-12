@@ -310,6 +310,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
+  const incomingCategory = params.get("cat");
 
   const artworkTitle = document.getElementById("artwork-title");
   const summaryTitle = document.getElementById("summary-title");
@@ -341,17 +342,10 @@ document.addEventListener("DOMContentLoaded", function() {
   const summaryPrice = document.getElementById("summary-price");
   const hiddenFormatPrice = document.getElementById("format-price-hidden");
 
-  if (incomingTitle) {
-
-    if (incomingTitle.includes("Digital Edition")) {
-      category.value = "catalogue";
-      category.disabled = true;
-    }
-
-    else if (incomingTitle.includes("Printed Edition")) {
-      category.value = "catalogue";
-      category.disabled = true;
-    }
+  /* RICONOSCIMENTO AUTOMATICO DELLA CATEGORIA */
+  if (incomingCategory) {
+    category.value = incomingCategory;
+    category.disabled = true;
   }
 
   const priceTable = {
@@ -468,22 +462,15 @@ document.addEventListener("DOMContentLoaded", function() {
         if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
         if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
         if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
-        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
         if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
         if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
       }
     }
 
-    /* Cataloghi */
     if (category.value === "catalogue") {
       artwork = "Catalogue";
 
       const type = catalogueType.value;
-
-      if (type === "africa") {
-        price = "€ 5";
-        formatPrice = "Africa — € 5";
-      }
 
       if (type === "iceland") {
         price = "€ 8";
