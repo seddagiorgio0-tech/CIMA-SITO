@@ -146,19 +146,21 @@
       <div class="section">
         <h2>2. Select the artwork</h2>
 
-        <div class="field">
-          <label for="category">Category</label>
-          <select id="category" name="category">
-            <option value="">— select —</option>
-            <option value="photo">Photography</option>
-            <option value="drawing">Drawing</option>
-            <option value="catalogue">Printed catalogue</option>
-          </select>
-        </div>
+       <div class="field">
+  <label for="artwork-title">Artwork title (required)</label>
+  <input type="text" id="artwork-title" name="artwork_title" required>
+</div>
 
-        <div class="field">
-          <label for="artwork-title">Artwork title (required)</label>
-          <input type="text" id="artwork-title" name="artwork_title" required>
+<div class="field">
+  <label for="category">Category</label>
+  <select id="category" name="category">
+    <option value="">— select —</option>
+    <option value="photo">Photography</option>
+    <option value="drawing">Drawing</option>
+    <option value="catalogue">Printed catalogue</option>
+  </select>
+</div>
+ required>
         </div>
 
         <!-- PHOTOGRAPHY -->
