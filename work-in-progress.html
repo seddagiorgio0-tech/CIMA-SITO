@@ -513,11 +513,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     6. BLOCCO INTELLIGENTE CATEGORIE (Photo / Drawing / Edition)
+     6. INTELLIGENZA CATEGORIE
      --------------------------------------------------------- */
   function applySmartCategoryLock(title) {
     const options = category.querySelectorAll("option");
-
     options.forEach(opt => opt.disabled = false);
 
     if (!title) return;
@@ -557,7 +556,6 @@ document.addEventListener("DOMContentLoaded", function() {
      --------------------------------------------------------- */
   function applyEditionLock(title) {
     const options = catalogueType.querySelectorAll("option");
-
     options.forEach(opt => opt.disabled = false);
 
     if (!title) return;
@@ -600,14 +598,14 @@ document.addEventListener("DOMContentLoaded", function() {
      --------------------------------------------------------- */
   function applyDrawingTypeLock(title) {
     const options = drawingType.querySelectorAll("option");
-
     options.forEach(opt => opt.disabled = false);
 
     if (!title) return;
 
     const t = title.toLowerCase();
 
-    if (t.includes("drawing original drawing")) {
+    /* Caso 1 — contiene ANCHE "drawing" + "original drawing" */
+    if (t.includes("drawing") && t.includes("original drawing")) {
       drawingType.value = "original";
       options.forEach(opt => {
         if (opt.value !== "original" && opt.value !== "") opt.disabled = true;
@@ -616,7 +614,8 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
 
-    if (t.includes("drawing fine-art")) {
+    /* Caso 2 — contiene ANCHE "drawing" + "fine-art" */
+    if (t.includes("drawing") && t.includes("fine-art")) {
       drawingType.value = "fineart";
       options.forEach(opt => {
         if (opt.value !== "fineart" && opt.value !== "") opt.disabled = true;
