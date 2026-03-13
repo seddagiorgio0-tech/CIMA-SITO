@@ -2,138 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Artwork Purchase – Guided Procedure</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Greenland – Drawings</title>
+
   <style>
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
-      color: #111111;
       margin: 0;
-      padding: 25px 20px;
-      line-height: 1.5;
-    }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-    h1 {
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
       text-align: center;
-      font-size: 28px;
-      margin-top: 20px;
-      margin-bottom: 25px;
-    }
-    h2 {
-      font-size: 1.2rem;
-      margin-top: 2rem;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    h3 {
-      font-size: 1rem;
-      margin-top: 1.5rem;
-      margin-bottom: 0.3rem;
-      font-weight: 500;
-    }
-    p {
-      margin: 0 0 0.8rem 0;
-    }
-    .section {
-      border-top: 1px solid #e0e0e0;
-      padding-top: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    label {
-      display: block;
-      font-size: 0.9rem;
-      margin-bottom: 0.2rem;
-    }
-    input[type="text"],
-    input[type="email"],
-    select,
-    textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #d0d0d0;
-      border-radius: 2px;
-      font-size: 0.9rem;
-      background: #fafafa;
-      box-sizing: border-box;
-    }
-    textarea {
-      min-height: 90px;
-      resize: vertical;
-    }
-    .field {
-      margin-bottom: 1rem;
-    }
-    .hint {
-      font-size: 0.8rem;
-      color: #777777;
-      margin-top: 0.2rem;
-    }
-    .summary-box {
-      border: 1px solid #e0e0e0;
-      padding: 12px 14px;
-      font-size: 0.9rem;
-      background: #fafafa;
-    }
-    .button-row {
-      margin-top: 2rem;
-    }
-    button {
-      padding: 10px 22px;
-      font-size: 0.9rem;
-      border-radius: 2px;
-      border: 1px solid #111111;
-      background: #111111;
-      color: #ffffff;
-      cursor: pointer;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-    button:hover {
-      background: #ffffff;
-      color: #111111;
-    }
-
-    #section-photo,
-    #section-drawing,
-    #section-catalogue {
-      display: none;
     }
 
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 0px 0 5px 0;
-      font-size: 17px;
-      position: relative;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
     }
 
     nav a {
       text-decoration: none;
       color: black;
-      font-weight: normal;
     }
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
+    h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-top: 20px;
     }
 
-    .footer {
-      margin-top: 45px;
+    .button-row {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-btn {
+      padding: 12px 0;
+      width: 150px;
+      border: 1px solid #ccc;
+      background: white;
       font-size: 16px;
-      color: #555;
+      text-decoration: none;
+      color: black;
+      transition: 0.2s;
+      display: inline-block;
       text-align: center;
     }
 
+    .menu-btn:hover {
+      background: #e6e6e6;
+    }
+
+    .selected {
+      background: #e6e6e6;
+      color: black;
+      cursor: default;
+      border-color: #ccc;
+    }
+
+    /* BLOCCO DOPPIO (1–5 e 11) */
+    .block {
+      max-width: 900px;
+      margin: 60px auto;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
+      padding: 0 20px;
+    }
+
+    .text-col {
+      width: 30%;
+      text-align: justify;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .img-col {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .block img {
+      width: 78%;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    /* BLOCCO SINGOLO (6–10) */
+    .single-img {
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .single-img img {
+      width: 85%;
+      margin: 0 auto;
+      display: block;
+      height: auto;
+      cursor: zoom-in;
+    }
+
+    /* NAV BUTTONS */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 700px;
+      margin: 40px auto;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
+    }
+
+    .nav-buttons button:disabled {
+      background: #f2f2f2;
+      color: #999;
+      border-color: #ddd;
+      cursor: default;
+    }
+
+    .footer {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #555;
+      padding-bottom: 40px;
+    }
+
+    /* MODAL IMMAGINI INGRANDITE */
+    .img-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .img-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
   </style>
 </head>
 
 <body>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="progetto.html">CIMA Project</a>
@@ -143,387 +191,255 @@
     <a href="news.html">News</a>
     <a href="biography.html">Biography</a>
     <a href="contatti.html">Contacts</a>
-    <a href="work-in-progress.html" class="active">Buy</a>
+    <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <div class="container">
-    <h1>Artwork Purchase – Guided Procedure</h1>
-    <p>A curated selection, produced on request. Fill in the details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
+  <h1>Greenland – Drawings</h1>
 
-    <form action="https://formsubmit.co/info@giorgiosedda.com" method="POST">
-
-      <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_subject" value="New purchase request from your website">
-
-      <div class="section">
-        <h2>1. Personal details</h2>
-
-        <div class="field">
-          <label for="first-name">First name</label>
-          <input type="text" id="first-name" name="first_name">
-        </div>
-
-        <div class="field">
-          <label for="last-name">Last name</label>
-          <input type="text" id="last-name" name="last_name">
-        </div>
-
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email">
-        </div>
-
-        <div class="field">
-          <label for="address">Address (only for physical artworks)</label>
-          <input type="text" id="address" name="address">
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>2. Select the artwork</h2>
-
-        <div class="field">
-          <label for="artwork-title">Artwork title (required)</label>
-          <input type="text" id="artwork-title" name="artwork_title" required>
-        </div>
-
-        <div class="field">
-          <label for="category">Category</label>
-          <select id="category" name="category">
-            <option value="">— select —</option>
-            <option value="photo">Photography</option>
-            <option value="drawing">Drawing</option>
-            <option value="catalogue">Catalogue</option>
-          </select>
-        </div>
-
-        <div id="section-photo">
-          <h3>Photography</h3>
-
-          <div class="field">
-            <label for="photo-support">Support</label>
-            <select id="photo-support" name="photo_support">
-              <option value="">— select —</option>
-              <option value="aluminum">3 mm aluminum</option>
-              <option value="paper">Paper</option>
-              <option value="forex">Forex</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="photo-size">Format / Size</label>
-            <select id="photo-size" name="photo_size">
-              <option value="">— select —</option>
-              <option value="small">30–40 cm</option>
-              <option value="medium">50–70 cm</option>
-              <option value="large">80–100 cm</option>
-            </select>
-          </div>
-
-          <p class="hint">Edition: Limited edition of 5 total prints (including 1 artist’s proof).</p>
-        </div>
-
-        <div id="section-drawing">
-          <h3>Drawing</h3>
-
-          <div class="field">
-            <label for="drawing-type">Type of artwork</label>
-            <select id="drawing-type" name="drawing_type">
-              <option value="">— select —</option>
-              <option value="original">Original drawing — price based on format</option>
-              <option value="fineart">Fine‑art print — price based on format</option>
-            </select>
-          </div>
-
-          <div class="field" id="original-sizes">
-            <label for="original-size">Format / Size</label>
-            <select id="original-size" name="original_size">
-              <option value="">— select —</option>
-              <option value="small">A5–A4 — € 480</option>
-              <option value="medium">A3 — € 950</option>
-              <option value="large">70×100 – 100×140 — € 2.200</option>
-              <option value="xl">140×200 — € 4.800</option>
-              <option value="xxl">180×250 — € 10.000</option>
-            </select>
-          </div>
-
-          <div class="field" id="fineart-sizes">
-            <label for="fineart-size">Format / Size</label>
-            <select id="fineart-size" name="fineart_size">
-              <option value="">— select —</option>
-              <option value="small">A5–A4 — € 150</option>
-              <option value="medium">A3 — € 280</option>
-              <option value="large">70×100 — € 450</option>
-              <option value="xl">100×140 — € 750</option>
-              <option value="xxl">140×200 — € 1.200</option>
-            </select>
-          </div>
-        </div>
-
-        <div id="section-catalogue">
-          <h3>Catalogue</h3>
-
-          <div class="field">
-            <label for="catalogue-type">Choose edition</label>
-            <select id="catalogue-type" name="catalogue_type">
-              <option value="">— select —</option>
-              <option value="africa">Africa (Printed Edition) — € 5</option>
-              <option value="iceland">Iceland (Printed Edition) — € 8</option>
-              <option value="africa-digital">Africa (Digital Edition) — € 3</option>
-              <option value="iceland-digital">Iceland (Digital Edition) — € 5</option>
-            </select>
-          </div>
-        </div>
-
-        <input type="hidden" id="format-price-hidden" name="format_price" value="">
-      </div>
-
-      <div class="section">
-        <h2>3. Summary</h2>
-        <div class="summary-box">
-          <p><strong>Artwork title:</strong> <span id="summary-title">[not provided]</span></p>
-          <p><strong>Selected artwork:</strong> <span id="summary-artwork">[will be confirmed via email]</span></p>
-          <p><strong>Format & price:</strong> <span id="summary-format-price">[based on selection]</span></p>
-          <p><strong>Total price:</strong> <span id="summary-price">[based on selection]</span></p>
-          <p><strong>Shipping costs:</strong> will be communicated in the confirmation email</p>
-          <p><strong>Delivery time:</strong> will be communicated in the confirmation email</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>4. Notes (optional)</h2>
-        <textarea id="notes" name="notes"></textarea>
-      </div>
-
-      <div class="section button-row">
-        <h2>5. Send your request</h2>
-        <p class="hint">After submitting the form, you will receive a confirmation email. Only then you will be able to complete the purchase via PayPal.</p>
-        <button type="submit">Send purchase request</button>
-      </div>
-
-    </form>
+  <div class="button-row">
+    <a href="archive-greenland.html" class="menu-btn">Photography</a>
+    <a href="greenland-video.html" class="menu-btn">Video</a>
+    <a href="g-drawing.html" class="menu-btn selected">Drawings</a>
+    <a href="greenland-diary.html" class="menu-btn">Diary</a>
   </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
+  <!-- CONTENT -->
+  <div id="content"></div>
 
-  const params = new URLSearchParams(window.location.search);
-  const incomingTitle = params.get("title");
-  const incomingCategory = params.get("cat");
+  <!-- NAVIGATION UNDER IMAGES -->
+  <div class="nav-buttons">
+    <button id="backBtn">Back</button>
+    <button id="infoBtn">Info</button>
+    <button id="nextBtn">Next</button>
+  </div>
 
-  const artworkTitle = document.getElementById("artwork-title");
-  const summaryTitle = document.getElementById("summary-title");
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
+  <script>
+    const totalDrawings = 11;
+    let index = 1;
 
-  if (incomingTitle) {
-    artworkTitle.value = incomingTitle;
-    summaryTitle.textContent = incomingTitle;
-  }
+    const content = document.getElementById("content");
+    const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
 
-  const category = document.getElementById("category");
+    const texts = [
+      "",
 
-  const sectionPhoto = document.getElementById("section-photo");
-  const sectionDrawing = document.getElementById("section-drawing");
-  const sectionCatalogue = document.getElementById("section-catalogue");
+      `Night in the Fjord <br>
+ <br>
+The wind had changed its voice; it was no longer the steady breath that had followed me all day. Now it came in gusts, as if something were disturbing it, as if the fjord itself were holding its breath. I was alone, and I knew it. I pitched the tent quickly, my hands trembling more from exhaustion than from the cold. The fjord was motionless, a sheet of ice reflecting the last glimmers of twilight. And yet, behind that apparent calm, I felt an attention I couldn’t ignore. He was there, somewhere. The White Bear.<br> <br>
+Notte nel fiordo <br>
+<br>
+Il vento aveva cambiato voce; non era più il respiro costante che mi aveva accompagnato per tutto il giorno. Ora arrivava a raffiche, come se qualcosa lo disturbasse, come se fosse il fiordo stesso a trattenere il fiato. Ero solo, e lo sapevo. Montai la tenda in fretta, con le mani che tremavano più per la stanchezza che per il freddo. Il fiordo era immobile, una lastra di ghiaccio che rifletteva gli ultimi bagliori del crepuscolo. Eppure, dietro quella calma apparente, percepivo un’attenzione che non potevo ignorare. Lui era lì, da qualche parte. L’Orso Bianco.`,
 
-  const photoSupport = document.getElementById("photo-support");
-  const photoSize = document.getElementById("photo-size");
+      `The rifle lay next to the tent. It didn’t make me feel safe — not really. It was just an object, an extra weight. But I needed it. It was my only psychological anchor, the illusion of having a margin, a boundary, a “if something happens…”. The truth is, I didn’t want to use it. I hadn’t come to challenge him. I had come to cross his home, and I hoped he would let me pass. When night fell, it truly fell. A total, dense darkness that seemed to absorb every sound. I slipped into my sleeping bag and closed my eyes, but it was useless. The silence was too vast to sleep. Then came the first noise. <br>
+<br>
+Il fucile era posato accanto alla tenda. Non mi faceva sentire al sicuro — non davvero. Era solo un oggetto, un peso in più. Ma ne avevo bisogno. Era il mio unico ancoraggio psicologico, l’illusione di avere un margine, un confine, un “se succede qualcosa…”. La verità è che non volevo usarlo. Non ero venuto per sfidarlo. Ero venuto ad attraversare la sua casa, e speravo che mi avrebbe lasciato passare. Quando la notte cadde, cadde davvero. Un buio totale, denso, che sembrava assorbire ogni suono. Mi infilai nel sacco a pelo e chiusi gli occhi, ma fu inutile. Il silenzio era troppo vasto per dormire. Poi arrivò il primo rumore.`,
 
-  const drawingType = document.getElementById("drawing-type");
-  const originalSizes = document.getElementById("original-sizes");
-  const fineartSizes = document.getElementById("fineart-sizes");
-  const originalSize = document.getElementById("original-size");
-  const fineartSize = document.getElementById("fineart-size");
+      `A rustle, distant but not distant enough. I opened my eyes in an instant, and my heart began pounding as if it wanted to burst out of my chest. I stayed still, listening. The wind had stopped, and when the wind falls silent, the Arctic speaks. Another sound, closer now, and the snow giving way under an enormous weight. I lifted myself slightly, holding my breath. I couldn’t see anything, but I felt him — like having a thought walking outside the tent. The smell came last, a strong, wild smell. A smell I had never sensed so close.<br>
+<br>
+Un fruscio, lontano ma non abbastanza lontano. Aprii gli occhi di scatto, e il cuore cominciò a battere come se volesse uscirmi dal petto. Rimasi immobile, in ascolto. Il vento si era fermato, e quando il vento tace, l’Artico parla. Un altro suono, più vicino ora, e la neve che cedeva sotto un peso enorme. Mi sollevai appena, trattenendo il respiro. Non vedevo nulla, ma lo sentivo — come un pensiero che camminasse fuori dalla tenda. L’odore arrivò per ultimo, un odore forte, selvatico. Un odore che non avevo mai percepito così vicino.`,
 
-  const catalogueType = document.getElementById("catalogue-type");
+      `He was there, the White Bear, just a few meters from me. I didn’t dare move. I didn’t even dare take a deep breath. The tent was a ridiculous boundary, a thin veil between me and a force I could not control. And yet, in the midst of fear, I felt something else. A shiver of excitement, of respect, of awareness. I was in his world, and he knew it. Minutes passed that felt like hours; every step I heard outside was a blow to the heart. Every silence an endless wait.<br>
+<br>
+Era lì, l’Orso Bianco, a pochi metri da me. Non osavo muovermi. Non osavo nemmeno fare un respiro profondo. La tenda era un confine ridicolo, un velo sottile tra me e una forza che non potevo controllare. Eppure, in mezzo alla paura, sentii qualcos’altro. Un brivido di eccitazione, di rispetto, di consapevolezza. Ero nel suo mondo, e lui lo sapeva. I minuti passarono come ore; ogni passo che sentivo fuori era un colpo al cuore. Ogni silenzio un’attesa infinita.`,
 
-  const summaryArtwork = document.getElementById("summary-artwork");
-  const summaryFormatPrice = document.getElementById("summary-format-price");
-  const summaryPrice = document.getElementById("summary-price");
-  const hiddenFormatPrice = document.getElementById("format-price-hidden");
+      `Then slowly, the sounds drifted away — first one step, then another. Then only the fjord again, still and silent. I stayed awake until dawn, unable to close my eyes. When I finally stepped out of the tent, the low sun lit up a paradise, but it revealed no tracks. I knelt, brushing the snow with my hand, and in that moment I understood something simple and immense: I had not been threatened. I had been tolerated. In the silence of the fjord, I felt part of something greater than myself.<br>
+<br>
+Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi solo il fiordo di nuovo, immobile e silenzioso. Rimasi sveglio fino all’alba, incapace di chiudere gli occhi. Quando finalmente uscii dalla tenda, il sole basso illuminava un paradiso, ma non rivelava alcuna traccia. Mi inginocchiai, sfiorando la neve con la mano, e in quel momento compresi qualcosa di semplice e immenso: non ero stato minacciato. Ero stato tollerato. Nel silenzio del fiordo, mi sentii parte di qualcosa più grande di me.`,
 
-  /* RICONOSCIMENTO AUTOMATICO DELLA CATEGORIA */
-  if (incomingCategory) {
-    category.value = incomingCategory;
-    category.disabled = true;
-  }
+      "", "", "", "", ""
+    ];
 
-  const priceTable = {
-    aluminum: { small: 220, medium: 500, large: 1200 },
-    paper:    { small: 176, medium: 400, large: 960 },
-    forex:    { small: 176, medium: 400, large: 960 }
-  };
+    function render() {
+      content.innerHTML = "";
 
-  function hideAll() {
-    sectionPhoto.style.display = "none";
-    sectionDrawing.style.display = "none";
-    sectionCatalogue.style.display = "none";
-  }
+      const num = String(index).padStart(2, '0');
+      const img = `g-drawing${num}.jpg`;
 
-  function updateFormatOptions() {
-    const support = photoSupport.value;
+      /* BLOCCO DOPPIO (1–5) */
+      if (index <= 5) {
+        const block = document.createElement("div");
+        block.className = "block";
 
-    const labels = {
-      small: "30–40 cm",
-      medium: "50–70 cm",
-      large: "80–100 cm"
+        const textCol = `<div class="text-col">${texts[index]}</div>`;
+        const imgCol = `<div class="img-col">
+          <img src="${img}" class="zoomable">
+        </div>`;
+
+        block.innerHTML = (index % 2 === 1)
+          ? textCol + imgCol
+          : imgCol + textCol;
+
+        content.appendChild(block);
+
+      /* BLOCCO SINGOLO (6–10) */
+      } else if (index <= 10) {
+        const single = document.createElement("div");
+        single.className = "single-img";
+
+        single.innerHTML = `<img src="${img}" class="zoomable">`;
+
+        content.appendChild(single);
+
+      /* BLOCCO 11 */
+      } else {
+        const block = document.createElement("div");
+        block.className = "block";
+
+        block.innerHTML = `
+          <div class="img-col"><img src="${img}" class="zoomable"></div>
+          <div class="text-col"></div>
+        `;
+
+        content.appendChild(block);
+      }
+
+      backBtn.disabled = index === 1;
+      nextBtn.disabled = index === totalDrawings;
+    }
+
+    backBtn.onclick = () => { if (index > 1) index--; render(); };
+    nextBtn.onclick = () => { if (index < totalDrawings) index++; render(); };
+
+    render();
+  </script>
+  <!-- MODAL IMMAGINE (ZOOM) -->
+  <div id="imgModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img id="imgModalContent" src="">
+  </div>
+
+  <script>
+    const imgModal = document.getElementById("imgModal");
+    const imgModalContent = document.getElementById("imgModalContent");
+    const imgModalClose = document.querySelector(".img-modal-close");
+
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("zoomable")) {
+        imgModal.style.display = "flex";
+        imgModalContent.src = e.target.src;
+      }
+    });
+
+    imgModalClose.onclick = () => {
+      imgModal.style.display = "none";
     };
 
-    if (!support) {
-      photoSize.innerHTML = `
-        <option value="">— select —</option>
-        <option value="small">30–40 cm</option>
-        <option value="medium">50–70 cm</option>
-        <option value="large">80–100 cm</option>
-      `;
-      return;
-    }
-
-    photoSize.innerHTML = `
-      <option value="">— select —</option>
-      <option value="small">${labels.small} — € ${priceTable[support].small}</option>
-      <option value="medium">${labels.medium} — € ${priceTable[support].medium}</option>
-      <option value="large">${labels.large} — € ${priceTable[support].large}</option>
-    `;
-  }
-
-  function updateVisibility() {
-    hideAll();
-
-    if (category.value === "photo") {
-      sectionPhoto.style.display = "block";
-      updateFormatOptions();
-    }
-
-    if (category.value === "drawing") {
-      sectionDrawing.style.display = "block";
-    }
-
-    if (category.value === "catalogue") {
-      sectionCatalogue.style.display = "block";
-    }
-
-    updateSummary();
-  }
-
-  function updateDrawingOptions() {
-    originalSizes.style.display = "none";
-    fineartSizes.style.display = "none";
-
-    if (drawingType.value === "original") {
-      originalSizes.style.display = "block";
-    }
-
-    if (drawingType.value === "fineart") {
-      fineartSizes.style.display = "block";
-    }
-
-    updateSummary();
-  }
-
-  function updateSummary() {
-    let artwork = "";
-    let formatPrice = "";
-    let price = "";
-
-    summaryTitle.textContent = artworkTitle.value || "[not provided]";
-
-    if (category.value === "photo") {
-      artwork = "Photography";
-
-      const support = photoSupport.value;
-      const size = photoSize.value;
-
-      if (support && size) {
-        price = "€ " + priceTable[support][size];
-        formatPrice = photoSize.options[photoSize.selectedIndex].text;
+    imgModal.onclick = (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = "none";
       }
-    }
+    };
+  </script>
 
-    if (category.value === "drawing") {
+  <!-- MODAL INFO (SCHEDA TECNICA ORIGINALE) -->
+  <div id="infoModal" style="
+    display:none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
 
-      if (drawingType.value === "original") {
-        artwork = "Original drawing";
+    <div style="
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      text-align: left;
+    ">
 
-        const size = originalSize.value;
+      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
 
-        if (size === "small") { price = "€ 480"; formatPrice = "A5–A4 — € 480"; }
-        if (size === "medium") { price = "€ 950"; formatPrice = "A3 — € 950"; }
-        if (size === "large") { price = "€ 2.200"; formatPrice = "70×100 – 100×140 — € 2.200"; }
-        if (size === "xl") { price = "€ 4.800"; formatPrice = "140×200 — € 4.800"; }
-        if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
+      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+      <div style="margin-top:25px; display:flex; justify-content:space-between;">
+        <button id="closeModal" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+
+        <a href="https://www.paypal.me/giorgiosedda" target="_blank" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+        ">Buy</a>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const infoBtn = document.getElementById("infoBtn");
+    const modal = document.getElementById("infoModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    infoBtn.onclick = () => {
+      let sheet = "";
+      const num = String(index).padStart(2, '0');
+
+      if (index <= 5) {
+        sheet = `
+          <strong>Title:</strong> Greenland – Night in the Fjord<br>
+          <strong>Location:</strong> France, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 250 × 180 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
+
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
       }
 
-      if (drawingType.value === "fineart") {
-        artwork = "Fine‑art print";
+      else if (index <= 10) {
+        sheet = `
+          <strong>Title:</strong> Greenland – The perfect storm<br>
+          <strong>Location:</strong> Italy, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 180 × 125 cm<br><br>
 
-        const size = fineartSize.value;
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
 
-        if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
-        if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
-        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
-        if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
-        if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
-      }
-    }
-
-    if (category.value === "catalogue") {
-      artwork = "Catalogue";
-
-      const type = catalogueType.value;
-
-      if (type === "iceland") {
-        price = "€ 8";
-        formatPrice = "Iceland — € 8";
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
       }
 
-      if (type === "africa-digital") {
-        price = "€ 3";
-        formatPrice = "Africa (Digital Edition) — € 3";
+      else {
+        sheet = `
+          <strong>Title:</strong> Greenland – Robert Peroni explorator<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 130 × 100 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).
+        `;
       }
 
-      if (type === "iceland-digital") {
-        price = "€ 5";
-        formatPrice = "Iceland (Digital Edition) — € 5";
-      }
-    }
+      modalContent.innerHTML = sheet;
+      modal.style.display = "flex";
+    };
 
-    /* Aggiornamento Summary */
-    summaryArtwork.textContent = artwork || "[will be confirmed via email]";
-    summaryFormatPrice.textContent = formatPrice || "[based on selection]";
-    summaryPrice.textContent = price || "[based on selection]";
-
-    hiddenFormatPrice.value = formatPrice || "";
-  }
-
-  /* EVENT LISTENERS */
-  category.addEventListener("change", updateVisibility);
-
-  artworkTitle.addEventListener("input", updateSummary);
-
-  photoSupport.addEventListener("change", function() {
-    updateFormatOptions();
-    updateSummary();
-  });
-
-  photoSize.addEventListener("change", updateSummary);
-
-  drawingType.addEventListener("change", updateDrawingOptions);
-  originalSize.addEventListener("change", updateSummary);
-  fineartSize.addEventListener("change", updateSummary);
-
-  catalogueType.addEventListener("change", updateSummary);
-
-  /* AVVIO INIZIALE */
-  updateVisibility();
-  updateSummary();
-
-});
-</script>
-
-<div class="footer">
-  <strong>Giorgio Sedda</strong> – CIMA Project
-</div>
+    closeModal.onclick = () => { modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+  </script>
 
 </body>
 </html>
