@@ -318,7 +318,7 @@
 document.addEventListener("DOMContentLoaded", function() {
 
   /* ---------------------------------------------------------
-     1. RIFERIMENTI DOM
+     RIFERIMENTI DOM
      --------------------------------------------------------- */
   const artworkTitle = document.getElementById("artwork-title");
   const summaryTitle = document.getElementById("summary-title");
@@ -352,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   /* ---------------------------------------------------------
-     2. VISIBILITÀ SEZIONI
+     VISIBILITÀ SEZIONI
      --------------------------------------------------------- */
   function hideAll() {
     sectionPhoto.style.display = "none";
@@ -380,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     3. FOTO – aggiornamento formati
+     FOTO – aggiornamento formati
      --------------------------------------------------------- */
   function updateFormatOptions() {
     const support = photoSupport.value;
@@ -410,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     4. DISEGNI – visibilità formati
+     DISEGNI – visibilità formati
      --------------------------------------------------------- */
   function updateDrawingOptions() {
     originalSizes.style.display = "none";
@@ -428,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     5. SUMMARY
+     SUMMARY
      --------------------------------------------------------- */
   function updateSummary() {
     let artwork = "";
@@ -513,7 +513,81 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     6. INTELLIGENZA CATEGORIE
+     INTELLIGENZA FORMAT / SIZE (Greenland Drawings)
+     --------------------------------------------------------- */
+  function applyOriginalSizeLock(title) {
+    const options = originalSize.querySelectorAll("option");
+    options.forEach(opt => opt.disabled = false);
+
+    if (!title) return;
+
+    const t = title.toLowerCase();
+    const n = t.replace(/\s+/g, "");
+
+    /* Drawing 01 → 05 → 180×250 */
+    if (
+      t.includes("drawing 01") || n.includes("drawing01(") ||
+      t.includes("drawing 02") || n.includes("drawing02(") ||
+      t.includes("drawing 03") || n.includes("drawing03(") ||
+      t.includes("drawing 04") || n.includes("drawing04(") ||
+      t.includes("drawing 05") || n.includes("drawing05(")
+    ) {
+      originalSize.value = "xxl";
+      options.forEach(opt => { if (opt.value !== "xxl" && opt.value !== "") opt.disabled = true; });
+      return;
+    }
+
+    /* Drawing 06 → 10 → 140×200 */
+    if (
+      t.includes("drawing 06") || n.includes("drawing06(") ||
+      t.includes("drawing 07") || n.includes("drawing07(") ||
+      t.includes("drawing 08") || n.includes("drawing08(") ||
+      t.includes("drawing 09") || n.includes("drawing09(") ||
+      t.includes("drawing 10") || n.includes("drawing10(")
+    ) {
+      originalSize.value = "xl";
+      options.forEach(opt => { if (opt.value !== "xl" && opt.value !== "") opt.disabled = true; });
+      return;
+    }
+
+    /* Drawing 11 → 100×140 */
+    if (
+      t.includes("drawing 11") || n.includes("drawing11(")
+    ) {
+      originalSize.value = "large";
+      options.forEach(opt => { if (opt.value !== "large" && opt.value !== "") opt.disabled = true; });
+      return;
+    }
+  }
+
+  /* ---------------------------------------------------------
+     INTELLIGENZA TYPE OF ARTWORK
+     --------------------------------------------------------- */
+  function applyDrawingTypeLock(title) {
+    const options = drawingType.querySelectorAll("option");
+    options.forEach(opt => opt.disabled = false);
+
+    if (!title) return;
+
+    const t = title.toLowerCase();
+
+    if (t.includes("drawing") && t.includes("original drawing")) {
+      drawingType.value = "original";
+      options.forEach(opt => { if (opt.value !== "original" && opt.value !== "") opt.disabled = true; });
+      updateDrawingOptions();
+      return;
+    }
+
+    if (t.includes("drawing") && t.includes("fine-art")) {
+      drawingType.value = "fineart";
+      options.forEach(opt => { if (opt.value !== "fineart" && opt.value !== "") opt.disabled = true; });
+      updateDrawingOptions();
+      return;
+    }
+  }
+
+  /* ---------------------------------------------------------
+     INTELLIGENZA CATEGORIE
      --------------------------------------------------------- */
   function applySmartCategoryLock(title) {
     const options = category.querySelectorAll("option");
@@ -525,34 +599,28 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (t.includes("photo")) {
       category.value = "photo";
-      options.forEach(opt => {
-        if (opt.value !== "photo" && opt.value !== "") opt.disabled = true;
-      });
+      options.forEach(opt => { if (opt.value !== "photo" && opt.value !== "") opt.disabled = true; });
       updateVisibility();
       return;
     }
 
     if (t.includes("drawing")) {
       category.value = "drawing";
-      options.forEach(opt => {
-        if (opt.value !== "drawing" && opt.value !== "") opt.disabled = true;
-      });
+      options.forEach(opt => { if (opt.value !== "drawing" && opt.value !== "") opt.disabled = true; });
       updateVisibility();
       return;
     }
 
     if (t.includes("edition")) {
       category.value = "catalogue";
-      options.forEach(opt => {
-        if (opt.value !== "catalogue" && opt.value !== "") opt.disabled = true;
-      });
+      options.forEach(opt => { if (opt.value !== "catalogue" && opt.value !== "") opt.disabled = true; });
       updateVisibility();
       return;
     }
   }
 
   /* ---------------------------------------------------------
-     7. INTELLIGENZA PRINTED / DIGITAL EDITION
+     INTELLIGENZA PRINTED / DIGITAL EDITION
      --------------------------------------------------------- */
   function applyEditionLock(title) {
     const options = catalogueType.querySelectorAll("option");
@@ -563,70 +631,22 @@ document.addEventListener("DOMContentLoaded", function() {
     const t = title.toLowerCase();
 
     if (t.includes("printed edition")) {
-      options.forEach(opt => {
-        if (!opt.textContent.toLowerCase().includes("printed edition") && opt.value !== "") {
-          opt.disabled = true;
-        }
-      });
-
-      const firstValid = Array.from(options).find(opt =>
-        opt.textContent.toLowerCase().includes("printed edition")
-      );
+      options.forEach(opt => { if (!opt.textContent.toLowerCase().includes("printed edition") && opt.value !== "") opt.disabled = true; });
+      const firstValid = Array.from(options).find(opt => opt.textContent.toLowerCase().includes("printed edition"));
       if (firstValid) catalogueType.value = firstValid.value;
-
       return;
     }
 
     if (t.includes("digital edition")) {
-      options.forEach(opt => {
-        if (!opt.textContent.toLowerCase().includes("digital edition") && opt.value !== "") {
-          opt.disabled = true;
-        }
-      });
-
-      const firstValid = Array.from(options).find(opt =>
-        opt.textContent.toLowerCase().includes("digital edition")
-      );
+      options.forEach(opt => { if (!opt.textContent.toLowerCase().includes("digital edition") && opt.value !== "") opt.disabled = true; });
+      const firstValid = Array.from(options).find(opt => opt.textContent.toLowerCase().includes("digital edition"));
       if (firstValid) catalogueType.value = firstValid.value;
-
       return;
     }
   }
 
   /* ---------------------------------------------------------
-     8. NUOVA INTELLIGENZA: TYPE OF ARTWORK
-     --------------------------------------------------------- */
-  function applyDrawingTypeLock(title) {
-    const options = drawingType.querySelectorAll("option");
-    options.forEach(opt => opt.disabled = false);
-
-    if (!title) return;
-
-    const t = title.toLowerCase();
-
-    /* Caso 1 — contiene ANCHE "drawing" + "original drawing" */
-    if (t.includes("drawing") && t.includes("original drawing")) {
-      drawingType.value = "original";
-      options.forEach(opt => {
-        if (opt.value !== "original" && opt.value !== "") opt.disabled = true;
-      });
-      updateDrawingOptions();
-      return;
-    }
-
-    /* Caso 2 — contiene ANCHE "drawing" + "fine-art" */
-    if (t.includes("drawing") && t.includes("fine-art")) {
-      drawingType.value = "fineart";
-      options.forEach(opt => {
-        if (opt.value !== "fineart" && opt.value !== "") opt.disabled = true;
-      });
-      updateDrawingOptions();
-      return;
-    }
-  }
-
-  /* ---------------------------------------------------------
-     9. LETTURA PARAMETRO ?title=
+     LETTURA PARAMETRO ?title=
      --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
@@ -638,10 +658,11 @@ document.addEventListener("DOMContentLoaded", function() {
     applySmartCategoryLock(incomingTitle);
     applyEditionLock(incomingTitle);
     applyDrawingTypeLock(incomingTitle);
+    applyOriginalSizeLock(incomingTitle);
   }
 
   /* ---------------------------------------------------------
-     10. EVENT LISTENERS
+     EVENT LISTENERS
      --------------------------------------------------------- */
   artworkTitle.addEventListener("input", function() {
     const t = artworkTitle.value;
@@ -650,6 +671,7 @@ document.addEventListener("DOMContentLoaded", function() {
     applySmartCategoryLock(t);
     applyEditionLock(t);
     applyDrawingTypeLock(t);
+    applyOriginalSizeLock(t);
   });
 
   category.addEventListener("change", updateVisibility);
