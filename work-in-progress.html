@@ -149,13 +149,10 @@
   <div class="container">
     <h1>Artwork Purchase – Guided Procedure</h1>
 
-    <!-- 🔵 TESTO MODIFICATO QUI -->
     <p>Welcome, it is necessary to fill in every field of the form to obtain a complete summary. Enter your details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
 
-    <!-- FORM SUBMIT ACTIVATED -->
     <form action="https://formsubmit.co/info@giorgiosedda.com" method="POST">
 
-      <!-- FormSubmit hidden fields -->
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_subject" value="New purchase request from your website">
@@ -262,7 +259,6 @@
 
         <input type="hidden" id="format-price-hidden" name="format_price" value="">
       </div>
-
       <!-- 2. SUMMARY -->
       <div class="section">
         <h2>2. Summary</h2>
@@ -321,6 +317,9 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
+  /* ---------------------------------------------------------
+     1. LETTURA PARAMETRO ?title=
+     --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
 
@@ -332,6 +331,9 @@ document.addEventListener("DOMContentLoaded", function() {
     summaryTitle.textContent = incomingTitle;
   }
 
+  /* ---------------------------------------------------------
+     2. VARIABILI
+     --------------------------------------------------------- */
   const category = document.getElementById("category");
 
   const sectionPhoto = document.getElementById("section-photo");
@@ -360,12 +362,37 @@ document.addEventListener("DOMContentLoaded", function() {
     forex:    { small: 176, medium: 400, large: 960 }
   };
 
+  /* ---------------------------------------------------------
+     3. VISIBILITÀ SEZIONI
+     --------------------------------------------------------- */
   function hideAll() {
     sectionPhoto.style.display = "none";
     sectionDrawing.style.display = "none";
     sectionCatalogue.style.display = "none";
   }
 
+  function updateVisibility() {
+    hideAll();
+
+    if (category.value === "photo") {
+      sectionPhoto.style.display = "block";
+      updateFormatOptions();
+    }
+
+    if (category.value === "drawing") {
+      sectionDrawing.style.display = "block";
+    }
+
+    if (category.value === "catalogue") {
+      sectionCatalogue.style.display = "block";
+    }
+
+    updateSummary();
+  }
+
+  /* ---------------------------------------------------------
+     4. FOTO – aggiornamento formati
+     --------------------------------------------------------- */
   function updateFormatOptions() {
     const support = photoSupport.value;
 
@@ -393,25 +420,9 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
   }
 
-  function updateVisibility() {
-    hideAll();
-
-    if (category.value === "photo") {
-      sectionPhoto.style.display = "block";
-      updateFormatOptions();
-    }
-
-    if (category.value === "drawing") {
-      sectionDrawing.style.display = "block";
-    }
-
-    if (category.value === "catalogue") {
-      sectionCatalogue.style.display = "block";
-    }
-
-    updateSummary();
-  }
-
+  /* ---------------------------------------------------------
+     5. DISEGNI – visibilità formati
+     --------------------------------------------------------- */
   function updateDrawingOptions() {
     originalSizes.style.display = "none";
     fineartSizes.style.display = "none";
@@ -427,6 +438,9 @@ document.addEventListener("DOMContentLoaded", function() {
     updateSummary();
   }
 
+  /* ---------------------------------------------------------
+     6. SUMMARY
+     --------------------------------------------------------- */
   function updateSummary() {
     let artwork = "";
     let formatPrice = "";
@@ -434,6 +448,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     summaryTitle.textContent = artworkTitle.value || "[not provided]";
 
+    /* FOTO */
     if (category.value === "photo") {
       artwork = "Photography";
 
@@ -446,6 +461,7 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
+    /* DISEGNI */
     if (category.value === "drawing") {
 
       if (drawingType.value === "original") {
@@ -467,13 +483,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
         if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
-        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450";        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
+        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
         if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
         if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
       }
     }
 
-    /* Cataloghi */
+    /* CATALOGHI */
     if (category.value === "catalogue") {
       artwork = "Catalogue";
 
