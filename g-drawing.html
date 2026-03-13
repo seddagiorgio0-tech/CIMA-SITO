@@ -493,22 +493,41 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
 
-      <div style="margin-top:25px; display:flex; justify-content:space-between;">
+      <div style="margin-top:25px; display:flex; justify-content:space-between; gap:10px;">
+
+        <!-- PULSANTE ORIGINAL DRAWING -->
+        <a id="buyOriginal" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy original drawing</a>
+
+        <!-- NUOVO PULSANTE FINE‑ART PRINT -->
+        <a id="buyPrint" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy fine‑art print</a>
+
+      </div>
+
+      <div style="margin-top:20px; text-align:right;">
         <button id="closeModal" style="
           padding: 10px 20px;
           background:white;
           border:1px solid #ccc;
           cursor:pointer;
         ">Close</button>
-
-        <a id="buyLink" href="#" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          text-decoration:none;
-          color:black;
-        ">Buy</a>
       </div>
+
     </div>
 </div>
 
@@ -517,7 +536,9 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
     const modal = document.getElementById("infoModal");
     const closeModal = document.getElementById("closeModal");
     const modalContent = document.getElementById("modalContent");
-    const buyLink = document.getElementById("buyLink");
+
+    const buyOriginal = document.getElementById("buyOriginal");
+    const buyPrint = document.getElementById("buyPrint");
 
     infoBtn.onclick = () => {
       let sheet = "";
@@ -567,8 +588,10 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       modalContent.innerHTML = sheet;
 
-      /* LINK AL MODULO CON TITOLO PRECOMPILATO */
-      buyLink.href = `https://giorgiosedda.com/work-in-progress.html?title=Greenland%20Drawing%20${num}`;
+      const link = `https://giorgiosedda.com/work-in-progress.html?title=Greenland%20Drawing%20${num}`;
+
+      buyOriginal.href = link;
+      buyPrint.href = link;
 
       modal.style.display = "flex";
     };
