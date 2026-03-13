@@ -513,19 +513,17 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     6. BLOCCO INTELLIGENTE CATEGORIE
+     6. BLOCCO INTELLIGENTE CATEGORIE (Photo / Drawing / Edition)
      --------------------------------------------------------- */
   function applySmartCategoryLock(title) {
     const options = category.querySelectorAll("option");
 
-    // Sblocca tutto
     options.forEach(opt => opt.disabled = false);
 
     if (!title) return;
 
     const t = title.toLowerCase();
 
-    // PHOTO
     if (t.includes("photo")) {
       category.value = "photo";
       options.forEach(opt => {
@@ -535,7 +533,6 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
 
-    // DRAWING
     if (t.includes("drawing")) {
       category.value = "drawing";
       options.forEach(opt => {
@@ -545,7 +542,6 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
 
-    // EDITION → CATALOGUE
     if (t.includes("edition")) {
       category.value = "catalogue";
       options.forEach(opt => {
@@ -557,7 +553,50 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     7. LETTURA PARAMETRO ?title=
+     7. NUOVA INTELLIGENZA: PRINTED / DIGITAL EDITION
+     --------------------------------------------------------- */
+  function applyEditionLock(title) {
+    const options = catalogueType.querySelectorAll("option");
+
+    options.forEach(opt => opt.disabled = false);
+
+    if (!title) return;
+
+    const t = title.toLowerCase();
+
+    if (t.includes("printed edition")) {
+      options.forEach(opt => {
+        if (!opt.textContent.toLowerCase().includes("printed edition") && opt.value !== "") {
+          opt.disabled = true;
+        }
+      });
+
+      const firstValid = Array.from(options).find(opt =>
+        opt.textContent.toLowerCase().includes("printed edition")
+      );
+      if (firstValid) catalogueType.value = firstValid.value;
+
+      return;
+    }
+
+    if (t.includes("digital edition")) {
+      options.forEach(opt => {
+        if (!opt.textContent.toLowerCase().includes("digital edition") && opt.value !== "") {
+          opt.disabled = true;
+        }
+      });
+
+      const firstValid = Array.from(options).find(opt =>
+        opt.textContent.toLowerCase().includes("digital edition")
+      );
+      if (firstValid) catalogueType.value = firstValid.value;
+
+      return;
+    }
+  }
+
+  /* ---------------------------------------------------------
+     8. LETTURA PARAMETRO ?title=
      --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
@@ -565,18 +604,23 @@ document.addEventListener("DOMContentLoaded", function() {
   if (incomingTitle) {
     artworkTitle.value = incomingTitle;
     summaryTitle.textContent = incomingTitle;
+
     applySmartCategoryLock(incomingTitle);
+    applyEditionLock(incomingTitle);
   }
 
   /* ---------------------------------------------------------
-     8. EVENT LISTENERS
+     9. EVENT LISTENERS
      --------------------------------------------------------- */
-  category.addEventListener("change", updateVisibility);
-
   artworkTitle.addEventListener("input", function() {
-    summaryTitle.textContent = artworkTitle.value || "[not provided]";
-    applySmartCategoryLock(artworkTitle.value);
+    const t = artworkTitle.value;
+    summaryTitle.textContent = t || "[not provided]";
+
+    applySmartCategoryLock(t);
+    applyEditionLock(t);
   });
+
+  category.addEventListener("change", updateVisibility);
 
   photoSupport.addEventListener("change", function() {
     updateFormatOptions();
@@ -591,7 +635,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   catalogueType.addEventListener("change", updateSummary);
 
-  /* Avvio iniziale */
   updateVisibility();
   updateSummary();
 
