@@ -275,10 +275,10 @@
             <label for="catalogue-type">Choose edition</label>
             <select id="catalogue-type" name="catalogue_type">
               <option value="">— select —</option>
-              <option value="africa">Africa (Printed Edition) — € 5</option>
+              <option value="africa">Africa (Printed Edition) — € 8</option>
               <option value="iceland">Iceland (Printed Edition) — € 8</option>
-              <option value="africa-digital">Africa (Digital Edition) — € 3</option>
-              <option value="iceland-digital">Iceland (Digital Edition) — € 5</option>
+              <option value="africa-digital">Africa (Digital Edition) — € 4</option>
+              <option value="iceland-digital">Iceland (Digital Edition) — € 4</option>
             </select>
           </div>
         </div>
@@ -499,7 +499,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const type = catalogueType.value;
 
       if (type === "africa") {
-        price = "€ 5";
+        price = "€ 8";
         formatPrice = "Africa — € 5";
       }
 
@@ -509,12 +509,12 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       if (type === "africa-digital") {
-        price = "€ 3";
+        price = "€ 4";
         formatPrice = "Africa (Digital Edition) — € 3";
       }
 
       if (type === "iceland-digital") {
-        price = "€ 5";
+        price = "€ 4";
         formatPrice = "Iceland (Digital Edition) — € 5";
       }
     }
