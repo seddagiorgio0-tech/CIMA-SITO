@@ -251,14 +251,15 @@
               <option value="">— select —</option>
               <option value="africa">Africa (Printed Edition) — € 8</option>
               <option value="iceland">Iceland (Printed Edition) — € 8</option>
-              <option value="africa-digital">Africa (Digital Edition PDF) — € 4</option>
-              <option value="iceland-digital">Iceland (Digital Edition PDF) — € 4</option>
+              <option value="africa-digital">Africa (Digital Edition) — € 4</option>
+              <option value="iceland-digital">Iceland (Digital Edition) — € 4</option>
             </select>
           </div>
         </div>
 
         <input type="hidden" id="format-price-hidden" name="format_price" value="">
       </div>
+
       <!-- 2. SUMMARY -->
       <div class="section">
         <h2>2. Summary</h2>
@@ -312,28 +313,16 @@
 
     </form>
   </div>
-
 <!-- SCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
   /* ---------------------------------------------------------
-     1. LETTURA PARAMETRO ?title=
+     1. RIFERIMENTI DOM
      --------------------------------------------------------- */
-  const params = new URLSearchParams(window.location.search);
-  const incomingTitle = params.get("title");
-
   const artworkTitle = document.getElementById("artwork-title");
   const summaryTitle = document.getElementById("summary-title");
 
-  if (incomingTitle) {
-    artworkTitle.value = incomingTitle;
-    summaryTitle.textContent = incomingTitle;
-  }
-
-  /* ---------------------------------------------------------
-     2. VARIABILI
-     --------------------------------------------------------- */
   const category = document.getElementById("category");
 
   const sectionPhoto = document.getElementById("section-photo");
@@ -363,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   /* ---------------------------------------------------------
-     3. VISIBILITÀ SEZIONI
+     2. VISIBILITÀ SEZIONI
      --------------------------------------------------------- */
   function hideAll() {
     sectionPhoto.style.display = "none";
@@ -391,7 +380,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     4. FOTO – aggiornamento formati
+     3. FOTO – aggiornamento formati
      --------------------------------------------------------- */
   function updateFormatOptions() {
     const support = photoSupport.value;
@@ -421,7 +410,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     5. DISEGNI – visibilità formati
+     4. DISEGNI – visibilità formati
      --------------------------------------------------------- */
   function updateDrawingOptions() {
     originalSizes.style.display = "none";
@@ -439,7 +428,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     6. SUMMARY
+     5. SUMMARY
      --------------------------------------------------------- */
   function updateSummary() {
     let artwork = "";
@@ -507,16 +496,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (type === "africa-digital") {
         price = "€ 4";
-        formatPrice = "Africa (Digital Edition PDF) — € 4";
+        formatPrice = "Africa (Digital Edition) — € 4";
       }
 
       if (type === "iceland-digital") {
         price = "€ 4";
-        formatPrice = "Iceland (Digital Edition PDF) — € 4";
+        formatPrice = "Iceland (Digital Edition) — € 4";
       }
     }
 
-    /* Aggiornamento Summary */
     summaryArtwork.textContent = artwork || "[will be confirmed via email]";
     summaryFormatPrice.textContent = formatPrice || "[based on selection]";
     summaryPrice.textContent = price || "[based on selection]";
@@ -525,11 +513,70 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     7. EVENT LISTENERS
+     6. BLOCCO INTELLIGENTE CATEGORIE
+     --------------------------------------------------------- */
+  function applySmartCategoryLock(title) {
+    const options = category.querySelectorAll("option");
+
+    // Sblocca tutto
+    options.forEach(opt => opt.disabled = false);
+
+    if (!title) return;
+
+    const t = title.toLowerCase();
+
+    // PHOTO
+    if (t.includes("photo")) {
+      category.value = "photo";
+      options.forEach(opt => {
+        if (opt.value !== "photo" && opt.value !== "") opt.disabled = true;
+      });
+      updateVisibility();
+      return;
+    }
+
+    // DRAWING
+    if (t.includes("drawing")) {
+      category.value = "drawing";
+      options.forEach(opt => {
+        if (opt.value !== "drawing" && opt.value !== "") opt.disabled = true;
+      });
+      updateVisibility();
+      return;
+    }
+
+    // EDITION → CATALOGUE
+    if (t.includes("edition")) {
+      category.value = "catalogue";
+      options.forEach(opt => {
+        if (opt.value !== "catalogue" && opt.value !== "") opt.disabled = true;
+      });
+      updateVisibility();
+      return;
+    }
+  }
+
+  /* ---------------------------------------------------------
+     7. LETTURA PARAMETRO ?title=
+     --------------------------------------------------------- */
+  const params = new URLSearchParams(window.location.search);
+  const incomingTitle = params.get("title");
+
+  if (incomingTitle) {
+    artworkTitle.value = incomingTitle;
+    summaryTitle.textContent = incomingTitle;
+    applySmartCategoryLock(incomingTitle);
+  }
+
+  /* ---------------------------------------------------------
+     8. EVENT LISTENERS
      --------------------------------------------------------- */
   category.addEventListener("change", updateVisibility);
 
-  artworkTitle.addEventListener("input", updateSummary);
+  artworkTitle.addEventListener("input", function() {
+    summaryTitle.textContent = artworkTitle.value || "[not provided]";
+    applySmartCategoryLock(artworkTitle.value);
+  });
 
   photoSupport.addEventListener("change", function() {
     updateFormatOptions();
