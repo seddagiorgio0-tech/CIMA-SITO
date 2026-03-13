@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #ffffff;
+      background: #f8f5e9 ;
       color: #111111;
       margin: 0;
       padding: 25px 20px;
@@ -148,7 +148,9 @@
 
   <div class="container">
     <h1>Artwork Purchase – Guided Procedure</h1>
-    <p>A curated selection, produced on request. Fill in the details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
+
+    <!-- 🔵 TESTO MODIFICATO QUI -->
+    <p>Welcome, it is necessary to fill in every field of the form to obtain a complete summary. Enter your details to send your purchase request. You will receive a confirmation email before proceeding with payment.</p>
 
     <!-- FORM SUBMIT ACTIVATED -->
     <form action="https://formsubmit.co/info@giorgiosedda.com" method="POST">
@@ -280,7 +282,7 @@
         <textarea id="notes" name="notes"></textarea>
       </div>
 
-      <!-- 4. PERSONAL DETAILS (moved here) -->
+      <!-- 4. PERSONAL DETAILS -->
       <div class="section">
         <h2>4. Personal details</h2>
 
@@ -319,9 +321,6 @@
 <script>
 document.addEventListener("DOMContentLoaded", function() {
 
-  /* ---------------------------------------------------------
-     1. PRECOMPILAZIONE SOLO DEL TITOLO (SE ARRIVA DAL BUY)
-     --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
 
@@ -333,9 +332,6 @@ document.addEventListener("DOMContentLoaded", function() {
     summaryTitle.textContent = incomingTitle;
   }
 
-  /* ---------------------------------------------------------
-     2. VARIABILI DEL MODULO
-     --------------------------------------------------------- */
   const category = document.getElementById("category");
 
   const sectionPhoto = document.getElementById("section-photo");
@@ -358,16 +354,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const summaryPrice = document.getElementById("summary-price");
   const hiddenFormatPrice = document.getElementById("format-price-hidden");
 
-  /* Prezzi fotografie */
   const priceTable = {
     aluminum: { small: 220, medium: 500, large: 1200 },
     paper:    { small: 176, medium: 400, large: 960 },
     forex:    { small: 176, medium: 400, large: 960 }
   };
 
-  /* ---------------------------------------------------------
-     3. FUNZIONI DI UTILITÀ
-     --------------------------------------------------------- */
   function hideAll() {
     sectionPhoto.style.display = "none";
     sectionDrawing.style.display = "none";
@@ -401,9 +393,6 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
   }
 
-  /* ---------------------------------------------------------
-     4. MOSTRARE LE SEZIONI IN BASE ALLA CATEGORIA
-     --------------------------------------------------------- */
   function updateVisibility() {
     hideAll();
 
@@ -423,9 +412,6 @@ document.addEventListener("DOMContentLoaded", function() {
     updateSummary();
   }
 
-  /* ---------------------------------------------------------
-     5. MOSTRARE FORMATI DISEGNI IN BASE AL TIPO
-     --------------------------------------------------------- */
   function updateDrawingOptions() {
     originalSizes.style.display = "none";
     fineartSizes.style.display = "none";
@@ -441,18 +427,13 @@ document.addEventListener("DOMContentLoaded", function() {
     updateSummary();
   }
 
-  /* ---------------------------------------------------------
-     6. AGGIORNAMENTO DEL SUMMARY
-     --------------------------------------------------------- */
   function updateSummary() {
     let artwork = "";
     let formatPrice = "";
     let price = "";
 
-    /* Titolo */
     summaryTitle.textContent = artworkTitle.value || "[not provided]";
 
-    /* Fotografie */
     if (category.value === "photo") {
       artwork = "Photography";
 
@@ -465,7 +446,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
-    /* Disegni */
     if (category.value === "drawing") {
 
       if (drawingType.value === "original") {
@@ -477,7 +457,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (size === "medium") { price = "€ 950"; formatPrice = "A3 — € 950"; }
         if (size === "large") { price = "€ 2.200"; formatPrice = "70×100 – 100×140 — € 2.200"; }
         if (size === "xl") { price = "€ 4.800"; formatPrice = "140×200 — € 4.800"; }
-                if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
+        if (size === "xxl") { price = "€ 10.000"; formatPrice = "180×250 — € 10.000"; }
       }
 
       if (drawingType.value === "fineart") {
@@ -487,7 +467,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
         if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
-        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
+        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450";        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
         if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
         if (size === "xxl") { price = "€ 1.200"; formatPrice = "140×200 — € 1.200"; }
       }
