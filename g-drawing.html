@@ -67,7 +67,6 @@
       border-color: #ccc;
     }
 
-    /* BLOCCO DOPPIO (1–5) — RIPRISTINATO COME L’ORIGINALE */
     .block {
       max-width: 900px;
       margin: 60px auto;
@@ -100,7 +99,6 @@
       cursor: zoom-in;
     }
 
-    /* BLOCCO SINGOLO (6–10) — FONT 15px COME RICHIESTO */
     .single-img {
       max-width: 900px;
       margin: 60px auto;
@@ -119,13 +117,11 @@
     .single-text {
       width: 80%;
       margin: 20px auto 0 auto;
-      font-size: 12px; /* UGUALE AI RACCONTI 1–5 */
+      font-size: 12px;
       line-height: 1.55;
       text-align: justify;
-
     }
 
-    /* NAV BUTTONS */
     .nav-buttons {
       display: flex;
       justify-content: space-between;
@@ -162,7 +158,6 @@
       padding-bottom: 40px;
     }
 
-    /* MODAL IMMAGINI INGRANDITE */
     .img-modal {
       display: none;
       position: fixed;
@@ -191,17 +186,16 @@
       cursor: pointer;
     }
 
-/* Ingrandisce solo il disegno 11 */
-.block:nth-child(11) .img-col img {
-  max-width:600px;   /* puoi aumentare o diminuire */
-  width: 150%;
-}
+    /* Ingrandisce solo il disegno 11 */
+    .block:nth-child(11) .img-col img {
+      max-width:600px;
+      width: 150%;
+    }
 
-.big-drawing {
-  width: 90% !important;
-  max-width:700px !important;
-
-}
+    .big-drawing {
+      width: 90% !important;
+      max-width:700px !important;
+    }
 
   </style>
 </head>
@@ -242,6 +236,7 @@
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
+
 <script>
   const totalDrawings = 11;
   let index = 1;
@@ -250,7 +245,7 @@
   const backBtn = document.getElementById("backBtn");
   const nextBtn = document.getElementById("nextBtn");
 
-  /* TESTI ORIGINALI 1–5 (identici ai tuoi, senza titoli aggiunti) */
+  /* TESTI ORIGINALI 1–5 */
   const texts = [
     "",
 
@@ -289,7 +284,7 @@
     "", "", "", "", ""
   ];
 
-  /* TESTI 6–10 (font 15px, nessuna sigla EN/IT) */
+  /* TESTI 6–10 */
   const singleTexts = {
     6: `<strong>The Perfect Storm</strong><br>
 I will never forget the moment I heard the word “Piteraq” for the first time…  
@@ -400,38 +395,38 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
       const single = document.createElement("div");
       single.className = "single-img";
 
-     single.innerHTML = `
+      single.innerHTML = `
         <img src="${img}" class="zoomable big-drawing">
         <div class="single-text">${singleTexts[index]}</div>
       `;
 
       content.appendChild(single);
 
- /* BLOCCO 11 — ORA CON TESTO A DESTRA */
-} else {
-  const block = document.createElement("div");
-  block.className = "block";
+    /* BLOCCO 11 — TESTO A DESTRA */
+    } else {
+      const block = document.createElement("div");
+      block.className = "block";
 
-  block.innerHTML = `
-    <div class="img-col">
-      <img src="${img}" class="zoomable big-drawing">
-    </div>
+      block.innerHTML = `
+        <div class="img-col">
+          <img src="${img}" class="zoomable big-drawing">
+        </div>
 
-    <div class="text-col">
-      <strong>Robert Peroni</strong> (My tribute for his 80th birthday).<br>
-      Mountaineer, explorer, writer. In 1980, Robert Peroni reached Greenland on an extreme expedition and, fascinated by the Inuit people, decided to stay. He integrated into the community, founded the Red House as a refuge and workplace for young locals, and became a key voice in raising awareness about the cultural and social crisis affecting the Inuit.
+        <div class="text-col">
+          <strong>Robert Peroni</strong> (My tribute for his 80th birthday).<br>
+          Mountaineer, explorer, writer. In 1980, Robert Peroni reached Greenland on an extreme expedition and, fascinated by the Inuit people, decided to stay. He integrated into the community, founded the Red House as a refuge and workplace for young locals, and became a key voice in raising awareness about the cultural and social crisis affecting the Inuit.
 In 2023 he created the Red House Greenland Foundation to ensure long‑term support for the community.
 <strong>In the same year, Robert Peroni he supported my project at The Red House, the main base camp of my mission.</strong><br><br>
 
-      <strong>Robert Peroni</strong> (Il mio omaggio per i suoi 80'anni).<br>
-      Alpinista, esploratore, scrittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
+          <strong>Robert Peroni</strong> (Il mio omaggio per i suoi 80'anni).<br>
+          Alpinista, esploratore, scrittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
 Nel 2023 istituisce la fondazione The Red House Greenland per garantire continuità al suo sostegno alla comunità.
 <strong>Nello stesso anno Robert Peroni ha supportato il mio progetto presso la The Red House, campo base principale della mia missione.</strong>
-    </div>
-  `;
+        </div>
+      `;
 
-  content.appendChild(block);
-}
+      content.appendChild(block);
+    }
 
     backBtn.disabled = index === 1;
     nextBtn.disabled = index === totalDrawings;
@@ -442,8 +437,8 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
   render();
 </script>
+
 <!-- MODAL PER ZOOM IMMAGINI -->
-<!-- MODAL IMMAGINI -->
 <div id="imgModal" class="img-modal">
   <span class="img-modal-close">&times;</span>
   <img id="imgModalContent" src="">
@@ -472,7 +467,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
     };
 </script>
 
-<!-- MODAL INFO (SCHEDA TECNICA CORRETTA) -->
+<!-- MODAL INFO (SCHEDA TECNICA) -->
 <div id="infoModal" style="
     display:none;
     position: fixed;
@@ -506,7 +501,6 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
           cursor:pointer;
         ">Close</button>
 
-        <!-- ⭐ NUOVO PULSANTE BUY -->
         <a id="buyLink" href="#" style="
           padding: 10px 20px;
           background:white;
@@ -531,7 +525,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       if (index <= 5) {
         sheet = `
-          <strong>Title:</strong> Greenland – Night in the Fjord<br>
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
           <strong>Location:</strong> France, 2023<br>
           <strong>Technique:</strong> Pencil on paper<br>
           <strong>Size:</strong> 250 × 180 cm<br><br>
@@ -546,7 +540,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       else if (index <= 10) {
         sheet = `
-          <strong>Title:</strong> Greenland – The perfect storm<br>
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
           <strong>Location:</strong> Italy, 2023<br>
           <strong>Technique:</strong> Pencil on paper<br>
           <strong>Size:</strong> 180 × 125 cm<br><br>
@@ -561,7 +555,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       else {
         sheet = `
-          <strong>Title:</strong> Greenland – Robert Peroni explorator<br>
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
           <strong>Technique:</strong> Pencil on paper<br>
           <strong>Size:</strong> 130 × 100 cm<br><br>
 
@@ -573,7 +567,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       modalContent.innerHTML = sheet;
 
-      /* ⭐ LINK AL MODULO CON TITOLO PRECOMPILATO */
+      /* LINK AL MODULO CON TITOLO PRECOMPILATO */
       buyLink.href = `https://giorgiosedda.com/work-in-progress.html?title=Greenland%20Drawing%20${num}`;
 
       modal.style.display = "flex";
