@@ -186,7 +186,6 @@
       cursor: pointer;
     }
 
-    /* Ingrandisce solo il disegno 11 */
     .block:nth-child(11) .img-col img {
       max-width:600px;
       width: 150%;
@@ -223,10 +222,8 @@
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
   </div>
 
-  <!-- CONTENT -->
   <div id="content"></div>
 
-  <!-- NAVIGATION UNDER IMAGES -->
   <div class="nav-buttons">
     <button id="backBtn">Back</button>
     <button id="infoBtn">Info</button>
@@ -319,7 +316,7 @@ Ho visto bambini che non facevano domande, come se sapessero che il silenzio fos
 Io stesso mi sono ritrovato a correre da una casa all’altra, aiutando come potevo.  
 Ogni oggetto lasciato fuori era un potenziale proiettile.  
 Ogni porta non fissata era un varco.  
-E mentre lavoravo, sentivo crescere dentro di me una tensione sottile, quasi fisica.  
+E mentre lavoravo, sentivo crescere dentro di me una tensionione sottile, quasi fisica.  
 Non era paura del vento, ma la sensazione di essere osservato da qualcosa che ancora non si mostrava.`,
 
     8: `An old man told me about the 1970 storm.  
@@ -336,7 +333,7 @@ Un anziano mi ha raccontato della tormenta del 1970.
 «Le case erano leggere» ha detto, senza guardarmi.  
 «I demoni dell’altopiano sono scesi tutti insieme.»  
 Ha fatto un gesto con la mano, come a spazzare via un villaggio immaginario.  
-«Siamo sopravvissuti solo perché ci siamo nascosti sottoterra. Come i nostri antenati.»  
+"Siamo sopravvissuti solo perché ci siamo nascosti sottoterra. Come i nostri antenati."  
 Quelle parole mi sono rimaste addosso mentre il cielo diventava più scuro, come se stesse trattenendo il fiato.  
 E poi, all’improvviso, il primo colpo.  
 Non un soffio. Un impatto.  
@@ -416,10 +413,10 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
           <strong>Robert Peroni</strong> (My tribute for his 80th birthday).<br>
           Mountaineer, explorer, writer. In 1980, Robert Peroni reached Greenland on an extreme expedition and, fascinated by the Inuit people, decided to stay. He integrated into the community, founded the Red House as a refuge and workplace for young locals, and became a key voice in raising awareness about the cultural and social crisis affecting the Inuit.
 In 2023 he created the Red House Greenland Foundation to ensure long‑term support for the community.
-<strong>In the same year, Robert Peroni he supported my project at The Red House, the main base camp of my mission.</strong><br><br>
+<strong>In the same year, Robert Peroni supported my project at The Red House, the main base camp of my mission.</strong><br><br>
 
           <strong>Robert Peroni</strong> (Il mio omaggio per i suoi 80'anni).<br>
-          Alpinista, esploratore, scrittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
+          Alpinista, esploratore, scrittittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
 Nel 2023 istituisce la fondazione The Red House Greenland per garantire continuità al suo sostegno alla comunità.
 <strong>Nello stesso anno Robert Peroni ha supportato il mio progetto presso la The Red House, campo base principale della mia missione.</strong>
         </div>
@@ -466,7 +463,6 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
       }
     };
 </script>
-
 <!-- MODAL INFO (SCHEDA TECNICA) -->
 <div id="infoModal" style="
     display:none;
@@ -506,7 +502,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
           text-align:center;
         ">Buy original drawing</a>
 
-        <!-- NUOVO PULSANTE FINE‑ART PRINT -->
+        <!-- PULSANTE FINE‑ART PRINT -->
         <a id="buyPrint" href="#" style="
           padding: 10px 20px;
           background:white;
@@ -515,7 +511,7 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
           color:black;
           flex:1;
           text-align:center;
-        ">Buy fine‑art print</a>
+        ">Buy fine-art print</a>
 
       </div>
 
@@ -588,10 +584,14 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
 
       modalContent.innerHTML = sheet;
 
-      const link = `https://giorgiosedda.com/work-in-progress.html?title=Greenland%20Drawing%20${num}`;
+      /* COSTRUZIONE TITOLO PRECOMPILATO */
+      const baseTitle = `Greenland - Drawing ${num}`;
+      const encodedBase = encodeURIComponent(baseTitle);
+      const baseLink = `https://giorgiosedda.com/work-in-progress.html?title=${encodedBase}`;
 
-      buyOriginal.href = link;
-      buyPrint.href = link;
+      /* LINK COMPLETI */
+      buyOriginal.href = `${baseLink}%20(original%20drawing)`;
+      buyPrint.href = `${baseLink}%20(fine-art%20print)`;
 
       modal.style.display = "flex";
     };
