@@ -553,7 +553,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     7. NUOVA INTELLIGENZA: PRINTED / DIGITAL EDITION
+     7. INTELLIGENZA PRINTED / DIGITAL EDITION
      --------------------------------------------------------- */
   function applyEditionLock(title) {
     const options = catalogueType.querySelectorAll("option");
@@ -596,7 +596,38 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   /* ---------------------------------------------------------
-     8. LETTURA PARAMETRO ?title=
+     8. NUOVA INTELLIGENZA: TYPE OF ARTWORK
+     --------------------------------------------------------- */
+  function applyDrawingTypeLock(title) {
+    const options = drawingType.querySelectorAll("option");
+
+    options.forEach(opt => opt.disabled = false);
+
+    if (!title) return;
+
+    const t = title.toLowerCase();
+
+    if (t.includes("drawing original drawing")) {
+      drawingType.value = "original";
+      options.forEach(opt => {
+        if (opt.value !== "original" && opt.value !== "") opt.disabled = true;
+      });
+      updateDrawingOptions();
+      return;
+    }
+
+    if (t.includes("drawing fine-art")) {
+      drawingType.value = "fineart";
+      options.forEach(opt => {
+        if (opt.value !== "fineart" && opt.value !== "") opt.disabled = true;
+      });
+      updateDrawingOptions();
+      return;
+    }
+  }
+
+  /* ---------------------------------------------------------
+     9. LETTURA PARAMETRO ?title=
      --------------------------------------------------------- */
   const params = new URLSearchParams(window.location.search);
   const incomingTitle = params.get("title");
@@ -607,10 +638,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     applySmartCategoryLock(incomingTitle);
     applyEditionLock(incomingTitle);
+    applyDrawingTypeLock(incomingTitle);
   }
 
   /* ---------------------------------------------------------
-     9. EVENT LISTENERS
+     10. EVENT LISTENERS
      --------------------------------------------------------- */
   artworkTitle.addEventListener("input", function() {
     const t = artworkTitle.value;
@@ -618,6 +650,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     applySmartCategoryLock(t);
     applyEditionLock(t);
+    applyDrawingTypeLock(t);
   });
 
   category.addEventListener("change", updateVisibility);
