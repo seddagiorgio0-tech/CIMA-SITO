@@ -174,11 +174,11 @@
   </div>
 
   <div class="photo-container">
-    <img id="photo" src="g01.jpg" alt="Photo" class="zoomable">
+    <img id="photo" src="g00.jpg" alt="Photo" class="zoomable">
   </div>
 
   <div class="caption" id="caption">
-    Greenland – Photo 01
+    Greenland – Photo 00
   </div>
 
   <div class="nav-buttons">
@@ -192,8 +192,8 @@
   </div>
 
 <script>
-  const totalPhotos = 56;
-  let index = 1;
+  const totalPhotos = 57;
+  let index = 0;
 
   const photo = document.getElementById("photo");
   const caption = document.getElementById("caption");
@@ -204,17 +204,17 @@
     const num = String(index).padStart(2, '0');
     photo.src = `g${num}.jpg`;
     caption.textContent = `Greenland – Photo ${num}`;
-    backBtn.disabled = index === 1;
-    nextBtn.disabled = index === totalPhotos;
+    backBtn.disabled = index === 0;
+    nextBtn.disabled = index === totalPhotos - 1;
   }
 
   backBtn.onclick = () => {
-    if (index > 1) index--;
+    if (index > 0) index--;
     updatePhoto();
   };
 
   nextBtn.onclick = () => {
-    if (index < totalPhotos) index++;
+    if (index < totalPhotos - 1) index++;
     updatePhoto();
   };
 
@@ -256,7 +256,6 @@
         cursor:pointer;
       ">Close</button>
 
-      <!-- ⭐ MODIFICATO: LINK AL MODULO -->
       <a id="buyLink" href="#" style="
         padding: 10px 20px;
         background:white;
@@ -307,7 +306,6 @@
       ${technicalSheet.testo}
     `;
 
-    // ⭐ LINK AL MODULO CON TITOLO PRECOMPILATO
     buyLink.href = `https://giorgiosedda.com/work-in-progress.html?title=Greenland%20Photo%20${num}`;
 
     modal.style.display = "flex";
