@@ -235,8 +235,8 @@
   </div>
 
 <script>
-  const totalDrawings = 11;
-  let index = 1;
+  const totalDrawings = 12;
+  let index = 0;
 
   const content = document.getElementById("content");
   const backBtn = document.getElementById("backBtn");
@@ -257,6 +257,364 @@
     /* 2 — SENZA TITOLO */
     `
     The rifle lay next to the tent. It didn’t make me feel safe — not really. It was just an object, an extra weight. But I needed it. It was my only psychological anchor, the illusion of having a margin, a boundary, a “if something happens…”. The truth is, I didn’t want to use it. I hadn’t come to challenge him. I had come to cross his home, and I hoped he would let me pass. When night fell, it truly fell. A total, dense darkness that seemed to absorb every sound. I slipped into my sleeping bag and closed my eyes, but it was useless. The silence was too vast to sleep. Then came the first noise.<br><br>
+    Il fucile era posato accanto alla tenda. Non mi faceva sentire al sicuro — non davvero. Era solo un oggetto, un peso in più. Ma ne avevo bisogno. Era il mio unico ancoraggio psicologico, l’illusione di avere un margine, un confine, un “se succede qualcosa…”. La verità è che non volevo usarlo. Non ero venuto per sfidarlo. Ero venuto ad attraversare la sua casa, e speravo che mi avrebbe lasciato passare. Quando la notte cadde, cadde davvero. Un buio totale, denso, che sembrava assorbire ogni suono. Mi infilai nel sacco a pelo e chiusi gli occhi, ma fu inutile. Il silenzio era troppo vasto per dormire. Poi arrivò il primo rumore.
+    `,
+
+    /* 3 — SENZA TITOLO */
+    `
+    A rustle, distant but not distant enough. I opened my eyes in an instant, and my heart began pounding as if it wanted to burst out of my chest. I stayed still, listening. The wind had stopped, and when the wind falls silent, the Arctic speaks. Another sound, closer now, and the snow giving way under an enormous weight. I lifted myself slightly, holding my breath. I couldn’t see anything, but I felt him — like having a thought walking outside the tent. The smell came last, a strong, wild smell. A smell I had never sensed so close.<br><br>
+    Un fruscio, lontano ma non abbastanza lontano. Aprii gli occhi di scatto, e il cuore cominciò a battere come se volesse uscirmi dal petto. Rimasi immobile, in ascolto. Il vento si era fermato, e quando il vento tace, l’Artico parla. Un altro suono, più vicino ora, e la neve che cedeva sotto un peso enorme. Mi sollevai appena, trattenendo il respiro. Non vedevo nulla, ma lo sentivo — come un pensiero che camminasse fuori dalla tenda. L’odore arrivò per ultimo, un odore forte, selvatico. Un odore che non avevo mai percepito così vicino.
+    `,
+
+    /* 4 — SENZA TITOLO */
+    `
+    He was there, the White Bear, just a few meters from me. I didn’t dare move. I didn’t even dare take a deep breath. The tent was a ridiculous boundary, a thin veil between me and a force I could not control. And yet, in the midst of fear, I felt something else. A shiver of excitement, of respect, of awareness. I was in his world, and he knew it. Minutes passed that felt like hours; every step I heard outside was a blow to the heart. Every silence an endless wait.<br><br>
+    Era lì, l’Orso Bianco, a pochi metri da me. Non osavo muovermi. Non osavo nemmeno fare un respiro profondo. La tenda era un confine ridicolo, un velo sottile tra me e una forza che non potevo controllare. Eppure, in mezzo alla paura, sentii qualcos’altro. Un brivido di eccitazione, di rispetto, di consapevolezza. Ero nel suo mondo, e lui lo sapeva. I minuti passarono come ore; ogni passo che sentivo fuori era un colpo al cuore. Ogni silenzio un’attesa infinita.
+    `,
+
+    /* 5 — SENZA TITOLO */
+    `
+    Then slowly, the sounds drifted away — first one step, then another. Then only the fjord again, still and silent. I stayed awake until dawn, unable to close my eyes. When I finally stepped out of the tent, the low sun lit up a paradise, but it revealed no tracks. I knelt, brushing the snow with my hand, and in that moment I understood something simple and immense: I had not been threatened. I had been tolerated. In the silence of the fjord, I felt part of something greater than myself.<br><br>
+    Poi lentamente, i suoni si allontanarono — prima un passo, poi un altro. Poi solo il fiordo di nuovo, immobile e silenzioso. Rimasi sveglio fino all’alba, incapace di chiudere gli occhi. Quando finalmente uscii dalla tenda, il sole basso illuminava un paradiso, ma non rivelava alcuna traccia. Mi inginocchiai, sfiorando la neve con la mano, e in quel momento compresi qualcosa di semplice e immenso: non ero stato minacciato. Ero stato tollerato. Nel silenzio del fiordo, mi sentii parte di qualcosa più grande di me.
+    `,
+
+    "", "", "", "", ""
+  ];
+
+  /* TESTI 6–10 */
+  const singleTexts = {
+    6: `<strong>The Perfect Storm</strong><br>
+I will never forget the moment I heard the word “Piteraq” for the first time…  
+It is the perfect storm, driven not so much by wind as by an entity. Piteraq, literally: “He attacks you.”  
+When people say it, they lower their voices, as if it could hear them.  
+News of its arrival wasn’t an official announcement; it slipped from mouth to mouth like an omen.  
+I was in the small village shop when I saw something change in people’s eyes.  
+It wasn’t panic, but something older: a recognition.  
+As if an old enemy had knocked at the door.  
+The hours that followed were a theatre of quick, silent gestures.<br><br>
+<strong>La tempesta perfetta</strong><br>
+Non dimenticherò mai il momento in cui ho sentito pronunciare la parola “Piteraq” per la prima volta…  
+È la tormenta perfetta, spinta più che da un vento da un’entità. Piteraq, tradotto: “Lui ti attacca”.  
+Quando lo pronunciano abbassano la voce, come se potesse sentirli.  
+La notizia del suo arrivo non è stata un annuncio ufficiale: è scivolata di bocca in bocca, come un presagio.  
+Io ero nel piccolo negozio del villaggio quando ho visto cambiare l’aria negli occhi delle persone.  
+Non era panico, ma qualcosa di più antico: un riconoscimento.  
+Come se un vecchio nemico avesse bussato alla porta.  
+Le ore successive sono state un teatro di gesti rapidi e silenziosi.`,
+
+    7: `I saw women dragging inside anything that could be blown away.  
+I saw men nailing boards over windows with a fierce determination.  
+I saw children who didn’t ask questions, as if they knew that silence itself was a form of protection.  
+I found myself running from house to house, helping however I could.  
+Every object left outside was a potential projectile.  
+Every unsecured door was a breach.  
+And as I worked, I felt a thin, almost physical tension growing inside me.  
+It wasn’t fear of the wind, but the sensation of being watched by something that had not yet revealed itself.<br><br>
+Ho visto donne trascinare dentro casa tutto ciò che poteva volare via.  
+Ho visto uomini inchiodare pannelli alle finestre con una determinazione feroce.  
+Ho visto bambini che non facevano domande, come se sapessero che il silenzio fosse una forma di protezione.  
+Io stesso mi sono ritrovato a correre da una casa all’altra, aiutando come potevo.  
+Ogni oggetto lasciato fuori era un potenziale proiettile.  
+Ogni porta non fissata era un varco.  
+E mentre lavoravo, sentivo crescere dentro di me una tensionione sottile, quasi fisica.  
+Non era paura del vento, ma la sensazione di essere osservato da qualcosa che ancora non si mostrava.`,
+
+    8: `An old man told me about the 1970 storm.  
+“The houses were light,” he said, without looking at me.  
+“The demons of the plateau came down all at once.”  
+He made a sweeping gesture with his hand, as if wiping away an imaginary village.  
+“We survived only because we hid underground. Like our ancestors.”  
+Those words clung to me as the sky grew darker, as if it were holding its breath.  
+And then, suddenly, the first blow.  
+Not a gust. An impact.  
+The wall shook as if someone had slammed into it with a giant shoulder.  
+Then another blow, stronger. And another.<br><br>
+Un anziano mi ha raccontato della tormenta del 1970.  
+«Le case erano leggere» ha detto, senza guardarmi.  
+«I demoni dell’altopiano sono scesi tutti insieme.»  
+Ha fatto un gesto con la mano, come a spazzare via un villaggio immaginario.  
+"Siamo sopravvissuti solo perché ci siamo nascosti sottoterra. Come i nostri antenati."  
+Quelle parole mi sono rimaste addosso mentre il cielo diventava più scuro, come se stesse trattenendo il fiato.  
+E poi, all’improvviso, il primo colpo.  
+Non un soffio. Un impatto.  
+La parete ha tremato come se qualcuno l’avesse colpita con una spalla gigantesca.  
+Poi un altro colpo, più forte. E un altro ancora.`,
+
+    9: `The wind wasn’t howling — it was pounding.  
+Every gust felt like an attempt to get in, to break through, to seize something or someone.  
+In the endless night, I found myself sitting on the floor, my back against the wall, counting the intervals between one boom and the next.  
+Maybe I was searching for a rhythm, a way to convince myself that it was still a natural phenomenon and not an assault.  
+When everything finally stopped, the silence was almost more unsettling than the noise.  
+I stepped outside cautiously, the way one does after a bombing.<br><br>
+Il vento non ululava: picchiava.  
+Ogni raffica sembrava un tentativo di entrare, di sfondare, di afferrare qualcosa o qualcuno.  
+Nella notte infinita mi sono ritrovato seduto sul pavimento, la schiena contro il muro, a contare gli intervalli tra un boato e l’altro.  
+Forse cercavo un ritmo, un modo per convincermi che fosse ancora un fenomeno naturale e non un assedio.  
+Quando finalmente tutto è cessato, il silenzio è stato quasi più inquietante del rumore.  
+Sono uscito all’aperto con cautela, come si esce dopo un bombardamento.`,
+
+    10: `The village was unrecognizable: mountains of snow, torn-off doors, objects embedded in the ground like blades.  
+And yet, people walked around and observed the scene with a kind of relief I couldn’t understand.  
+It wasn’t resignation. It was respect.  
+In that moment, I understood that here, on the East coast of Greenland, the Piteraq is not just a weather event.  
+It is a warning. A reminder that the plateau does not forget and does not forgive.  
+And that time, I learned what it truly means to be a guest in a place that owes you nothing.<br><br>
+Il villaggio era irriconoscibile: montagne di neve, porte strappate, oggetti conficcati nel terreno come lame.  
+Eppure, la gente camminava e osservava con un sollievo che non riuscivo a spiegarmi.  
+Non era rassegnazione. Era rispetto.  
+In quel momento ho capito che qui, sulla costa Est della Groenlandia, il Piteraq non è un evento atmosferico.  
+È un avvertimento. Un promemoria che l’altopiano non dimentica e non perdona.  
+E io, quella notte, ho imparato cosa significa essere davvero un ospite in un luogo che non ti deve nulla.`
+  };
+
+  function render() {
+    content.innerHTML = "";
+
+  /* BLOCCO 0 — SOLO IMMAGINE */
+  if (index === 0) {
+    content.innerHTML = `
+      <div class="single-img" style="max-width:900px; margin:60px auto; padding:0 20px;">
+        <img src="g-drawing00.jpg" class="zoomable" style="width:70%; max-width:900px; margin:0 auto; display:block;">
+      </div>
+    `;
+    backBtn.disabled = true;
+    nextBtn.disabled = false;
+    return;
+  }
+
+
+    const num = String(index).padStart(2, '0');
+    const img = `g-drawing${num}.jpg`;
+
+    /* BLOCCO DOPPIO (1–5) */
+    if (index <= 5) {
+      const block = document.createElement("div");
+      block.className = "block";
+
+      const textCol = `<div class="text-col">${texts[index]}</div>`;
+      const imgCol = `<div class="img-col"><img src="${img}" class="zoomable"></div>`;
+
+      block.innerHTML = (index % 2 === 1)
+        ? textCol + imgCol
+        : imgCol + textCol;
+
+      content.appendChild(block);
+
+    /* BLOCCO SINGOLO (6–10) */
+    } else if (index <= 10) {
+      const single = document.createElement("div");
+      single.className = "single-img";
+
+      single.innerHTML = `
+        <img src="${img}" class="zoomable big-drawing">
+        <div class="single-text">${singleTexts[index]}</div>
+      `;
+
+      content.appendChild(single);
+
+    /* BLOCCO 11 — TESTO A DESTRA */
+    } else {
+      const block = document.createElement("div");
+      block.className = "block";
+
+      block.innerHTML = `
+        <div class="img-col">
+          <img src="${img}" class="zoomable big-drawing">
+        </div>
+
+        <div class="text-col">
+          <strong>Robert Peroni</strong> (My tribute for his 80th birthday).<br>
+          Mountaineer, explorer, writer. In 1980, Robert Peroni reached Greenland on an extreme expedition and, fascinated by the Inuit people, decided to stay. He integrated into the community, founded the Red House as a refuge and workplace for young locals, and became a key voice in raising awareness about the cultural and social crisis affecting the Inuit.
+In 2023 he created the Red House Greenland Foundation to ensure long‑term support for the community.
+<strong>In the same year, Robert Peroni supported my project at The Red House, the main base camp of my mission.</strong><br><br>
+
+          <strong>Robert Peroni</strong> (Il mio omaggio per i suoi 80'anni).<br>
+          Alpinista, esploratore, scrittittore. Nel 1980 Robert Peroni raggiunge la Groenlandia con una spedizione estrema e, affascinato dagli Inuit, decide di restare. Si integra nella comunità, fonda la Red House come rifugio e luogo di lavoro per i giovani locali, e diventa una voce importante nel raccontare la crisi culturale e sociale del popolo inuit.
+Nel 2023 istituisce la fondazione The Red House Greenland per garantire continuità al suo sostegno alla comunità.
+<strong>Nello stesso anno Robert Peroni ha supportato il mio progetto presso la The Red House, campo base principale della mia missione.</strong>
+        </div>
+      `;
+
+      content.appendChild(block);
+    }
+
+    backBtn.disabled = index === 1;
+    nextBtn.disabled = index === totalDrawings;
+  }
+
+  backBtn.onclick = () => { if (index > 1) index--; render(); };
+  nextBtn.onclick = () => { if (index < totalDrawings) index++; render(); };
+
+  render();
+</script>
+
+<!-- MODAL PER ZOOM IMMAGINI -->
+<div id="imgModal" class="img-modal">
+  <span class="img-modal-close">&times;</span>
+  <img id="imgModalContent" src="">
+</div>
+
+<script>
+    const imgModal = document.getElementById("imgModal");
+    const imgModalContent = document.getElementById("imgModalContent");
+    const imgModalClose = document.querySelector(".img-modal-close");
+
+    document.addEventListener("click", function(e) {
+      if (e.target.classList.contains("zoomable")) {
+        imgModal.style.display = "flex";
+        imgModalContent.src = e.target.src;
+      }
+    });
+
+    imgModalClose.onclick = () => {
+      imgModal.style.display = "none";
+    };
+
+    imgModal.onclick = (e) => {
+      if (e.target === imgModal) {
+        imgModal.style.display = "none";
+      }
+    };
+</script>
+<!-- MODAL INFO (SCHEDA TECNICA) -->
+<div id="infoModal" style="
+    display:none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  ">
+
+    <div style="
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      text-align: left;
+    ">
+
+      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+      <div style="margin-top:25px; display:flex; justify-content:space-between; gap:10px;">
+
+        <!-- PULSANTE ORIGINAL DRAWING -->
+        <a id="buyOriginal" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy original drawing</a>
+
+        <!-- PULSANTE FINE‑ART PRINT -->
+        <a id="buyPrint" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy fine-art print</a>
+
+      </div>
+
+      <div style="margin-top:20px; text-align:right;">
+        <button id="closeModal" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+      </div>
+
+    </div>
+</div>
+
+<script>
+    const infoBtn = document.getElementById("infoBtn");
+    const modal = document.getElementById("infoModal");
+    const closeModal = document.getElementById("closeModal");
+    const modalContent = document.getElementById("modalContent");
+
+    const buyOriginal = document.getElementById("buyOriginal");
+    const buyPrint = document.getElementById("buyPrint");
+
+    infoBtn.onclick = () => {
+      let sheet = "";
+      const num = String(index).padStart(2, '0');
+
+      if (index <= 5) {
+        sheet = `
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
+          <strong>Location:</strong> France, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 250 × 180 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
+
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
+      }
+
+      else if (index <= 10) {
+        sheet = `
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
+          <strong>Location:</strong> Italy, 2023<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 180 × 125 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
+
+          From the project “GREENLAND – a winter between people and wilderness”.
+        `;
+      }
+
+      else {
+        sheet = `
+          <strong>Title:</strong> Greenland Drawing ${num}<br>
+          <strong>Technique:</strong> Pencil on paper<br>
+          <strong>Size:</strong> 130 × 100 cm<br><br>
+
+          Original drawing for sale.<br>
+          Also available as a limited‑edition fine‑art print.<br>
+          Limited edition of 5 total prints (including 1 artist’s proof).
+        `;
+      }
+
+      modalContent.innerHTML = sheet;
+
+      /* COSTRUZIONE TITOLO PRECOMPILATO */
+      const baseTitle = `Greenland - Drawing ${num}`;
+      const encodedBase = encodeURIComponent(baseTitle);
+      const baseLink = `https://giorgiosedda.com/work-in-progress.html?title=${encodedBase}`;
+
+      /* LINK COMPLETI */
+      buyOriginal.href = `${baseLink}%20(original%20drawing)`;
+      buyPrint.href = `${baseLink}%20(fine-art%20print)`;
+
+      modal.style.display = "flex";
+    };
+
+    closeModal.onclick = () => { modal.style.display = "none"; };
+    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+</script>
+
+</body>
+</html>
     Il fucile era posato accanto alla tenda. Non mi faceva sentire al sicuro — non davvero. Era solo un oggetto, un peso in più. Ma ne avevo bisogno. Era il mio unico ancoraggio psicologico, l’illusione di avere un margine, un confine, un “se succede qualcosa…”. La verità è che non volevo usarlo. Non ero venuto per sfidarlo. Ero venuto ad attraversare la sua casa, e speravo che mi avrebbe lasciato passare. Quando la notte cadde, cadde davvero. Un buio totale, denso, che sembrava assorbire ogni suono. Mi infilai nel sacco a pelo e chiusi gli occhi, ma fu inutile. Il silenzio era troppo vasto per dormire. Poi arrivò il primo rumore.
     `,
 
