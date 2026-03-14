@@ -438,12 +438,20 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
       content.appendChild(block);
     }
 
-    backBtn.disabled = index === 1;
+    backBtn.disabled = index === 0;
     nextBtn.disabled = index === totalDrawings;
   }
 
-  backBtn.onclick = () => { if (index > 1) index--; render(); };
-  nextBtn.onclick = () => { if (index < totalDrawings) index++; render(); };
+ backBtn.onclick = () => { 
+  if (index > 0) index--; 
+  render(); 
+};
+
+nextBtn.onclick = () => { 
+  if (index < totalDrawings - 1) index++; 
+  render(); 
+};
+
 
   render();
 </script>
