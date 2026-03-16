@@ -67,8 +67,7 @@
     .photo-container {
       width: 100%;
       max-width: 700px;
-      margin: 40px auto 10px auto;
-      position: relative;
+      margin: 40px auto 0 auto;
     }
 
     .photo-container img {
@@ -77,64 +76,57 @@
       object-fit: contain;
       cursor: zoom-in;
       max-height: 70vh;
+      display: block;
     }
 
-    /* PULSANTI AI LATI DELLA FOTO, LEGGERMENTE DISTANZIATI */
-    .nav-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-      pointer-events: none;
-      padding: 0 -10px; /* distanza orizzontale */
-    }
-
-    .nav-left,
-    .nav-right {
-      display: flex;
-      flex-direction: column;
+    /* --- BARRA PERFETTA: Back | Africa – Photo XX | Info Next --- */
+    .nav-bar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      pointer-events: auto;
+      max-width: 465px;
+      margin: 10px auto 0 auto;
+    }
+
+    .nav-left {
+      justify-self: start;
+    }
+
+    .nav-center {
+      justify-self: center;
+      font-size: 16px;
+    }
+
+    .nav-right {
+      justify-self: end;
+      display: flex;
       gap: 10px;
     }
 
-    /* NUOVO: Back spostato più a sinistra */
-    .nav-left {
-      margin-left: 2px;
-    }
-
-    .nav-right {
-      margin-top: 20px; /* distanza verticale dalla foto */
-    }
-
-    .nav-buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
+    .nav-bar button {
+      padding: 8px 14px;
       background: white;
-      color: black;
       border: 1px solid #ccc;
       cursor: pointer;
       transition: 0.2s;
-      width: 90px;
+      font-size: 15px;
     }
 
-    .nav-buttons button:hover {
+    .nav-bar button:hover {
       background: #e6e6e6;
     }
 
-    .nav-buttons button:disabled {
+    .nav-bar button:disabled {
       background: #f2f2f2;
       color: #999;
       border-color: #ddd;
       cursor: default;
     }
 
-    .caption {
-      font-size: 16px;
-      margin: 20px auto 25px auto;
-      max-width: 700px;
+    @media (max-width: 600px) {
+      .photo-container img {
+        max-height: 55vh;
+      }
     }
 
     .footer {
@@ -159,8 +151,8 @@
     }
 
     .img-modal img {
-      max-width: 90%;
-      max-height: 90%;
+      max-width: 100%;   /* ← MODIFICATO */
+      max-height: 100%;  /* ← MODIFICATO */
       object-fit: contain;
     }
 
@@ -200,21 +192,22 @@
 
   <div class="photo-container">
     <img id="photo" src="a01.jpg" alt="Photo" class="zoomable">
-
-    <div class="nav-buttons">
-      <div class="nav-left">
-        <button id="backBtn">Back</button>
-      </div>
-
-      <div class="nav-right">
-        <button id="nextBtn">Next</button>
-        <button id="infoBtn">Info</button>
-      </div>
-    </div>
   </div>
 
-  <div class="caption" id="caption">
-    Africa – Photo 01
+  <!-- BARRA PERFETTA: Back | Africa – Photo XX | Info Next -->
+  <div class="nav-bar">
+    <div class="nav-left">
+      <button id="backBtn">Back</button>
+    </div>
+
+    <div class="nav-center" id="photoLabel">
+      Africa – Photo 01
+    </div>
+
+    <div class="nav-right">
+      <button id="infoBtn">Info</button>
+      <button id="nextBtn">Next</button>
+    </div>
   </div>
 
   <div class="footer">
@@ -226,14 +219,15 @@
   let index = 1;
 
   const photo = document.getElementById("photo");
-  const caption = document.getElementById("caption");
   const backBtn = document.getElementById("backBtn");
   const nextBtn = document.getElementById("nextBtn");
+  const photoLabel = document.getElementById("photoLabel");
 
   function updatePhoto() {
     const num = String(index).padStart(2, '0');
     photo.src = `a${num}.jpg`;
-    caption.textContent = `Africa – Photo ${num}`;
+    photoLabel.textContent = `Africa – Photo ${num}`;
+
     backBtn.disabled = index === 1;
     nextBtn.disabled = index === totalPhotos;
   }
@@ -251,7 +245,7 @@
   updatePhoto();
 </script>
 
-<!-- MODAL OVERLAY (INFO) -->
+<!-- MODAL INFO -->
 <div id="infoModal" style="
   display:none;
   position: fixed;
@@ -264,7 +258,6 @@
   z-index: 9999;
 ">
 
-  <!-- MODAL BOX -->
   <div style="
     background: white;
     padding: 30px;
