@@ -2,30 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Africa – Drawing Viewer</title>
+  <title>Africa – Drawing Area</title>
 
   <style>
-    html, body {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      background: white;
       font-family: Arial, sans-serif;
+      background-color: white;
       color: black;
       text-align: center;
-      overflow: hidden; /* niente scroll */
-      display: flex;
-      flex-direction: column;
     }
 
-    /* NAV */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
       gap: 20px;
-      padding: 25px 0 5px 0;
+      padding: 30px 0 5px 0;
       font-size: 16px;
-      flex-shrink: 0;
     }
 
     nav a {
@@ -33,135 +27,53 @@
       color: black;
     }
 
-    /* TITOLO */
+    nav a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    /* TITLE */
     h1 {
       font-size: 22px;
+      margin-top: 40px;
       letter-spacing: 1px;
-      margin: 10px 0 15px 0;
-      flex-shrink: 0;
     }
 
-    /* PULSANTI */
-    .nav-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-bottom: 10px;
-      flex-shrink: 0;
+    /* CENTRAL TEXT */
+    .message {
+      margin-top: 40px;
+      font-size: 18px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
     }
 
-    .nav-buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: white;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: 0.2s;
+    /* BACK BUTTON */
+    .back-button {
+      margin-top: 40px;
     }
 
-    .nav-buttons button:hover {
-      background: #e6e6e6;
-    }
-
-    .nav-buttons button:disabled {
-      background: #f2f2f2;
-      color: #999;
-      border-color: #ddd;
-      cursor: default;
-    }
-
-    /* AREA IMMAGINE */
-    .viewer {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 0;
-    }
-
-    .viewer img {
-      max-width: 70%;   /* MAI più largo dei pulsanti */
-      max-height: 100%; /* MAI ritagliato */
-      width: auto;
-      height: auto;
-      cursor: zoom-in;
-    }
-
-    /* INFO PANEL – stile identico a Greenland */
-    .info-panel {
-      position: absolute;
-      top: 180px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60%;
-      font-size: 12px;
-      line-height: 1.55;
-      text-align: justify;
-      display: none;
-      background: white;
-      padding: 10px 0;
-    }
-
-    .info-buttons {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .info-buttons a,
-    .info-buttons button {
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      background: white;
+    .back-button a {
+      display: inline-block;
+      padding: 10px 18px;
+      border: 1px solid black;
       text-decoration: none;
       color: black;
-      cursor: pointer;
+      font-size: 15px;
       transition: 0.2s;
-      font-size: 14px;
     }
 
-    .info-buttons a:hover,
-    .info-buttons button:hover {
-      background: #e6e6e6;
-    }
-
-    /* MODAL ZOOM */
-    .img-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .img-modal img {
-      max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-    }
-
-    .img-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 32px;
-      color: white;
-      cursor: pointer;
+    .back-button a:hover {
+      background-color: #d9d9d9;
     }
 
     /* FOOTER */
     .footer {
-      flex-shrink: 0;
-      padding: 12px 0;
-      background: white;
+      margin-top: 60px;
       font-size: 16px;
       color: #555;
+      padding-bottom: 40px;
     }
   </style>
 </head>
@@ -180,95 +92,23 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <h1>Africa – Drawings</h1>
+  <h1>Africa – Drawing Area</h1>
 
-  <div class="nav-buttons">
-    <button id="backBtn" onclick="prevImg()" disabled>Back</button>
-    <button onclick="toggleInfo()">Info</button>
-    <button id="nextBtn" onclick="nextImg()">Next</button>
+  <div class="message">
+    The drawing area for the Africa section is currently in preparation.<br>
+    Soon you will be able to explore sketches, studies,<br>
+    and visual notes inspired by the journey<br>
+    <em>“Un monde de couleurs”</em>.
   </div>
 
-  <div class="viewer">
-    <img id="drawingImg" src="a-drawing01.jpg" onclick="openModal()">
-  </div>
-
-  <!-- INFO PANEL -->
-  <div id="infoPanel" class="info-panel">
-    <div id="infoText"></div>
-
-    <div class="info-buttons">
-      <button onclick="toggleInfo()">Close</button>
-      <a href="work-in-progress.html">Buy fine‑art print</a>
-    </div>
-  </div>
-
-  <!-- MODAL -->
-  <div id="modal" class="img-modal" onclick="closeModal()">
-    <span class="img-modal-close">&times;</span>
-    <img id="modalImg" src="">
+  <div class="back-button">
+    <a href="gallery-under-construction.html">Back</a>
   </div>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
 
-<script>
-  let current = 1;
-  const max = 7;
-
-  const infoData = {
-    1: "Drawing 01 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    2: "Drawing 02 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    3: "Drawing 03 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    4: "Drawing 04 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    5: "Drawing 05 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    6: "Drawing 06 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm",
-    7: "Drawing 07 – Africa<br>Mixed media on paper<br>Year: 2024<br>Dimensions: 21×29.7 cm"
-  };
-
-  function updateImage() {
-    document.getElementById("drawingImg").src = "a-drawing0" + current + ".jpg";
-    document.getElementById("infoPanel").style.display = "none";
-
-    document.getElementById("backBtn").disabled = current === 1;
-    document.getElementById("nextBtn").disabled = current === max;
-  }
-
-  function nextImg() {
-    if (current < max) {
-      current++;
-      updateImage();
-    }
-  }
-
-  function prevImg() {
-    if (current > 1) {
-      current--;
-      updateImage();
-    }
-  }
-
-  function toggleInfo() {
-    const panel = document.getElementById("infoPanel");
-    const text = document.getElementById("infoText");
-
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      text.innerHTML = infoData[current];
-      panel.style.display = "block";
-    }
-  }
-
-  function openModal() {
-    document.getElementById("modalImg").src = "a-drawing0" + current + ".jpg";
-    document.getElementById("modal").style.display = "flex";
-  }
-
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
-</script>
-
 </body>
 </html>
+
