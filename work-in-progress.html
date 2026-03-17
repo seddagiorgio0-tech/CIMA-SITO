@@ -215,8 +215,6 @@
             <label for="original-size">Format / Size</label>
             <select id="original-size" name="original_size">
               <option value="">— select —</option>
-              <option value="small">A5–A4 — € 480</option>
-              <option value="medium">A3 — € 950</option>
               <option value="large">100×140 — € 2.200 (only the "Greenland - Drawing 11" original)</option>
               <option value="xl">140×200 — € 4.800 (only the "Greenland - Drawing 10" original)</option>
               <option value="xxl">180×250 — € 10.000 (only the "Greenland - Drawing 05" original)</option>
@@ -227,9 +225,9 @@
             <label for="fineart-size">Format / Size</label>
             <select id="fineart-size" name="fineart_size">
               <option value="">— select —</option>
-              <option value="small">A5–A4 — € 150</option>
-              <option value="medium">A3 — € 280</option>
-              <option value="large">70×100 — € 450</option>
+              <option value="small">Print reduced by 80% from the 100 × 140 cm format — € 120</option>
+              <option value="medium">Print reduced by 70% from the 100 × 140 cm format — € 200</option>
+              <option value="large">Print reduced by 30% from the 100 × 140 cm format — € 450</option>
               <option value="xl">100×140 — € 750</option>       
             </select>
           </div>
@@ -463,9 +461,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const size = fineartSize.value;
 
-        if (size === "small") { price = "€ 150"; formatPrice = "A5–A4 — € 150"; }
-        if (size === "medium") { price = "€ 280"; formatPrice = "A3 — € 280"; }
-        if (size === "large") { price = "€ 450"; formatPrice = "70×100 — € 450"; }
+        if (size === "small") { price = "€ 120"; formatPrice = "80% reduced from 100 × 140 cm — € 120"; }
+        if (size === "medium") { price = "€ 200"; formatPrice = "70% reduced from 100 × 140 cm — € 200"; }
+        if (size === "large") { price = "€ 450"; formatPrice = "30% reduced from 100 × 140 cm — € 450"; }
         if (size === "xl") { price = "€ 750"; formatPrice = "100×140 — € 750"; }
       }
     }
