@@ -49,6 +49,38 @@ h1 {
 }
 
 /* ============================================================
+   MENU AFRICA (AGGIUNTO)
+============================================================ */
+.button-row {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.menu-btn {
+  padding: 12px 0;
+  width: 150px;
+  border: 1px solid #ccc;
+  background: white;
+  font-size: 16px;
+  text-decoration: none;
+  color: black;
+  transition: 0.2s;
+  display: inline-block;
+  text-align: center;
+}
+.menu-btn:hover {
+  background: #e6e6e6;
+}
+.selected {
+  background: #e6e6e6;
+  color: black;
+  cursor: default;
+  border-color: #ccc;
+}
+
+/* ============================================================
    PULSANTI NAVIGAZIONE
 ============================================================ */
 .nav-buttons {
@@ -179,6 +211,14 @@ h1 {
 
 <h1>Africa – Drawings</h1>
 
+<!-- BLOCCO AFRICA (AGGIUNTO) -->
+<div class="button-row">
+  <a href="archive-africa.html" class="menu-btn">Photography</a>
+  <a href="africa-video.html" class="menu-btn">Video</a>
+  <a href="africa-drawing.html" class="menu-btn selected">Drawings</a>
+  <a href="africa-diary.html" class="menu-btn">Diary</a>
+</div>
+
 <div class="viewer">
   <img id="drawingImg" src="a-drawing01.jpg" onclick="openModal()">
 </div>
@@ -232,18 +272,19 @@ h1 {
 
   </div>
 </div>
+
 <script>
 let current = 1;
 const max = 7;
 
 const sizes = {
   1: 45,
-  2: 45,
-  3: 40,
+  2: 44,
+  3: 36,
   4: 45,
-  5: 40,
-  6: 30,
-  7: 45
+  5: 36,
+  6: 26,
+  7: 40
 };
 
 function applySize() {
@@ -355,7 +396,6 @@ const sheets = {
 infoBtn.onclick = () => {
   modalContent.innerHTML = sheets[current];
 
-  // Se è la scheda 1 → nascondi il pulsante Buy
   if (current === 1) {
     buyPrint.style.display = "none";
   } else {
