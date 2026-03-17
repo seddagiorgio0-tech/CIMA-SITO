@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Africa – Diary Area</title>
+  <title>Africa – Diary</title>
 
   <style>
     body {
@@ -13,7 +13,6 @@
       text-align: center;
     }
 
-    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
@@ -27,60 +26,248 @@
       color: black;
     }
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-
-    /* TITLE */
     h1 {
       font-size: 22px;
-      margin-top: 40px;
       letter-spacing: 1px;
+      margin-top: 20px;
     }
 
-    /* CENTRAL TEXT */
-    .message {
+    .button-row {
       margin-top: 40px;
-      font-size: 18px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
     }
 
-    /* BACK BUTTON */
-    .back-button {
-      margin-top: 40px;
-    }
-
-    .back-button a {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid black;
+    .menu-btn {
+      padding: 12px 0;
+      width: 150px;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 16px;
       text-decoration: none;
       color: black;
-      font-size: 15px;
       transition: 0.2s;
+      display: inline-block;
+      text-align: center;
     }
 
-    .back-button a:hover {
-      background-color: #d9d9d9;
+    .menu-btn:hover {
+      background: #e6e6e6;
     }
 
-    /* FOOTER */
+    .selected {
+      background: #e6e6e6;
+      cursor: default;
+    }
+
+    .book-icons {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+
+    .book-icon {
+      width: 260px;
+      height: 360px;
+      border: 1px solid #cfc7b8;
+      background: #f7f3e9;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.35s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      border-radius: 6px;
+    }
+
+    .book-icon:hover {
+      transform: translateY(-4px) rotate(-1deg);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+      background: #f3ecdf;
+    }
+
+    .book-icon strong {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+    }
+
+    .book-icon span {
+      font-family: "Georgia", serif;
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    .open-book {
+      width: 170px;
+      height: 210px;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      margin-bottom: 20px;
+      position: relative;
+      transform: rotate(-1deg);
+    }
+
+    .page {
+      flex: 1;
+      background: #faf4e6;
+      border: 1px solid #d8d0c0;
+      box-shadow: inset 0 0 8px rgba(0,0,0,0.10);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page.left { border-right: none; }
+    .page.right { border-left: none; }
+
+    .page::after {
+      content: "";
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0) 0%, #e8dfcf 100%);
+      border-bottom-right-radius: 4px;
+      opacity: 0.8;
+    }
+
+    .map-continua {
+      position: absolute;
+      top: 10%;
+      left: 0;
+      width: 200%;
+      height: 80%;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .map-continua svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .fold {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(135deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 40%);
+      pointer-events: none;
+    }
+
+    .fold2 {
+      position: absolute;
+      width: 200%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: linear-gradient(225deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0) 40%);
+      pointer-events: none;
+    }
+
+    .book-icon:hover .open-book {
+      transform: rotate(-2deg) translateY(-2px);
+    }
+
     .footer {
       margin-top: 60px;
       font-size: 16px;
       color: #555;
       padding-bottom: 40px;
     }
+
+    #reader {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      overflow-y: auto;
+      background: #f7f3e9;
+      z-index: 9999;
+    }
+
+    .page-container {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      background: linear-gradient(to bottom, #f7f3e9 0%, #f3ecdf 100%);
+      padding: 20px 0;
+    }
+
+    .page-container img {
+      background: #f7f3e9;
+      max-height: 86vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border: none;
+      box-shadow: none;
+    }
+
+    .caption {
+      font-size: 15px;
+      margin: 2px auto 4px auto;
+      max-width: 500px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 560px;
+      margin: 0 auto;
+      gap: 10px;
+    }
+
+    .nav-btn {
+      padding: 6px 0;
+      font-size: 15px;
+      background: white;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      flex: 1;
+      height: 38px;
+      white-space: nowrap;
+    }
+
+    #infoModal {
+      display:none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.35);
+      backdrop-filter: blur(2px);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #infoBox {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 450px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
   </style>
 </head>
 
 <body>
 
-  <nav>
+  <nav id="menu">
     <a href="index.html">Home</a>
     <a href="progetto.html">CIMA Project</a>
     <a href="galleria-intermedia.html">Virtual Exhibitions</a>
@@ -92,22 +279,225 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
-  <h1>Africa – Diary</h1>
+  <h1 id="title">Africa – Diary</h1>
 
-  <div class="message">
-    The diary area for the Africa section is currently in preparation.<br>
-    Soon you will be able to explore written notes,<br>
-    impressions and fragments from the journey<br>
-    <em>“Un monde de couleurs”</em>.
+  <div class="button-row" id="sectionButtons">
+    <a href="archive-africa.html" class="menu-btn">Photography</a>
+    <a href="africa-video.html" class="menu-btn">Video</a>
+    <a href="a-drawing.html" class="menu-btn">Drawings</a>
+    <a href="africa-diary.html" class="menu-btn selected">Diary</a>
   </div>
 
-  <div class="back-button">
-    <a href="gallery-under-construction.html">Back</a>
+  <div id="bookChoice">
+    <h2>Diary – Choose your language</h2>
+
+    <div class="book-icons">
+
+      <!-- ICONA EN -->
+      <div class="book-icon" onclick="openBook('A-EN')">
+        <div class="open-book">
+
+          <div class="page left">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 150 Q80 40 150 80 T280 60 Q330 90 380 40"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+          <div class="page right">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 40 Q80 120 150 100 T280 140 Q330 110 380 160"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+        </div>
+        <strong>AFRICA</strong>
+        <span>Diary – EN</span>
+      </div>
+
+      <!-- ICONA IT -->
+      <div class="book-icon" onclick="openBook('A-IT')">
+        <div class="open-book">
+
+          <div class="page left">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 150 Q80 40 150 80 T280 60 Q330 90 380 40"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+          <div class="page right">
+            <div class="map-continua">
+              <svg viewBox="0 0 400 200">
+                <path d="M20 40 Q80 120 150 100 T280 140 Q330 110 380 160"
+                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="fold"></div>
+            <div class="fold2"></div>
+          </div>
+
+        </div>
+        <strong>AFRICA</strong>
+        <span>Diario – IT</span>
+      </div>
+
+    </div>
   </div>
 
   <div class="footer">
     <strong>Giorgio Sedda</strong> – CIMA Project
   </div>
+
+  <div id="reader">
+    <div class="page-container">
+      <img id="page" src="">
+    </div>
+
+    <div class="caption" id="caption">Page 01</div>
+
+    <div class="nav-buttons">
+      <button id="backBtn" class="nav-btn">Back</button>
+      <button id="infoBtn" class="nav-btn">Info</button>
+      <button id="nextBtn" class="nav-btn">Next</button>
+      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
+    </div>
+  </div>
+
+  <div id="infoModal">
+    <div id="infoBox">
+      <h2 style="margin-top:0; font-size:18px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:15px; line-height:1.5;"></div>
+
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+        <button id="closeModal" style="
+          padding: 8px 18px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let lang = "";
+    let index = 1;
+    let pages = [];
+
+    async function detectPages(selectedLang) {
+      const detected = [];
+      let n = 1;
+
+      while (true) {
+        const filename = `L-${selectedLang}${String(n).padStart(2,"0")}.jpg`;
+
+        try {
+          const response = await fetch(filename, { method: "HEAD" });
+          if (!response.ok) break;
+          detected.push(filename);
+          n++;
+        } catch (e) {
+          break;
+        }
+      }
+
+      return detected;
+    }
+
+    async function openBook(selectedLang) {
+      lang = selectedLang;
+      index = 0;
+
+      pages = await detectPages(lang);
+
+      if (pages.length === 0) {
+        alert("No pages found for this language.");
+        return;
+      }
+
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("title").style.display = "none";
+      document.getElementById("sectionButtons").style.display = "none";
+      document.getElementById("bookChoice").style.display = "none";
+
+      document.getElementById("reader").style.display = "block";
+
+      updatePage();
+    }
+
+    function closeBook() {
+      document.getElementById("menu").style.display = "flex";
+      document.getElementById("title").style.display = "block";
+      document.getElementById("sectionButtons").style.display = "flex";
+      document.getElementById("bookChoice").style.display = "block";
+
+      document.getElementById("reader").style.display = "none";
+    }
+
+    function updatePage() {
+      const file = pages[index];
+      document.getElementById("page").src = file;
+
+      const num = String(index + 1).padStart(2, "0");
+      document.getElementById("caption").textContent = `Page ${num}`;
+    }
+
+    document.getElementById("backBtn").onclick = () => {
+      if (index > 0) {
+        index--;
+        updatePage();
+      }
+    };
+
+    document.getElementById("nextBtn").onclick = () => {
+      if (index < pages.length - 1) {
+        index++;
+        updatePage();
+      }
+    };
+
+    document.getElementById("infoBtn").onclick = () => {
+      const num = String(index + 1).padStart(2, '0');
+
+      document.getElementById("modalContent").innerHTML = `
+        <strong>Title:</strong> Africa – Diary<br>
+        <strong>Page:</strong> ${num}<br>
+        <strong>Language:</strong> ${lang === "A-EN" ? "English" : "Italian"}<br>
+        <strong>Author:</strong> Giorgio Sedda<br>
+        <strong>Project:</strong> Un monde de couleurs by ODCVL<br>
+        <strong>Technique:</strong> Travel diary narrative<br>
+        <strong>Year:</strong> 2020<br><br>
+        This page is part of the narrative diary created during the journey in Africa.
+      `;
+
+      document.getElementById("infoModal").style.display = "flex";
+    };
+
+    document.getElementById("closeModal").onclick = () => {
+      document.getElementById("infoModal").style.display = "none";
+    };
+
+    document.getElementById("infoModal").onclick = (e) => {
+      if (e.target === document.getElementById("infoModal")) {
+        document.getElementById("infoModal").style.display = "none";
+      }
+    };
+  </script>
 
 </body>
 </html>
