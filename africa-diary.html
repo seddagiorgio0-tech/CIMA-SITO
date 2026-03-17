@@ -282,9 +282,9 @@
   <h1 id="title">Africa – Diary</h1>
 
   <div class="button-row" id="sectionButtons">
-    <a href="archive-africa.html" class="menu-btn">Photography</a>
+    <a href="gallery-under-construction.html" class="menu-btn">Photography</a>
     <a href="africa-video.html" class="menu-btn">Video</a>
-    <a href="a-drawing.html" class="menu-btn">Drawings</a>
+    <a href="africa-drawing.html" class="menu-btn">Drawings</a>
     <a href="africa-diary.html" class="menu-btn selected">Diary</a>
   </div>
 
@@ -296,29 +296,8 @@
       <!-- ICONA EN -->
       <div class="book-icon" onclick="openBook('A-EN')">
         <div class="open-book">
-
-          <div class="page left">
-            <div class="map-continua">
-              <svg viewBox="0 0 400 200">
-                <path d="M20 150 Q80 40 150 80 T280 60 Q330 90 380 40"
-                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="fold"></div>
-            <div class="fold2"></div>
-          </div>
-
-          <div class="page right">
-            <div class="map-continua">
-              <svg viewBox="0 0 400 200">
-                <path d="M20 40 Q80 120 150 100 T280 140 Q330 110 380 160"
-                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="fold"></div>
-            <div class="fold2"></div>
-          </div>
-
+          <div class="page left"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
+          <div class="page right"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
         </div>
         <strong>AFRICA</strong>
         <span>Diary – EN</span>
@@ -327,29 +306,8 @@
       <!-- ICONA IT -->
       <div class="book-icon" onclick="openBook('A-IT')">
         <div class="open-book">
-
-          <div class="page left">
-            <div class="map-continua">
-              <svg viewBox="0 0 400 200">
-                <path d="M20 150 Q80 40 150 80 T280 60 Q330 90 380 40"
-                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="fold"></div>
-            <div class="fold2"></div>
-          </div>
-
-          <div class="page right">
-            <div class="map-continua">
-              <svg viewBox="0 0 400 200">
-                <path d="M20 40 Q80 120 150 100 T280 140 Q330 110 380 160"
-                      stroke="#b8ae9f" stroke-width="5" fill="none" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <div class="fold"></div>
-            <div class="fold2"></div>
-          </div>
-
+          <div class="page left"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
+          <div class="page right"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
         </div>
         <strong>AFRICA</strong>
         <span>Diario – IT</span>
@@ -404,12 +362,23 @@
       let n = 1;
 
       while (true) {
-        const filename = `L-${selectedLang}${String(n).padStart(2,"0")}.jpg`;
+        const num = String(n).padStart(2,"0");
+
+        const filenameLower = `L-${selectedLang}${num}.jpg`;
+        const filenameUpper = `L-${selectedLang}${num}.JPG`;
 
         try {
-          const response = await fetch(filename, { method: "HEAD" });
-          if (!response.ok) break;
-          detected.push(filename);
+          const responseLower = await fetch(filenameLower, { method: "HEAD" });
+          const responseUpper = await fetch(filenameUpper, { method: "HEAD" });
+
+          if (responseLower.ok) {
+            detected.push(filenameLower);
+          } else if (responseUpper.ok) {
+            detected.push(filenameUpper);
+          } else {
+            break;
+          }
+
           n++;
         } catch (e) {
           break;
