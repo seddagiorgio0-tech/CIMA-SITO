@@ -1,114 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Africa – Drawing Area</title>
+<meta charset="UTF-8">
+<title>Africa – Drawings</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-      text-align: center;
-    }
+<style>
 
-    /* NAVIGATION */
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 0 5px 0;
-      font-size: 16px;
-    }
+/* ============================================================
+   STRUTTURA BASE
+============================================================ */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: white;
+  font-family: Arial, sans-serif;
+  color: black;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-    nav a {
-      text-decoration: none;
-      color: black;
-    }
+/* ============================================================
+   NAVIGAZIONE
+============================================================ */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 25px 0 5px 0;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+nav a {
+  text-decoration: none;
+  color: black;
+}
 
-    nav a.active {
-      font-weight: bold;
-      text-decoration: underline;
-    }
+/* ============================================================
+   TITOLO
+============================================================ */
+h1 {
+  font-size: 22px;
+  letter-spacing: 1px;
+  margin: 10px 0 15px 0;
+  flex-shrink: 0;
+}
 
-    /* TITLE */
-    h1 {
-      font-size: 22px;
-      margin-top: 40px;
-      letter-spacing: 1px;
-    }
+/* ============================================================
+   PULSANTI NAVIGAZIONE
+============================================================ */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 15px auto;
+  width: 43%;
+  position: relative;
+}
+#backBtn {
+  position: absolute;
+  left: 0;
+}
 
-    /* CENTRAL TEXT */
-    .message {
-      margin-top: 40px;
-      font-size: 18px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.6;
-    }
+#nextBtn {
+  position: absolute;
+  right: 0;
+}
+.nav-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.nav-buttons button:hover {
+  background: #e6e6e6;
+}
+.nav-buttons button:disabled {
+  background: #f2f2f2;
+  color: #999;
+  border-color: #ddd;
+  cursor: default;
+}
 
-    /* BACK BUTTON */
-    .back-button {
-      margin-top: 40px;
-    }
+/* ============================================================
+   VIEWER
+============================================================ */
+.viewer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 0;
+}
+.viewer img {
+  width: auto;
+  height: auto;
+  max-height: 88vh;
+  object-fit: contain;
+  cursor: zoom-in;
+  transition: 0.3s ease;
+}
 
-    .back-button a {
-      display: inline-block;
-      padding: 10px 18px;
-      border: 1px solid black;
-      text-decoration: none;
-      color: black;
-      font-size: 15px;
-      transition: 0.2s;
-    }
+/* ============================================================
+   MODAL ZOOM
+============================================================ */
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+.img-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+.img-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
 
-    .back-button a:hover {
-      background-color: #d9d9d9;
-    }
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+  flex-shrink: 0;
+  padding: 12px 0;
+  background: white;
+  font-size: 16px;
+  color: #555;
+}
 
-    /* FOOTER */
-    .footer {
-      margin-top: 60px;
-      font-size: 16px;
-      color: #555;
-      padding-bottom: 40px;
-    }
-  </style>
+/* ============================================================
+   MODAL INFO
+============================================================ */
+#infoModal {
+  display:none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(3px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+</style>
 </head>
-
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="progetto.html">CIMA Project</a>
-    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
-    <a href="opere.html">Works</a>
-    <a href="book.html">Book</a>
-    <a href="news.html">News</a>
-    <a href="biography.html">Biography</a>
-    <a href="contatti.html">Contacts</a>
-    <a href="work-in-progress.html">Buy</a>
-  </nav>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="progetto.html">CIMA Project</a>
+  <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+  <a href="opere.html">Works</a>
+  <a href="book.html">Book</a>
+  <a href="news.html">News</a>
+  <a href="biography.html">Biography</a>
+  <a href="contatti.html">Contacts</a>
+  <a href="work-in-progress.html">Buy</a>
+</nav>
 
-  <h1>Africa – Drawing Area</h1>
+<h1>Africa – Drawings</h1>
 
-  <div class="message">
-    The drawing area for the Africa section is currently in preparation.<br>
-    Soon you will be able to explore sketches, studies,<br>
-    and visual notes inspired by the journey<br>
-    <em>“Un monde de couleurs”</em>.
+<div class="viewer">
+  <img id="drawingImg" src="a-drawing01.jpg" onclick="openModal()">
+</div>
+
+<div class="nav-buttons">
+  <button id="backBtn" onclick="prevImg()" disabled>Back</button>
+  <button id="infoBtn">Info</button>
+  <button id="nextBtn" onclick="nextImg()">Next</button>
+</div>
+
+<div id="modal" class="img-modal" onclick="closeModal()">
+  <span class="img-modal-close">&times;</span>
+  <img id="modalImg" src="">
+</div>
+
+<div class="footer">
+  <strong>Giorgio Sedda</strong> – CIMA Project
+</div>
+
+<div id="infoModal">
+  <div style="
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    text-align: left;
+  ">
+
+    <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+    <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+    <div style="margin-top:25px; display:flex; justify-content:flex-start; gap:10px;">
+      <a id="buyPrint" href="#" style="
+        padding: 10px 20px;
+        background:white;
+        border:1px solid #ccc;
+        text-decoration:none;
+        color:black;
+        cursor:pointer;
+      ">Buy fine‑art print</a>
+
+      <button id="closeModal" style="
+        padding: 10px 20px;
+        background:white;
+        border:1px solid #ccc;
+        cursor:pointer;
+      ">Close</button>
+    </div>
+
   </div>
+</div>
+<script>
+let current = 1;
+const max = 7;
 
-  <div class="back-button">
-    <a href="gallery-under-construction.html">Back</a>
-  </div>
+const sizes = {
+  1: 45,
+  2: 45,
+  3: 40,
+  4: 45,
+  5: 40,
+  6: 30,
+  7: 45
+};
 
-  <div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
-  </div>
+function applySize() {
+  const img = document.getElementById("drawingImg");
+  const modalImg = document.getElementById("modalImg");
+  const w = sizes[current] || 70;
+  img.style.maxWidth = w + "%";
+  modalImg.style.maxWidth = (w + 15) + "%";
+}
+
+function updateImage() {
+  document.getElementById("drawingImg").src = "a-drawing0" + current + ".jpg";
+  document.getElementById("backBtn").disabled = current === 1;
+  document.getElementById("nextBtn").disabled = current === max;
+  applySize();
+}
+
+function nextImg() {
+  if (current < max) { current++; updateImage(); }
+}
+function prevImg() {
+  if (current > 1) { current--; updateImage(); }
+}
+updateImage();
+
+function openModal() {
+  document.getElementById("modalImg").src = "a-drawing0" + current + ".jpg";
+  document.getElementById("modal").style.display = "flex";
+  applySize();
+}
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+const infoBtn = document.getElementById("infoBtn");
+const infoModal = document.getElementById("infoModal");
+const closeModalInfo = document.getElementById("closeModal");
+const modalContent = document.getElementById("modalContent");
+const buyPrint = document.getElementById("buyPrint");
+
+const sheets = {
+  1: `
+    <!-- Sheet removed as requested -->
+    <em>No technical sheet available for this drawing.</em>
+  `,
+
+  2: `
+    <strong>Title:</strong> "Cotton Field"<br>
+    <strong>Technique:</strong> Pencil on paper<br>
+    <strong>Size:</strong> 240 × 200 cm<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `,
+
+  3: `
+    <strong>Title:</strong> "Cotton Field"<br>
+    <strong>Technique:</strong> Pencil on paper<br>
+    <strong>Size:</strong> 240 × 200 cm<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `,
+
+  4: `
+    <strong>Title:</strong> "Last Oasis"<br>
+    <strong>Technique:</strong> Charcoal on paper<br>
+    <strong>Size:</strong> 180 × 160 cm<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `,
+
+  5: `
+    <strong>Title:</strong> "Human Rights"<br>
+    <strong>Technique:</strong> Pencil on paper<br>
+    <strong>Size:</strong> 200 × 140 cm<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `,
+
+  6: `
+    <strong>Title:</strong> "Portrait of a Child"<br>
+    <strong>Technique:</strong> Mixed media<br>
+    <strong>Size:</strong> A4<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `,
+
+  7: `
+    <strong>Title:</strong> "Portrait of a Child 2"<br>
+    <strong>Technique:</strong> Pencil on paper<br>
+    <strong>Size:</strong> 200 × 140 cm<br>
+    <strong>Location:</strong> Togo<br>
+    <strong>Year:</strong> 2020<br><br>
+    In this selection of drawings from the “Africa” series, the original works are not for sale.<br><br>
+    Limited‑edition fine‑art print (5 copies including 1 artist’s proof).
+  `
+};
+
+
+infoBtn.onclick = () => {
+  modalContent.innerHTML = sheets[current];
+
+  // Se è la scheda 1 → nascondi il pulsante Buy
+  if (current === 1) {
+    buyPrint.style.display = "none";
+  } else {
+    buyPrint.style.display = "inline-block";
+
+    const num = String(current).padStart(2, '0');
+    const baseTitle = encodeURIComponent(`Africa - Drawing ${num}`);
+    buyPrint.href = `https://giorgiosedda.com/work-in-progress.html?title=${baseTitle}%20(fine-art%20print)`;
+  }
+
+  infoModal.style.display = "flex";
+};
+
+closeModalInfo.onclick = () => { infoModal.style.display = "none"; };
+infoModal.onclick = (e) => { if (e.target === infoModal) infoModal.style.display = "none"; };
+</script>
 
 </body>
 </html>
-
