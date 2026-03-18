@@ -182,6 +182,10 @@
       border: 1px solid #ccc;
       cursor: pointer;
       pointer-events: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 15px;
     }
 
     /* Sinistra */
@@ -273,15 +277,17 @@
 
   <div id="reader">
     <div class="page-container">
-      <div class="caption" id="caption">Page 01</div>
       <img id="page" src="">
+      <div class="caption" id="caption">Page 01</div>
     </div>
 
     <div class="nav-buttons">
       <button id="backBtn" class="nav-btn">Back</button>
       <button id="infoBtn" class="nav-btn">Info</button>
       <button id="nextBtn" class="nav-btn">Next</button>
-      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Languages</button>
+
+      <!-- ✔ TESTO CORRETTO E CENTRATO -->
+      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
     </div>
   </div>
 
