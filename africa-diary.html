@@ -150,11 +150,6 @@
       opacity: 0.45;
     }
 
-    .map-continua svg {
-      width: 100%;
-      height: 100%;
-    }
-
     .fold {
       position: absolute;
       width: 200%;
@@ -175,16 +170,14 @@
       pointer-events: none;
     }
 
-    .book-icon:hover .open-book {
-      transform: rotate(-2deg) translateY(-2px);
-    }
-
     .footer {
       margin-top: 60px;
       font-size: 16px;
       color: #555;
       padding-bottom: 40px;
     }
+
+    /* ---------------------- READER ---------------------- */
 
     #reader {
       display: none;
@@ -204,6 +197,14 @@
       margin: 0 auto;
       background: linear-gradient(to bottom, #f7f3e9 0%, #f3ecdf 100%);
       padding: 20px 0;
+      position: relative;
+    }
+
+    /* Numero pagina sopra l'immagine */
+    .caption {
+      font-size: 16px;
+      margin-bottom: 10px;
+      font-weight: bold;
     }
 
     .page-container img {
@@ -216,18 +217,14 @@
       box-shadow: none;
     }
 
-    .caption {
-      font-size: 15px;
-      margin: 2px auto 4px auto;
-      max-width: 500px;
-    }
+    /* ---------------------- NAV BUTTONS ---------------------- */
 
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       align-items: center;
       max-width: 560px;
-      margin: 0 auto;
+      margin: 20px auto 0 auto;
       gap: 10px;
     }
 
@@ -241,6 +238,47 @@
       height: 38px;
       white-space: nowrap;
     }
+
+    /* ---------------------- MOBILE LAYOUT ---------------------- */
+
+    @media (max-width: 768px) {
+
+      .nav-buttons {
+        position: fixed;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        display: flex;
+        justify-content: space-between;
+        pointer-events: none;
+      }
+
+      .nav-btn {
+        width: 70px;
+        height: 46px;
+        pointer-events: auto;
+      }
+
+      /* Due pulsanti a sinistra */
+      #backBtn, #infoBtn {
+        position: absolute;
+        left: 10px;
+      }
+      #backBtn { top: -60px; }
+      #infoBtn { top: 0px; }
+
+      /* Due pulsanti a destra */
+      #nextBtn, #backToBooks {
+        position: absolute;
+        right: 10px;
+      }
+      #nextBtn { top: -60px; }
+      #backToBooks { top: 0px; }
+
+    }
+
+    /* ---------------------- MODAL ---------------------- */
 
     #infoModal {
       display:none;
@@ -262,6 +300,7 @@
       border: 1px solid #ccc;
       text-align: left;
     }
+
   </style>
 </head>
 
@@ -293,7 +332,6 @@
 
     <div class="book-icons">
 
-      <!-- ICONA EN -->
       <div class="book-icon" onclick="openBook('A-EN')">
         <div class="open-book">
           <div class="page left"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
@@ -303,7 +341,6 @@
         <span>Diary – EN</span>
       </div>
 
-      <!-- ICONA IT -->
       <div class="book-icon" onclick="openBook('A-IT')">
         <div class="open-book">
           <div class="page left"><div class="map-continua"></div><div class="fold"></div><div class="fold2"></div></div>
@@ -322,16 +359,15 @@
 
   <div id="reader">
     <div class="page-container">
+      <div class="caption" id="caption">Page 01</div>
       <img id="page" src="">
     </div>
-
-    <div class="caption" id="caption">Page 01</div>
 
     <div class="nav-buttons">
       <button id="backBtn" class="nav-btn">Back</button>
       <button id="infoBtn" class="nav-btn">Info</button>
       <button id="nextBtn" class="nav-btn">Next</button>
-      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
+      <button id="backToBooks" class="nav-btn" onclick="closeBook()">Languages</button>
     </div>
   </div>
 
@@ -357,6 +393,7 @@
     let index = 1;
     let pages = [];
 
+    /* TUA FUNZIONE ORIGINALE — NON TOCCATA */
     async function detectPages(selectedLang) {
       const detected = [];
       let n = 1;
@@ -390,7 +427,7 @@
 
     async function openBook(selectedLang) {
       lang = selectedLang;
-      index = 0;
+      index = 1;
 
       pages = await detectPages(lang);
 
@@ -419,29 +456,29 @@
     }
 
     function updatePage() {
-      const file = pages[index];
+      const file = pages[index - 1];
       document.getElementById("page").src = file;
 
-      const num = String(index + 1).padStart(2, "0");
+      const num = String(index).padStart(2, "0");
       document.getElementById("caption").textContent = `Page ${num}`;
     }
 
     document.getElementById("backBtn").onclick = () => {
-      if (index > 0) {
+      if (index > 1) {
         index--;
         updatePage();
       }
     };
 
     document.getElementById("nextBtn").onclick = () => {
-      if (index < pages.length - 1) {
+      if (index < pages.length) {
         index++;
         updatePage();
       }
     };
 
     document.getElementById("infoBtn").onclick = () => {
-      const num = String(index + 1).padStart(2, '0');
+      const num = String(index).padStart(2, '0');
 
       document.getElementById("modalContent").innerHTML = `
         <strong>Title:</strong> Africa – Diary<br>
