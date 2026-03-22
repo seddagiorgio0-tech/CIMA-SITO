@@ -174,7 +174,7 @@
   </div>
 
   <div class="photo-container">
-    <img id="photo" src="1.jpg" alt="Sculpture" class="zoomable">
+    <img id="photo" src="s-1.jpg" alt="Sculpture" class="zoomable">
   </div>
 
   <div class="caption" id="caption">
@@ -201,7 +201,7 @@
   const nextBtn = document.getElementById("nextBtn");
 
   function updatePhoto() {
-    photo.src = `${index}.jpg`;
+    photo.src = `s-${index}.jpg`;
     caption.textContent = `Iceland – Sculptur ${index}`;
     backBtn.disabled = index === 1;
     nextBtn.disabled = index === totalPhotos;
@@ -268,7 +268,7 @@
     materiali: "Terracotta",
     tiratura: "Unique piece",
     stato: "THESE SCULPTURES ARE NOT FOR SALE",
-    testo: "From the project ‘ICELAND – \"Face ou froid - Un monde de couleurs\", a winter crossing in solitude’. Sculpture created after the expedition."
+    testo: "From the project ‘ICELAND – \"Face ou froid\", a winter crossing in solitude’. Sculpture created after the expedition."
   };
 
   infoBtn.onclick = () => {
