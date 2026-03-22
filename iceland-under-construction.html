@@ -169,12 +169,12 @@
   <div class="button-row">
     <a href="iceland-under-construction.html" class="menu-btn selected">Photography</a>
     <a href="iceland-video.html" class="menu-btn">Video</a>
-    <a href="iceland-sculptur.html" class="menu-btn">Sculptur</a>
+    <a href="i-sculptur.html" class="menu-btn">Sculptur</a>
     <a href="iceland-diary.html" class="menu-btn">Diary</a>
   </div>
 
   <div class="photo-container">
-    <img id="photo" src="1.jpg" alt="Photo" class="zoomable">
+    <img id="photo" src="f-i1.jpg" alt="Photo" class="zoomable">
   </div>
 
   <div class="caption" id="caption">
@@ -201,7 +201,7 @@
   const nextBtn = document.getElementById("nextBtn");
 
   function updatePhoto() {
-    photo.src = `${index}.jpg`;
+    photo.src = `f-i${index}.jpg`;
     caption.textContent = `Iceland – Photo ${index}`;
     backBtn.disabled = index === 1;
     nextBtn.disabled = index === totalPhotos;
@@ -220,7 +220,7 @@
   updatePhoto();
 </script>
 
-<!-- MODAL OVERLAY (INFO) -->
+<!-- MODAL INFO -->
 <div id="infoModal" style="
   display:none;
   position: fixed;
@@ -232,8 +232,6 @@
   align-items: center;
   z-index: 9999;
 ">
-
-  <!-- MODAL BOX -->
   <div style="
     background: white;
     padding: 30px;
@@ -242,7 +240,6 @@
     border: 1px solid #ccc;
     text-align: left;
   ">
-
     <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
 
     <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
@@ -276,7 +273,7 @@
 
   const technicalSheet = {
     luogo: "Iceland",
-    anno: "2023",
+    anno: "2021",
     tecnica: "Digital photography",
     supporto: "3 mm aluminum (variants: mounted paper, forex)",
     dimensioni: [
@@ -285,7 +282,7 @@
       "75×100 cm — "
     ],
     tiratura: "Limited edition of 5 total prints (including 1 artist’s proof)",
-    testo: "From the project ‘ICELAND – 'Face ou froid', a winter crossing in solitude’. A real photographic shot taken during the espedition."
+    testo: "From the project ‘ICELAND – \"Face ou froid Un mode de couleurs\", a winter crossing in solitude’. A real photographic shot taken during the expedition."
   };
 
   infoBtn.onclick = () => {
