@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iceland – Sculptur</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: white;
+      color: black;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 0 5px 0;
+      font-size: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+    }
+
+    h1 {
+      font-size: 22px;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+
+    .button-row {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu-btn {
+      padding: 12px 0;
+      width: 150px;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+      transition: 0.2s;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .menu-btn:hover {
+      background: #e6e6e6;
+    }
+
+    .selected {
+      background: #e6e6e6;
+      color: black;
+      cursor: default;
+      border-color: #ccc;
+    }
+
+    .photo-container {
+      width: 100%;
+      max-width: 700px;
+      margin: 50px auto 10px auto;
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .caption {
+      font-size: 16px;
+      margin: 10px auto 25px auto;
+      max-width: 700px;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .nav-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: white;
+      color: black;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .nav-buttons button:hover {
+      background: #e6e6e6;
+    }
+
+    .nav-buttons button:disabled {
+      background: #f2f2f2;
+      color: #999;
+      border-color: #ddd;
+      cursor: default;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 16px;
+      color: #555;
+      padding-bottom: 40px;
+    }
+
+    /* MODAL ZOOM */
+    .img-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .img-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 32px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="progetto.html">CIMA Project</a>
+    <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+    <a href="opere.html">Works</a>
+    <a href="book.html">Book</a>
+    <a href="news.html">News</a>
+    <a href="biography.html">Biography</a>
+    <a href="contatti.html">Contacts</a>
+    <a href="work-in-progress.html">Buy</a>
+  </nav>
+
+  <h1>Iceland – Sculptur</h1>
+
+  <div class="button-row">
+    <a href="iceland-under-construction.html" class="menu-btn">Photography</a>
+    <a href="iceland-video.html" class="menu-btn">Video</a>
+    <a href="i-sculptur.html" class="menu-btn selected">Sculptur</a>
+    <a href="iceland-diary.html" class="menu-btn">Diary</a>
+  </div>
+
+  <div class="photo-container">
+    <img id="photo" src="1.jpg" alt="Sculpture" class="zoomable">
+  </div>
+
+  <div class="caption" id="caption">
+    Iceland – Sculptur 1
+  </div>
+
+  <div class="nav-buttons">
+    <button id="backBtn">Back</button>
+    <button id="infoBtn">Info</button>
+    <button id="nextBtn">Next</button>
+  </div>
+
+  <div class="footer">
+    <strong>Giorgio Sedda</strong> – CIMA Project
+  </div>
+
+<script>
+  const totalPhotos = 29;
+  let index = 1;
+
+  const photo = document.getElementById("photo");
+  const caption = document.getElementById("caption");
+  const backBtn = document.getElementById("backBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  function updatePhoto() {
+    photo.src = `${index}.jpg`;
+    caption.textContent = `Iceland – Sculptur ${index}`;
+    backBtn.disabled = index === 1;
+    nextBtn.disabled = index === totalPhotos;
+  }
+
+  backBtn.onclick = () => {
+    if (index > 1) index--;
+    updatePhoto();
+  };
+
+  nextBtn.onclick = () => {
+    if (index < totalPhotos) index++;
+    updatePhoto();
+  };
+
+  updatePhoto();
+</script>
+
+<!-- MODAL INFO -->
+<div id="infoModal" style="
+  display:none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(2px);
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+">
+  <div style="
+    background: white;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    text-align: left;
+  ">
+    <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+    <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+    <div style="margin-top:25px; display:flex; justify-content:space-between;">
+      <button id="closeModal" style="
+        padding: 10px 20px;
+        background:white;
+        border:1px solid #ccc;
+        cursor:pointer;
+      ">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const infoBtn = document.getElementById("infoBtn");
+  const modal = document.getElementById("infoModal");
+  const closeModal = document.getElementById("closeModal");
+  const modalContent = document.getElementById("modalContent");
+
+  const technicalSheet = {
+    luogo: "Iceland",
+    anno: "2021",
+    tecnica: "Modelling",
+    materiali: "Terracotta",
+    tiratura: "Unique piece",
+    stato: "THESE SCULPTURES ARE NOT FOR SALE",
+    testo: "From the project ‘ICELAND – \"Face ou froid - Un monde de couleurs\", a winter crossing in solitude’. Sculpture created after the expedition."
+  };
+
+  infoBtn.onclick = () => {
+    modalContent.innerHTML = `
+      <strong>Title:</strong> Iceland – Sculptur ${index}<br>
+      <strong>Location:</strong> ${technicalSheet.luogo}<br>
+      <strong>Year:</strong> ${technicalSheet.anno}<br>
+      <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
+      <strong>Materials:</strong> ${technicalSheet.materiali}<br>
+      <strong>Edition:</strong> ${technicalSheet.tiratura}<br>
+      <strong>Status:</strong> ${technicalSheet.stato}<br><br>
+      ${technicalSheet.testo}
+    `;
+    modal.style.display = "flex";
+  };
+
+  closeModal.onclick = () => {
+    modal.style.display = "none";
+  };
+
+  modal.onclick = (e) => {
+    if (e.target === modal) modal.style.display = "none";
+  };
+</script>
+
+<!-- MODAL ZOOM -->
+<div id="imgModal" class="img-modal">
+  <span class="img-modal-close">&times;</span>
+  <img id="imgModalContent" src="">
+</div>
+
+<script>
+  const imgModal = document.getElementById("imgModal");
+  const imgModalContent = document.getElementById("imgModalContent");
+  const imgModalClose = document.querySelector(".img-modal-close");
+
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("zoomable")) {
+      imgModal.style.display = "flex";
+      imgModalContent.src = e.target.src;
+    }
+  });
+
+  imgModalClose.onclick = () => {
+    imgModal.style.display = "none";
+  };
+
+  imgModal.onclick = (e) => {
+    if (e.target === imgModal) {
+      imgModal.style.display = "none";
+    }
+  };
+</script>
+
+</body>
+</html>
