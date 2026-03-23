@@ -119,8 +119,6 @@
       padding-bottom: 40px;
     }
 
-    /* ---------------------- READER ---------------------- */
-
     #reader {
       display: none;
       position: fixed;
@@ -149,7 +147,6 @@
       border: none;
     }
 
-    /* Numero pagina dentro l’immagine */
     .caption {
       position: absolute;
       bottom: 12px;
@@ -161,8 +158,6 @@
       font-size: 14px;
       pointer-events: none;
     }
-
-    /* ---------------------- PULSANTI LATERALI ---------------------- */
 
     .nav-buttons {
       position: fixed;
@@ -188,15 +183,10 @@
       font-size: 15px;
     }
 
-    /* Sinistra */
     #backBtn { left: 10px; top: -60px; }
     #infoBtn { left: 10px; top: 0px; }
-
-    /* Destra */
     #nextBtn { right: 10px; top: -60px; }
     #backToBooks { right: 10px; top: 0px; }
-
-    /* ---------------------- MODAL ---------------------- */
 
     #infoModal {
       display:none;
@@ -218,7 +208,6 @@
       border: 1px solid #ccc;
       text-align: left;
     }
-
   </style>
 </head>
 
@@ -285,8 +274,6 @@
       <button id="backBtn" class="nav-btn">Back</button>
       <button id="infoBtn" class="nav-btn">Info</button>
       <button id="nextBtn" class="nav-btn">Next</button>
-
-      <!-- ✔ TESTO CORRETTO E CENTRATO -->
       <button id="backToBooks" class="nav-btn" onclick="closeBook()">Back to languages</button>
     </div>
   </div>
@@ -313,47 +300,15 @@
     let index = 1;
     let pages = [];
 
-    async function detectPages(selectedLang) {
-      const detected = [];
-      let n = 1;
+    /* 🔥 LISTE PREDEFINITE — 9 PAGINE EN E 9 PAGINE IT */
+    const pagesEN = Array.from({length: 9}, (_, i) => `L-A-EN${String(i+1).padStart(2,"0")}.jpg`);
+    const pagesIT = Array.from({length: 9}, (_, i) => `L-A-IT${String(i+1).padStart(2,"0")}.jpg`);
 
-      while (true) {
-        const num = String(n).padStart(2,"0");
-
-        const filenameLower = `L-${selectedLang}${num}.jpg`;
-        const filenameUpper = `L-${selectedLang}${num}.JPG`;
-
-        try {
-          const responseLower = await fetch(filenameLower, { method: "HEAD" });
-          const responseUpper = await fetch(filenameUpper, { method: "HEAD" });
-
-          if (responseLower.ok) {
-            detected.push(filenameLower);
-          } else if (responseUpper.ok) {
-            detected.push(filenameUpper);
-          } else {
-            break;
-          }
-
-          n++;
-        } catch (e) {
-          break;
-        }
-      }
-
-      return detected;
-    }
-
-    async function openBook(selectedLang) {
+    function openBook(selectedLang) {
       lang = selectedLang;
       index = 1;
 
-      pages = await detectPages(lang);
-
-      if (pages.length === 0) {
-        alert("No pages found for this language.");
-        return;
-      }
+      pages = (lang === "A-EN") ? pagesEN : pagesIT;
 
       document.getElementById("menu").style.display = "none";
       document.getElementById("title").style.display = "none";
