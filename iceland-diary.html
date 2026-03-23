@@ -119,8 +119,6 @@
       padding-bottom: 40px;
     }
 
-    /* ---------------------- READER ---------------------- */
-
     #reader {
       display: none;
       position: fixed;
@@ -161,8 +159,6 @@
       pointer-events: none;
     }
 
-    /* ---------------------- NAV BUTTONS ---------------------- */
-
     .nav-buttons {
       position: fixed;
       top: 50%;
@@ -191,8 +187,6 @@
     #infoBtn { left: 10px; top: 0px; }
     #nextBtn { right: 10px; top: -60px; }
     #backToBooks { right: 10px; top: 0px; }
-
-    /* ---------------------- MODAL ---------------------- */
 
     #infoModal {
       display:none;
@@ -306,38 +300,15 @@
     let index = 1;
     let pages = [];
 
-    /* 🔧 SOLUZIONE B — VERSIONE OTTIMIZZATA */
-    async function detectPages(selectedLang) {
-      const detected = [];
+    /* 🔥 LISTE PREDEFINITE — CARICAMENTO ISTANTANEO */
+    const pagesEN = Array.from({length: 31}, (_, i) => `I-EN${i+1}.jpg`);
+    const pagesIT = Array.from({length: 31}, (_, i) => `I-IT${i+1}.jpg`);
 
-      for (let n = 1; n <= 31; n++) {
-        const lower = `${selectedLang}${n}.jpg`;
-        const upper = `${selectedLang}${n}.JPG`;
-
-        try {
-          const responseLower = await fetch(lower, { method: "HEAD" });
-          const responseUpper = await fetch(upper, { method: "HEAD" });
-
-          if (responseLower.ok) detected.push(lower);
-          else if (responseUpper.ok) detected.push(upper);
-        } catch (e) {
-          break;
-        }
-      }
-
-      return detected;
-    }
-
-    async function openBook(selectedLang) {
+    function openBook(selectedLang) {
       lang = selectedLang;
       index = 1;
 
-      pages = await detectPages(lang);
-
-      if (pages.length === 0) {
-        alert("No pages found for this language.");
-        return;
-      }
+      pages = (lang === "I-EN") ? pagesEN : pagesIT;
 
       document.getElementById("menu").style.display = "none";
       document.getElementById("title").style.display = "none";
