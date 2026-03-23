@@ -306,27 +306,20 @@
     let index = 1;
     let pages = [];
 
+    /* 🔧 SOLUZIONE B — VERSIONE OTTIMIZZATA */
     async function detectPages(selectedLang) {
       const detected = [];
-      let n = 1;
 
-      while (true) {
-        const filenameLower = `${selectedLang}${n}.jpg`;
-        const filenameUpper = `${selectedLang}${n}.JPG`;
+      for (let n = 1; n <= 31; n++) {
+        const lower = `${selectedLang}${n}.jpg`;
+        const upper = `${selectedLang}${n}.JPG`;
 
         try {
-          const responseLower = await fetch(filenameLower, { method: "HEAD" });
-          const responseUpper = await fetch(filenameUpper, { method: "HEAD" });
+          const responseLower = await fetch(lower, { method: "HEAD" });
+          const responseUpper = await fetch(upper, { method: "HEAD" });
 
-          if (responseLower.ok) {
-            detected.push(filenameLower);
-          } else if (responseUpper.ok) {
-            detected.push(filenameUpper);
-          } else {
-            break;
-          }
-
-          n++;
+          if (responseLower.ok) detected.push(lower);
+          else if (responseUpper.ok) detected.push(upper);
         } catch (e) {
           break;
         }
