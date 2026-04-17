@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Africa – Video</title>
+<title>Iceland – Video</title>
 
 <style>
 body {
@@ -63,19 +63,21 @@ h1 {
   border-color: #ccc;
 }
 
+/* VIDEO */
 .video-container {
   width: 100%;
-  max-width: 700px; /* identico alla larghezza dei pulsanti */
+  max-width: 700px;
   margin: 50px auto 10px auto;
 }
 
 video {
   width: 100%;
-  aspect-ratio: 16 / 9; /* mantiene un’altezza armonica */
-  object-fit: cover;    /* evita schiacciamenti */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
   background: black;
   cursor: zoom-in;
 }
+
 .caption {
   font-size: 16px;
   margin: 10px auto 25px auto;
@@ -149,34 +151,34 @@ video {
 <body>
 
 <nav>
-  <a href="../index.html">Home</a>
-  <a href="../progetto.html">CIMA Project</a>
-  <a href="../galleria-intermedia.html">Virtual Exhibitions</a>
-  <a href="../opere.html">Works</a>
-  <a href="../book.html">Book</a>
-  <a href="../news.html">News</a>
-  <a href="../contatti.html">Contacts</a>
-  <a href="../biography.html">Biography</a>
-  <a href="../work-in-progress.html">Buy</a>
+  <a href="index.html">Home</a>
+  <a href="progetto.html">CIMA Project</a>
+  <a href="galleria-intermedia.html">Virtual Exhibitions</a>
+  <a href="opere.html">Works</a>
+  <a href="book.html">Book</a>
+  <a href="news.html">News</a>
+  <a href="biography.html">Biography</a>
+  <a href="contatti.html">Contacts</a>
+  <a href="work-in-progress.html">Buy</a>
 </nav>
 
-<h1>Africa – Video</h1>
+<h1>Iceland – Video</h1>
 
 <div class="button-row">
-  <a href="../gallery-under-construction.html" class="menu-btn">Photography</a>
-  <a href="africa-video.html" class="menu-btn selected">Video</a>
-  <a href="../africa-drawing.html" class="menu-btn">Drawings</a>
-  <a href="../africa-diary.html" class="menu-btn">Diary</a>
+  <a href="iceland-under-construction.html" class="menu-btn">Photography</a>
+  <a href="iceland-video.html" class="menu-btn selected">Video</a>
+  <a href="i-sculptur.html" class="menu-btn">Sculptur</a>
+  <a href="iceland-diary.html" class="menu-btn">Diary</a>
 </div>
 
 <!-- VIDEO -->
 <div class="video-container">
   <video id="videoPlayer" controls>
-    <source src="a-v01.mov" type="video/mov">
+    <source src="video-iceland.mp4" type="video/mp4">
   </video>
 </div>
 
-<div class="caption" id="caption">Africa – Video 01</div>
+<div class="caption" id="caption">Iceland – Video 01</div>
 
 <div class="nav-buttons">
   <button id="backBtn" disabled>Back</button>
@@ -184,9 +186,38 @@ video {
   <button id="nextBtn" disabled>Next</button>
 </div>
 
-<div class="footer">
-  <strong>Giorgio Sedda</strong> – CIMA Project
+<div class="footer" style="
+  margin-top: 35px;
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+">
+
+  <div><strong>Giorgio Sedda</strong> – CIMA Project</div>
+
+  <a href="https://www.instagram.com/artdrawingtime2025/"
+     target="_blank"
+     style="text-decoration:none; color:#555; display:flex; align-items:center;">
+
+    <svg width="18" height="18" viewBox="0 0 256 256" style="opacity:0.75;">
+      <defs>
+        <linearGradient id="IG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff4d00"/>   <!-- arancio molto intenso -->
+          <stop offset="30%" stop-color="#ff0090"/>  <!-- rosa neon -->
+          <stop offset="60%" stop-color="#c000ff"/>  <!-- viola brillante -->
+          <stop offset="100%" stop-color="#1f2fff"/> <!-- blu elettrico -->
+        </linearGradient>
+      </defs>
+
+      <rect width="256" height="256" rx="60" fill="url(#IG)"/>
+      <path fill="#fff" d="M128 176a48 48 0 1 1 48-48 48 48 0 0 1-48 48zm0-80a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm52-28a12 12 0 1 1-12 12 12 12 0 0 1 12-12z"/>
+    </svg>
+  </a>
 </div>
+
 
 <script>
 /* VIDEO LOGIC */
@@ -195,16 +226,9 @@ let index = 1;
 
 const videoPlayer = document.getElementById("videoPlayer");
 const caption = document.getElementById("caption");
-const backBtn = document.getElementById("backBtn");
-const nextBtn = document.getElementById("nextBtn");
 
 function updateVideo() {
-  const num = String(index).padStart(2, '0');
-  videoPlayer.src = `a-v${num}.mov`;
-  caption.textContent = `Africa – Video ${num}`;
-
-  backBtn.disabled = index === 1;
-  nextBtn.disabled = index === totalVideos;
+  caption.textContent = `Iceland – Video 01`;
 }
 
 updateVideo();
@@ -253,24 +277,22 @@ const closeModal = document.getElementById("closeModal");
 const modalContent = document.getElementById("modalContent");
 
 const technicalSheet = {
-  luogo: "France",
+  luogo: "Iceland",
   anno: "2023",
   tecnica: "Digital video",
-  supporto: "High‑resolution MOV",
+  supporto: "High‑resolution MP4",
   durata: "1–3 min",
-  testo: "From the project AFRICA – 'Un monde de couleurs' by ODCVL. Exhibition in the Maison du Bailli gallery (Epinal)."
+  testo: "From the project ‘ICELAND – \"Face ou froid\", a winter crossing in solitude’. A real video shot taken during the espedition."
 };
 
 infoBtn.onclick = () => {
-  const num = String(index).padStart(2, '0');
   modalContent.innerHTML =
-    `<strong>Title:</strong> Africa – Video ${num}<br>
+    `<strong>Title:</strong> Iceland – Video 01<br>
      <strong>Location:</strong> ${technicalSheet.luogo}<br>
      <strong>Year:</strong> ${technicalSheet.anno}<br>
      <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
      <strong>Format:</strong> ${technicalSheet.supporto}<br>
-     <strong>Duration:</strong> ${technicalSheet.durata}<br>
-     <br>
+     <strong>Duration:</strong> ${technicalSheet.durata}<br><br>
      ${technicalSheet.testo}`;
   modal.style.display = "flex";
 };
@@ -299,8 +321,7 @@ const videoModalPlayer = document.getElementById("videoModalPlayer");
 const videoModalClose = document.querySelector(".video-modal-close");
 
 videoPlayer.addEventListener("click", () => {
-  const num = String(index).padStart(2, '0');
-  videoModalPlayer.src = `a-v${num}.mp4`;
+  videoModalPlayer.src = "video-iceland.mp4";
   videoModal.style.display = "flex";
 });
 
