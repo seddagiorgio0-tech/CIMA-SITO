@@ -5,202 +5,244 @@
   <title>Greenland – Drawings</title>
 
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-      text-align: center;
-    }
+  /* ============================================================
+     BLOCCO 0 — STRUTTURA BASE (HEAD)
+  ============================================================ */
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    text-align: center;
+  }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 0 5px 0;
-      font-size: 16px;
-    }
+  html, body {
+    height: 100%;
+  }
 
-    nav a {
-      text-decoration: none;
-      color: black;
-    }
+  /* ============================================================
+     BLOCCO 1 — NAVIGAZIONE (HEAD)
+  ============================================================ */
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 0 5px 0;
+    font-size: 16px;
+  }
 
-    h1 {
-      font-size: 22px;
-      letter-spacing: 1px;
-      margin-top: 20px;
-    }
+  nav a {
+    text-decoration: none;
+    color: black;
+  }
 
-    .button-row {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+  /* ============================================================
+     BLOCCO 2 — TITOLO + MENU (HEAD)
+  ============================================================ */
+  h1 {
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-top: 20px;
+  }
 
-    .menu-btn {
-      padding: 12px 0;
-      width: 150px;
-      border: 1px solid #ccc;
-      background: white;
-      font-size: 16px;
-      text-decoration: none;
-      color: black;
-      transition: 0.2s;
-      display: inline-block;
-      text-align: center;
-    }
+  .button-row {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-    .menu-btn:hover {
-      background: #e6e6e6;
-    }
+  .menu-btn {
+    padding: 12px 0;
+    width: 150px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 16px;
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+    display: inline-block;
+    text-align: center;
+  }
 
-    .selected {
-      background: #e6e6e6;
-      color: black;
-      cursor: default;
-      border-color: #ccc;
-    }
+  .menu-btn:hover {
+    background: #e6e6e6;
+  }
 
-    .block {
-      max-width: 900px;
-      margin: 60px auto;
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 0 20px;
-    }
+  .selected {
+    background: #e6e6e6;
+    color: black;
+    cursor: default;
+    border-color: #ccc;
+  }
 
-    .text-col {
-      width: 30%;
-      text-align: justify;
-      font-size: 12px;
-      line-height: 1.55;
-    }
+  /* ============================================================
+     BLOCCO 3 — CONTENUTO / DRAWINGS VIEWER (HEAD)
+  ============================================================ */
+  .block {
+    max-width: 900px;
+    margin: 60px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 0 20px;
+  }
 
-    .img-col {
-      width: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .text-col {
+    width: 30%;
+    text-align: justify;
+    font-size: 12px;
+    line-height: 1.55;
+  }
 
-    .block img {
-      width: 78%;
-      height: auto;
-      object-fit: contain;
-      cursor: zoom-in;
-    }
+  .img-col {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .single-img {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
+  .block img {
+    width: 78%;
+    height: auto;
+    object-fit: contain;
+    cursor: zoom-in;
+  }
 
-    .single-img img {
-      width: 70%;
-      margin: 0 auto;
-      display: block;
-      height: auto;
-      cursor: zoom-in;
-    }
+  .single-img {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+    text-align: center;
+  }
 
-    .single-text {
-      width: 80%;
-      margin: 20px auto 0 auto;
-      font-size: 12px;
-      line-height: 1.55;
-      text-align: justify;
-    }
+  .single-img img {
+    width: 70%;
+    margin: 0 auto;
+    display: block;
+    height: auto;
+    cursor: zoom-in;
+  }
 
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 700px;
-      margin: 40px auto;
-    }
+  .single-text {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    font-size: 12px;
+    line-height: 1.55;
+    text-align: justify;
+  }
 
-    .nav-buttons button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: white;
-      color: black;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+  .block:nth-child(11) .img-col img {
+    max-width:600px;
+    width: 150%;
+  }
 
-    .nav-buttons button:hover {
-      background: #e6e6e6;
-    }
+  .big-drawing {
+    width: 90% !important;
+    max-width:700px !important;
+  }
 
-    .nav-buttons button:disabled {
-      background: #f2f2f2;
-      color: #999;
-      border-color: #ddd;
-      cursor: default;
-    }
+  /* ============================================================
+     BLOCCO 4 — PULSANTI NAVIGAZIONE (HEAD)
+  ============================================================ */
+  .nav-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+    margin: 40px auto;
+  }
 
-    .footer {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #555;
-      padding-bottom: 40px;
-    }
+  .nav-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: 0.2s;
+  }
 
-    .img-modal {
-      display: none;
-      position: fixed;
-      z-index: 99999;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.85);
-      justify-content: center;
-      align-items: center;
-    }
+  .nav-buttons button:hover {
+    background: #e6e6e6;
+  }
 
-    .img-modal img {
-      max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-    }
+  .nav-buttons button:disabled {
+    background: #f2f2f2;
+    color: #999;
+    border-color: #ddd;
+    cursor: default;
+  }
 
-    .img-modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 32px;
-      color: white;
-      cursor: pointer;
-    }
+  /* ============================================================
+     BLOCCO 5 — FOOTER (HEAD)
+  ============================================================ */
+  .footer {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #555;
+    padding-bottom: 40px;
+  }
 
-    .block:nth-child(11) .img-col img {
-      max-width:600px;
-      width: 150%;
-    }
+  /* ============================================================
+     BLOCCO 6 — MODAL ZOOM IMMAGINI (HEAD)
+  ============================================================ */
+  .img-modal {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+  }
 
-    .big-drawing {
-      width: 90% !important;
-      max-width:700px !important;
-    }
+  .img-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
 
+  .img-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 32px;
+    color: white;
+    cursor: pointer;
+  }
+
+  /* ============================================================
+     BLOCCO 7 — MODAL INFO (HEAD)
+  ============================================================ */
+  #infoModal {
+    display:none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(2px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
   </style>
 </head>
 
 <body>
 
+  <!-- ============================================================
+       BLOCCO 1 — NAVIGAZIONE (BODY)
+  ============================================================ -->
   <nav>
     <a href="index.html">Home</a>
     <a href="progetto.html">CIMA Project</a>
@@ -213,6 +255,9 @@
     <a href="work-in-progress.html">Buy</a>
   </nav>
 
+  <!-- ============================================================
+       BLOCCO 2 — TITOLO + MENU (BODY)
+  ============================================================ -->
   <h1>Greenland – Drawings</h1>
 
   <div class="button-row">
@@ -222,20 +267,123 @@
     <a href="greenland-diary.html" class="menu-btn">Diary</a>
   </div>
 
+  <!-- ============================================================
+       BLOCCO 3 — CONTENUTO / DRAWINGS VIEWER (BODY)
+  ============================================================ -->
   <div id="content"></div>
 
+  <!-- ============================================================
+       BLOCCO 4 — PULSANTI NAVIGAZIONE (BODY)
+  ============================================================ -->
   <div class="nav-buttons">
     <button id="backBtn">Back</button>
     <button id="infoBtn">Info</button>
     <button id="nextBtn">Next</button>
   </div>
 
-  <div class="footer">
-    <strong>Giorgio Sedda</strong> – CIMA Project
+  <!-- ============================================================
+       BLOCCO 5 — FOOTER (BODY)
+  ============================================================ -->
+  <div class="footer" style="
+  margin-top: 35px;
+  font-size: 16px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+">
+
+  <div><strong>Giorgio Sedda</strong> – CIMA Project</div>
+
+  <a href="https://www.instagram.com/artdrawingtime2025/"
+     target="_blank"
+     style="text-decoration:none; color:#555; display:flex; align-items:center;">
+
+    <svg width="18" height="18" viewBox="0 0 256 256" style="opacity:0.75;">
+      <defs>
+        <linearGradient id="IG" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#ff4d00"/>   <!-- arancio molto intenso -->
+          <stop offset="30%" stop-color="#ff0090"/>  <!-- rosa neon -->
+          <stop offset="60%" stop-color="#c000ff"/>  <!-- viola brillante -->
+          <stop offset="100%" stop-color="#1f2fff"/> <!-- blu elettrico -->
+        </linearGradient>
+      </defs>
+
+      <rect width="256" height="256" rx="60" fill="url(#IG)"/>
+      <path fill="#fff" d="M128 176a48 48 0 1 1 48-48 48 48 0 0 1-48 48zm0-80a32 32 0 1 0 32 32 32 32 0 0 0-32-32zm52-28a12 12 0 1 1-12 12 12 12 0 0 1 12-12z"/>
+    </svg>
+  </a>
+</div>
+
+
+  <!-- ============================================================
+       BLOCCO 6 — MODAL ZOOM IMMAGINI (BODY)
+  ============================================================ -->
+  <div id="imgModal" class="img-modal">
+    <span class="img-modal-close">&times;</span>
+    <img id="imgModalContent" src="">
   </div>
 
-<script>
-  const totalDrawings = 12;
+  <!-- ============================================================
+       BLOCCO 7 — MODAL INFO (BODY)
+  ============================================================ -->
+  <div id="infoModal">
+    <div style="
+      background: white;
+      padding: 30px;
+      width: 90%;
+      max-width: 500px;
+      border: 1px solid #ccc;
+      text-align: left;
+    ">
+      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+
+      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+
+      <div style="margin-top:25px; display:flex; justify-content:space-between; gap:10px;">
+
+        <!-- PULSANTE ORIGINAL DRAWING -->
+        <a id="buyOriginal" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy original drawing</a>
+
+        <!-- PULSANTE FINE‑ART PRINT -->
+        <a id="buyPrint" href="#" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          text-decoration:none;
+          color:black;
+          flex:1;
+          text-align:center;
+        ">Buy fine-art print</a>
+
+      </div>
+
+      <div style="margin-top:20px; text-align:right;">
+        <button id="closeModal" style="
+          padding: 10px 20px;
+          background:white;
+          border:1px solid #ccc;
+          cursor:pointer;
+        ">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================
+       SCRIPT — VIEWER + NAVIGAZIONE (SCRIPT)
+  ============================================================ -->
+  <script>
+  const lastIndex = 11;          // 0 = g-drawing00, 1–11 = g-drawing01…11
   let index = 0;
 
   const content = document.getElementById("content");
@@ -370,23 +518,22 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
   function render() {
     content.innerHTML = "";
 
-  /* BLOCCO 0 — SOLO IMMAGINE */
-  if (index === 0) {
-    content.innerHTML = `
-      <div class="single-img" style="max-width:900px; margin:60px auto; padding:0 20px;">
-        <img src="g-drawing00.jpg" class="zoomable" style="width:70%; max-width:900px; margin:0 auto; display:block;">
-      </div>
-    `;
-    backBtn.disabled = true;
-    nextBtn.disabled = false;
-    return;
-  }
-
+    // BLOCCO 0 — SOLO IMMAGINE
+    if (index === 0) {
+      content.innerHTML = `
+        <div class="single-img" style="max-width:900px; margin:60px auto; padding:0 20px;">
+          <img src="g-drawing00.jpg" class="zoomable" style="width:70%; max-width:900px; margin:0 auto; display:block;">
+        </div>
+      `;
+      backBtn.disabled = true;
+      nextBtn.disabled = false;
+      return;
+    }
 
     const num = String(index).padStart(2, '0');
     const img = `g-drawing${num}.jpg`;
 
-    /* BLOCCO DOPPIO (1–5) */
+    // BLOCCO DOPPIO (1–5)
     if (index <= 5) {
       const block = document.createElement("div");
       block.className = "block";
@@ -400,7 +547,7 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
 
       content.appendChild(block);
 
-    /* BLOCCO SINGOLO (6–10) */
+    // BLOCCO SINGOLO (6–10)
     } else if (index <= 10) {
       const single = document.createElement("div");
       single.className = "single-img";
@@ -412,7 +559,7 @@ E io, quella notte, ho imparato cosa significa essere davvero un ospite in un lu
 
       content.appendChild(single);
 
-    /* BLOCCO 11 — TESTO A DESTRA */
+    // BLOCCO 11 — TESTO A DESTRA
     } else {
       const block = document.createElement("div");
       block.className = "block";
@@ -439,188 +586,127 @@ Nel 2023 istituisce la fondazione The Red House Greenland per garantire continui
     }
 
     backBtn.disabled = index === 0;
-    nextBtn.disabled = index === totalDrawings;
+    nextBtn.disabled = index === lastIndex;
   }
 
- backBtn.onclick = () => { 
-  if (index > 0) index--; 
-  render(); 
-};
+  backBtn.onclick = () => {
+    if (index > 0) {
+      index--;
+      render();
+    }
+  };
 
-nextBtn.onclick = () => { 
-  if (index < totalDrawings - 1) index++; 
-  render(); 
-};
-
+  nextBtn.onclick = () => {
+    if (index < lastIndex) {
+      index++;
+      render();
+    }
+  };
 
   render();
-</script>
+  </script>
 
-<!-- MODAL PER ZOOM IMMAGINI -->
-<div id="imgModal" class="img-modal">
-  <span class="img-modal-close">&times;</span>
-  <img id="imgModalContent" src="">
-</div>
+  <!-- ============================================================
+       SCRIPT — MODAL ZOOM (SCRIPT)
+  ============================================================ -->
+  <script>
+  const imgModal = document.getElementById("imgModal");
+  const imgModalContent = document.getElementById("imgModalContent");
+  const imgModalClose = document.querySelector(".img-modal-close");
 
-<script>
-    const imgModal = document.getElementById("imgModal");
-    const imgModalContent = document.getElementById("imgModalContent");
-    const imgModalClose = document.querySelector(".img-modal-close");
+  document.addEventListener("click", function(e) {
+    if (e.target.classList.contains("zoomable")) {
+      imgModal.style.display = "flex";
+      imgModalContent.src = e.target.src;
+    }
+  });
 
-    document.addEventListener("click", function(e) {
-      if (e.target.classList.contains("zoomable")) {
-        imgModal.style.display = "flex";
-        imgModalContent.src = e.target.src;
-      }
-    });
+  imgModalClose.onclick = () => {
+    imgModal.style.display = "none";
+  };
 
-    imgModalClose.onclick = () => {
+  imgModal.onclick = (e) => {
+    if (e.target === imgModal) {
       imgModal.style.display = "none";
-    };
+    }
+  };
+  </script>
 
-    imgModal.onclick = (e) => {
-      if (e.target === imgModal) {
-        imgModal.style.display = "none";
-      }
-    };
-</script>
-<!-- MODAL INFO (SCHEDA TECNICA) -->
-<div id="infoModal" style="
-    display:none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.35);
-    backdrop-filter: blur(2px);
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-  ">
+  <!-- ============================================================
+       SCRIPT — MODAL INFO (SCRIPT)
+  ============================================================ -->
+  <script>
+  const infoBtn = document.getElementById("infoBtn");
+  const modal = document.getElementById("infoModal");
+  const closeModal = document.getElementById("closeModal");
+  const modalContent = document.getElementById("modalContent");
 
-    <div style="
-      background: white;
-      padding: 30px;
-      width: 90%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      text-align: left;
-    ">
+  const buyOriginal = document.getElementById("buyOriginal");
+  const buyPrint = document.getElementById("buyPrint");
 
-      <h2 style="margin-top:0; font-size:20px;">Technical Sheet</h2>
+  infoBtn.onclick = () => {
+    let sheet = "";
+    const num = String(index).padStart(2, '0');
 
-      <div id="modalContent" style="font-size:16px; line-height:1.5;"></div>
+    if (index === 0) {
+      // niente scheda tecnica per la 00
+      sheet = `
+        <strong>Greenland – Drawings</strong><br>
+        Introductory drawing of the series.
+      `;
+    } else if (index <= 5) {
+      sheet = `
+        <strong>Title:</strong> Greenland Drawing ${num}<br>
+        <strong>Location:</strong> France, 2023<br>
+        <strong>Technique:</strong> Pencil on paper<br>
+        <strong>Size:</strong> 250 × 180 cm<br><br>
 
-      <div style="margin-top:25px; display:flex; justify-content:space-between; gap:10px;">
+        Original drawing for sale.<br>
+        Also available as a limited‑edition fine‑art print.<br>
+        Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
 
-        <!-- PULSANTE ORIGINAL DRAWING -->
-        <a id="buyOriginal" href="#" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          text-decoration:none;
-          color:black;
-          flex:1;
-          text-align:center;
-        ">Buy original drawing</a>
+        From the project “GREENLAND – a winter between people and wilderness”.
+      `;
+    } else if (index <= 10) {
+      sheet = `
+        <strong>Title:</strong> Greenland Drawing ${num}<br>
+        <strong>Location:</strong> Italy, 2023<br>
+        <strong>Technique:</strong> Pencil on paper<br>
+        <strong>Size:</strong> 180 × 125 cm<br><br>
 
-        <!-- PULSANTE FINE‑ART PRINT -->
-        <a id="buyPrint" href="#" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          text-decoration:none;
-          color:black;
-          flex:1;
-          text-align:center;
-        ">Buy fine-art print</a>
+        Original drawing for sale.<br>
+        Also available as a limited‑edition fine‑art print.<br>
+        Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
 
-      </div>
+        From the project “GREENLAND – a winter between people and wilderness”.
+      `;
+    } else {
+      sheet = `
+        <strong>Title:</strong> Greenland Drawing ${num}<br>
+        <strong>Technique:</strong> Pencil on paper<br>
+        <strong>Size:</strong> 130 × 100 cm<br><br>
 
-      <div style="margin-top:20px; text-align:right;">
-        <button id="closeModal" style="
-          padding: 10px 20px;
-          background:white;
-          border:1px solid #ccc;
-          cursor:pointer;
-        ">Close</button>
-      </div>
+        Original drawing for sale.<br>
+        Also available as a limited‑edition fine‑art print.<br>
+        Limited edition of 5 total prints (including 1 artist’s proof).
+      `;
+    }
 
-    </div>
-</div>
+    modalContent.innerHTML = sheet;
 
-<script>
-    const infoBtn = document.getElementById("infoBtn");
-    const modal = document.getElementById("infoModal");
-    const closeModal = document.getElementById("closeModal");
-    const modalContent = document.getElementById("modalContent");
+    const baseTitle = `Greenland - Drawing ${num}`;
+    const encodedBase = encodeURIComponent(baseTitle);
+    const baseLink = `https://giorgiosedda.com/work-in-progress.html?title=${encodedBase}`;
 
-    const buyOriginal = document.getElementById("buyOriginal");
-    const buyPrint = document.getElementById("buyPrint");
+    buyOriginal.href = `${baseLink}%20(original%20drawing)`;
+    buyPrint.href = `${baseLink}%20(fine-art%20print)`;
 
-    infoBtn.onclick = () => {
-      let sheet = "";
-      const num = String(index).padStart(2, '0');
+    modal.style.display = "flex";
+  };
 
-      if (index <= 5) {
-        sheet = `
-          <strong>Title:</strong> Greenland Drawing ${num}<br>
-          <strong>Location:</strong> France, 2023<br>
-          <strong>Technique:</strong> Pencil on paper<br>
-          <strong>Size:</strong> 250 × 180 cm<br><br>
-
-          Original drawing for sale.<br>
-          Also available as a limited‑edition fine‑art print.<br>
-          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
-
-          From the project “GREENLAND – a winter between people and wilderness”.
-        `;
-      }
-
-      else if (index <= 10) {
-        sheet = `
-          <strong>Title:</strong> Greenland Drawing ${num}<br>
-          <strong>Location:</strong> Italy, 2023<br>
-          <strong>Technique:</strong> Pencil on paper<br>
-          <strong>Size:</strong> 180 × 125 cm<br><br>
-
-          Original drawing for sale.<br>
-          Also available as a limited‑edition fine‑art print.<br>
-          Limited edition of 5 total prints (including 1 artist’s proof).<br><br>
-
-          From the project “GREENLAND – a winter between people and wilderness”.
-        `;
-      }
-
-      else {
-        sheet = `
-          <strong>Title:</strong> Greenland Drawing ${num}<br>
-          <strong>Technique:</strong> Pencil on paper<br>
-          <strong>Size:</strong> 130 × 100 cm<br><br>
-
-          Original drawing for sale.<br>
-          Also available as a limited‑edition fine‑art print.<br>
-          Limited edition of 5 total prints (including 1 artist’s proof).
-        `;
-      }
-
-      modalContent.innerHTML = sheet;
-
-      /* COSTRUZIONE TITOLO PRECOMPILATO */
-      const baseTitle = `Greenland - Drawing ${num}`;
-      const encodedBase = encodeURIComponent(baseTitle);
-      const baseLink = `https://giorgiosedda.com/work-in-progress.html?title=${encodedBase}`;
-
-      /* LINK COMPLETI */
-      buyOriginal.href = `${baseLink}%20(original%20drawing)`;
-      buyPrint.href = `${baseLink}%20(fine-art%20print)`;
-
-      modal.style.display = "flex";
-    };
-
-    closeModal.onclick = () => { modal.style.display = "none"; };
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
-</script>
+  closeModal.onclick = () => { modal.style.display = "none"; };
+  modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+  </script>
 
 </body>
 </html>
-   
