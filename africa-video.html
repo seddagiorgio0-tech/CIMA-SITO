@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Iceland – Video</title>
+<title>Africa – Video</title>
 
 <style>
 body {
@@ -162,23 +162,23 @@ video {
   <a href="work-in-progress.html">Buy</a>
 </nav>
 
-<h1>Iceland – Video</h1>
+<h1>Africa – Video</h1>
 
 <div class="button-row">
-  <a href="iceland-under-construction.html" class="menu-btn">Photography</a>
-  <a href="iceland-video.html" class="menu-btn selected">Video</a>
-  <a href="i-sculptur.html" class="menu-btn">Sculptur</a>
-  <a href="iceland-diary.html" class="menu-btn">Diary</a>
+  <a href="gallery-under-construction.html" class="menu-btn">Photography</a>
+  <a href="africa-video.html" class="menu-btn selected">Video</a>
+  <a href="africa-drawing.html" class="menu-btn">Drawing</a>
+  <a href="africa-diary.html" class="menu-btn">Diary</a>
 </div>
 
 <!-- VIDEO -->
 <div class="video-container">
   <video id="videoPlayer" controls>
-    <source src="video-iceland.mp4" type="video/mp4">
+    <source src="a-v01.mov" type="video/mp4">
   </video>
 </div>
 
-<div class="caption" id="caption">Iceland – Video 01</div>
+<div class="caption" id="caption">Africa – Video 01</div>
 
 <div class="nav-buttons">
   <button id="backBtn" disabled>Back</button>
@@ -205,10 +205,10 @@ video {
     <svg width="18" height="18" viewBox="0 0 256 256" style="opacity:0.75;">
       <defs>
         <linearGradient id="IG" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#ff4d00"/>   <!-- arancio molto intenso -->
-          <stop offset="30%" stop-color="#ff0090"/>  <!-- rosa neon -->
-          <stop offset="60%" stop-color="#c000ff"/>  <!-- viola brillante -->
-          <stop offset="100%" stop-color="#1f2fff"/> <!-- blu elettrico -->
+          <stop offset="0%" stop-color="#ff4d00"/>
+          <stop offset="30%" stop-color="#ff0090"/>
+          <stop offset="60%" stop-color="#c000ff"/>
+          <stop offset="100%" stop-color="#1f2fff"/>
         </linearGradient>
       </defs>
 
@@ -221,17 +221,10 @@ video {
 
 <script>
 /* VIDEO LOGIC */
-const totalVideos = 1;
-let index = 1;
-
 const videoPlayer = document.getElementById("videoPlayer");
 const caption = document.getElementById("caption");
 
-function updateVideo() {
-  caption.textContent = `Iceland – Video 01`;
-}
-
-updateVideo();
+caption.textContent = "Africa – Video 01";
 </script>
 
 <!-- MODAL INFO -->
@@ -277,17 +270,17 @@ const closeModal = document.getElementById("closeModal");
 const modalContent = document.getElementById("modalContent");
 
 const technicalSheet = {
-  luogo: "Iceland",
+  luogo: "Africa",
   anno: "2023",
   tecnica: "Digital video",
-  supporto: "High‑resolution MP4",
+  supporto: "High‑resolution MOV",
   durata: "1–3 min",
-  testo: "From the project ‘ICELAND – \"Face ou froid\", a winter crossing in solitude’. A real video shot taken during the espedition."
+  testo: "From the project ‘AFRICA – Un monde de couleurs’. A real video shot during your travels."
 };
 
 infoBtn.onclick = () => {
   modalContent.innerHTML =
-    `<strong>Title:</strong> Iceland – Video 01<br>
+    `<strong>Title:</strong> Africa – Video 01<br>
      <strong>Location:</strong> ${technicalSheet.luogo}<br>
      <strong>Year:</strong> ${technicalSheet.anno}<br>
      <strong>Technique:</strong> ${technicalSheet.tecnica}<br>
@@ -321,7 +314,7 @@ const videoModalPlayer = document.getElementById("videoModalPlayer");
 const videoModalClose = document.querySelector(".video-modal-close");
 
 videoPlayer.addEventListener("click", () => {
-  videoModalPlayer.src = "video-iceland.mp4";
+  videoModalPlayer.src = "a-v01.mov";
   videoModal.style.display = "flex";
 });
 
